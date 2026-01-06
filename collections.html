@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Collections — NIA BIA Hair</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Curated raw and virgin human hair offerings." />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 
 <body>
@@ -22,9 +23,48 @@
     <main>
       <section class="hero">
         <h1 class="h1">Collections</h1>
-        <p class="p">Curated raw and virgin hair offerings.</p>
+        <p class="p">
+          A focused offering. Built for longevity, reinstallation, and consistent quality over time.
+        </p>
       </section>
+
+      <section class="grid">
+        <article class="card">
+          <p class="kicker">Collection</p>
+          <h2 class="title">Raw Hair — Single Bundles</h2>
+          <p class="meta">Lengths: 28"–40".</p>
+        </article>
+
+        <article class="card">
+          <p class="kicker">Collection</p>
+          <h2 class="title">Virgin Hair — Single Bundles</h2>
+          <p class="meta">Lengths: 28"–40".</p>
+        </article>
+
+        <article class="card">
+          <p class="kicker">Sets</p>
+          <h2 class="title">3-Bundle Deals</h2>
+          <p class="meta">Curated length sets.</p>
+        </article>
+
+        <article class="card">
+          <p class="kicker">Sets</p>
+          <h2 class="title">4-Bundle Deals</h2>
+          <p class="meta">Curated length sets.</p>
+        </article>
+      </section>
+
+      <div class="hr"></div>
+
+      <footer class="footer">
+        <div>© <span id="y"></span> Nia Bia LLC</div>
+        <div>Catalog presentation.</div>
+      </footer>
     </main>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
