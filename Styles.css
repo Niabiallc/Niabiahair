@@ -1,13 +1,12 @@
-/* NIA BIA Hair — Luxury House Standard (Visible Editorial Upgrade) */
+/* NIA BIA Hair — Luxury House Standard (Showroom Pacing) */
 
 :root{
   --bg:#ffffff;
   --fg:#000000;
   --muted:rgba(0,0,0,.62);
   --hairline:rgba(0,0,0,.10);
-
-  /* Luxury feel = tighter measure */
-  --max:980px;
+  --plate:rgba(0,0,0,.03);
+  --max:1040px;
 }
 
 *{ box-sizing:border-box; }
@@ -29,9 +28,10 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 .wrapper{
   max-width:var(--max);
   margin:0 auto;
-  padding:40px 22px 96px;
+  padding:42px 22px 96px;
 }
 
+/* Header */
 .header{
   display:flex;
   align-items:flex-end;
@@ -57,14 +57,12 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   line-height:1;
 }
 
-.hero{
-  padding:72px 0 26px;
-}
+/* Hero copy */
+.hero{ padding:76px 0 18px; }
 
-/* Headings: subtle luxury = serif */
 .h1{
   font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-size:44px;
+  font-size:46px;
   line-height:1.06;
   font-weight:500;
   max-width:760px;
@@ -75,10 +73,11 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   margin:0;
   color:var(--muted);
   max-width:640px;
-  line-height:1.85;
+  line-height:1.9;
   font-size:14px;
 }
 
+/* Grid (for text sections) */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
@@ -114,16 +113,10 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   line-height:1.85;
 }
 
-/* Links in meta should feel like an action, but not a button */
-.meta a{
-  display:inline-block;
-  padding:2px 0;
-}
-
 .hr{
   height:1px;
   background:var(--hairline);
-  margin:64px 0 24px;
+  margin:72px 0 26px;
 }
 
 .footer{
@@ -137,16 +130,45 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   padding-top:6px;
 }
 
+/* ===== Showroom plates (global) ===== */
+.plate{
+  margin-top:40px;
+  padding-top:16px;
+  border-top:1px solid var(--hairline);
+}
+
+.media{
+  width:100%;
+  background:var(--plate);
+  border:1px solid var(--hairline);
+}
+
+/* Use these on elements that already have inline aspect-ratio */
+.media-line{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-top:10px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* More “house” feel on hover: no buttons, just quiet underline */
+.media-line span{ white-space:nowrap; }
+
 /* Mobile */
 @media (max-width: 760px){
-  .wrapper{ padding:30px 18px 80px; }
+  .wrapper{ padding:32px 18px 80px; }
   .header{
     align-items:flex-start;
     flex-direction:column;
     gap:14px;
   }
   .nav{ flex-wrap:wrap; row-gap:10px; }
-  .hero{ padding:52px 0 22px; }
+  .hero{ padding:54px 0 14px; }
   .h1{ font-size:30px; line-height:1.10; }
   .card{ grid-column: span 12; }
 }
