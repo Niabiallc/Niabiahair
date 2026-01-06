@@ -7,39 +7,58 @@
   <meta name="description" content="Luxury raw and virgin human hair." />
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Editorial placeholders (homepage only) -->
+  <!-- Home showroom split + resized plates (home only) -->
   <style>
-    .plate{
-      border-top: 1px solid rgba(0,0,0,.10);
-      padding-top: 16px;
-      margin-top: 42px;
+    .home-split{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 22px;
+      align-items:start;
+      margin-top: 34px;
     }
+
+    .home-copy{
+      padding-right: 6px;
+    }
+
+    .plate{
+      margin-top:0;
+      padding-top:16px;
+      border-top:1px solid rgba(0,0,0,.10);
+    }
+
     .media{
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: rgba(0,0,0,.04);
+      width:100%;
+      background: rgba(0,0,0,.03);
       border: 1px solid rgba(0,0,0,.10);
     }
-    .media.tall{ aspect-ratio: 4 / 5; }
+
+    /* Smaller, more intentional proportions */
+    .media.hero{ aspect-ratio: 16 / 10; }   /* was too wide/tall before */
+    .media.tall{ aspect-ratio: 4 / 6; }     /* slimmer + less dominant */
+
     .media-line{
       display:flex;
       justify-content:space-between;
       gap:16px;
       flex-wrap:wrap;
-      margin-top: 10px;
+      margin-top:10px;
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
       color: rgba(0,0,0,.62);
     }
+
     .two{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-top: 18px;
     }
-    @media (max-width: 760px){
-      .two{ grid-template-columns: 1fr; }
+
+    @media (max-width: 900px){
+      .home-split{ grid-template-columns: 1fr; }
+      .plate{ margin-top: 26px; }
     }
   </style>
 </head>
@@ -58,33 +77,37 @@
 
     <main>
       <section class="hero">
-        <h1 class="h1">Raw and virgin human hair, curated for long-term ownership.</h1>
-        <p class="p">
-          Reinstall-quality hair designed for longevity, coloring, and consistent performance over time.
-        </p>
-
-        <!-- Editorial hero plate -->
-        <div class="plate">
-          <div class="media" aria-label="Editorial image placeholder"></div>
-          <div class="media-line">
-            <span>House Standard</span>
-            <span>Editorial Plate I</span>
+        <div class="home-split">
+          <!-- Copy stays high and primary -->
+          <div class="home-copy">
+            <h1 class="h1">Raw and virgin human hair, curated for long-term ownership.</h1>
+            <p class="p">
+              Reinstall-quality hair designed for longevity, coloring, and consistent performance over time.
+            </p>
           </div>
 
-          <!-- Secondary plates (simulate product/editorial sequence) -->
-          <div class="two">
-            <div>
-              <div class="media tall" aria-label="Editorial image placeholder"></div>
-              <div class="media-line">
-                <span>Raw</span>
-                <span>Plate II</span>
-              </div>
+          <!-- Plates live as an editorial panel, not a page-stopper -->
+          <div class="plate" aria-label="Editorial panel">
+            <div class="media hero" aria-label="Editorial image placeholder"></div>
+            <div class="media-line">
+              <span>House Standard</span>
+              <span>Plate I</span>
             </div>
-            <div>
-              <div class="media tall" aria-label="Editorial image placeholder"></div>
-              <div class="media-line">
-                <span>Virgin</span>
-                <span>Plate III</span>
+
+            <div class="two">
+              <div>
+                <div class="media tall" aria-label="Editorial image placeholder"></div>
+                <div class="media-line">
+                  <span>Raw</span>
+                  <span>Plate II</span>
+                </div>
+              </div>
+              <div>
+                <div class="media tall" aria-label="Editorial image placeholder"></div>
+                <div class="media-line">
+                  <span>Virgin</span>
+                  <span>Plate III</span>
+                </div>
               </div>
             </div>
           </div>
