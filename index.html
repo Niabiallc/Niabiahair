@@ -7,7 +7,6 @@
   <meta name="description" content="Luxury raw and virgin human hair." />
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Home showroom split + resized plates (home only) -->
   <style>
     .home-split{
       display:grid;
@@ -17,9 +16,7 @@
       margin-top: 34px;
     }
 
-    .home-copy{
-      padding-right: 6px;
-    }
+    .home-copy{ padding-right: 6px; }
 
     .plate{
       margin-top:0;
@@ -31,11 +28,12 @@
       width:100%;
       background: rgba(0,0,0,.03);
       border: 1px solid rgba(0,0,0,.10);
+      max-width: 520px;         /* prevents awkward “too wide” plates */
+      margin-left: auto;        /* keeps the panel visually right-aligned */
     }
 
-    /* Smaller, more intentional proportions */
-    .media.hero{ aspect-ratio: 16 / 10; }   /* was too wide/tall before */
-    .media.tall{ aspect-ratio: 4 / 6; }     /* slimmer + less dominant */
+    .media.hero{ aspect-ratio: 16 / 10; }
+    .media.tall{ aspect-ratio: 4 / 6; }
 
     .media-line{
       display:flex;
@@ -47,6 +45,8 @@
       letter-spacing:.18em;
       text-transform:uppercase;
       color: rgba(0,0,0,.62);
+      max-width: 520px;
+      margin-left: auto;
     }
 
     .two{
@@ -54,11 +54,15 @@
       grid-template-columns: 1fr 1fr;
       gap: 18px;
       margin-top: 18px;
+      max-width: 520px;
+      margin-left: auto;
     }
 
-    @media (max-width: 900px){
+    /* Only collapse on truly small screens */
+    @media (max-width: 680px){
       .home-split{ grid-template-columns: 1fr; }
       .plate{ margin-top: 26px; }
+      .media, .media-line, .two{ max-width: none; margin-left: 0; }
     }
   </style>
 </head>
@@ -78,7 +82,6 @@
     <main>
       <section class="hero">
         <div class="home-split">
-          <!-- Copy stays high and primary -->
           <div class="home-copy">
             <h1 class="h1">Raw and virgin human hair, curated for long-term ownership.</h1>
             <p class="p">
@@ -86,7 +89,6 @@
             </p>
           </div>
 
-          <!-- Plates live as an editorial panel, not a page-stopper -->
           <div class="plate" aria-label="Editorial panel">
             <div class="media hero" aria-label="Editorial image placeholder"></div>
             <div class="media-line">
