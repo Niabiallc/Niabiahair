@@ -1,11 +1,91 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Collections — NIA BIA Hair</title>
   <meta name="description" content="Curated raw and virgin human hair offerings." />
-  <link rel="stylesheet" href="./styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Editorial placeholders (collections only) -->
+  <style>
+    .plate{
+      border-top: 1px solid rgba(0,0,0,.10);
+      padding-top: 16px;
+      margin-top: 42px;
+    }
+    .media{
+      width: 100%;
+      background: rgba(0,0,0,.04);
+      border: 1px solid rgba(0,0,0,.10);
+    }
+    .wide{ aspect-ratio: 16 / 7; }
+    .tall{ aspect-ratio: 4 / 5; }
+    .media-line{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: rgba(0,0,0,.62);
+    }
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .three{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .index{
+      margin-top: 40px;
+      border-top: 1px solid rgba(0,0,0,.10);
+      padding-top: 16px;
+    }
+    .row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      padding: 14px 0;
+      border-top: 1px solid rgba(0,0,0,.10);
+    }
+    .row:first-child{ border-top: none; padding-top: 0; }
+    .row .left{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color: rgba(0,0,0,.62);
+      min-width: 140px;
+    }
+    .row .mid{
+      flex:1;
+      min-width: 220px;
+      font-size:16px;
+      line-height:1.35;
+      font-weight:500;
+    }
+    .row .right{
+      min-width: 120px;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: rgba(0,0,0,.62);
+      text-align:right;
+    }
+    @media (max-width: 900px){
+      .three{ grid-template-columns: 1fr; }
+      .two{ grid-template-columns: 1fr; }
+      .row .right{ text-align:left; }
+    }
+  </style>
 </head>
 
 <body>
@@ -26,45 +106,125 @@
         <p class="p">
           A focused offering. Built for longevity, reinstallation, and consistent quality over time.
         </p>
-      </section>
 
-      <section class="grid">
-        <article class="card">
-          <p class="kicker">Collection</p>
-          <h2 class="title">Raw Hair — Single Bundles</h2>
-          <p class="meta">Lengths: 28"–40".</p>
-        </article>
+        <!-- Editorial plates -->
+        <div class="plate">
+          <div class="media wide" aria-label="Editorial image placeholder"></div>
+          <div class="media-line">
+            <span>Catalog</span>
+            <span>Plate I</span>
+          </div>
 
-        <article class="card">
-          <p class="kicker">Collection</p>
-          <h2 class="title">Virgin Hair — Single Bundles</h2>
-          <p class="meta">Lengths: 28"–40".</p>
-        </article>
+          <div class="two">
+            <div>
+              <div class="media tall" aria-label="Editorial image placeholder"></div>
+              <div class="media-line">
+                <span>Raw</span>
+                <span>Plate II</span>
+              </div>
+            </div>
+            <div>
+              <div class="media tall" aria-label="Editorial image placeholder"></div>
+              <div class="media-line">
+                <span>Virgin</span>
+                <span>Plate III</span>
+              </div>
+            </div>
+          </div>
 
-        <article class="card">
-          <p class="kicker">Sets</p>
-          <h2 class="title">3-Bundle Deals</h2>
-          <p class="meta">Curated length sets.</p>
-        </article>
+          <div class="three">
+            <div>
+              <div class="media wide" aria-label="Editorial image placeholder"></div>
+              <div class="media-line">
+                <span>Set</span>
+                <span>Plate IV</span>
+              </div>
+            </div>
+            <div>
+              <div class="media wide" aria-label="Editorial image placeholder"></div>
+              <div class="media-line">
+                <span>Set</span>
+                <span>Plate V</span>
+              </div>
+            </div>
+            <div>
+              <div class="media wide" aria-label="Editorial image placeholder"></div>
+              <div class="media-line">
+                <span>Detail</span>
+                <span>Plate VI</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <article class="card">
-          <p class="kicker">Sets</p>
-          <h2 class="title">4-Bundle Deals</h2>
-          <p class="meta">Curated length sets.</p>
-        </article>
+        <!-- Catalog index (quiet luxury list) -->
+        <div class="index">
+          <div class="row">
+            <div class="left">Collection</div>
+            <div class="mid">Raw Hair — Single Bundles (28"–40")</div>
+            <div class="right"><a href="#raw">View</a></div>
+          </div>
+
+          <div class="row">
+            <div class="left">Collection</div>
+            <div class="mid">Virgin Hair — Single Bundles (28"–40")</div>
+            <div class="right"><a href="#virgin">View</a></div>
+          </div>
+
+          <div class="row">
+            <div class="left">Sets</div>
+            <div class="mid">3-Bundle Deals</div>
+            <div class="right"><a href="#three">View</a></div>
+          </div>
+
+          <div class="row">
+            <div class="left">Sets</div>
+            <div class="mid">4-Bundle Deals</div>
+            <div class="right"><a href="#four">View</a></div>
+          </div>
+        </div>
       </section>
 
       <div class="hr"></div>
 
-      <footer class="footer">
-        <div>© <span id="y"></span> Nia Bia LLC</div>
-        <div>Catalog presentation.</div>
-      </footer>
-    </main>
-  </div>
+      <!-- Sections (structure only, Stripe links later) -->
+      <section class="hero" id="raw">
+        <h1 class="h1">Raw Hair — Single Bundles</h1>
+        <p class="p">Lengths: 28"–40". Checkout will open in Stripe.</p>
+      </section>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+      <section class="grid">
+        <article class="card"><p class="kicker">Raw</p><h2 class="title">28"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Raw</p><h2 class="title">30"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Raw</p><h2 class="title">32"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Raw</p><h2 class="title">34"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Raw</p><h2 class="title">36"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Raw</p><h2 class="title">38"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Raw</p><h2 class="title">40"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+      </section>
+
+      <div class="hr"></div>
+
+      <section class="hero" id="virgin">
+        <h1 class="h1">Virgin Hair — Single Bundles</h1>
+        <p class="p">Lengths: 28"–40". Checkout will open in Stripe.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card"><p class="kicker">Virgin</p><h2 class="title">28"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Virgin</p><h2 class="title">30"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Virgin</p><h2 class="title">32"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Virgin</p><h2 class="title">34"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Virgin</p><h2 class="title">36"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Virgin</p><h2 class="title">38"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">Virgin</p><h2 class="title">40"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+      </section>
+
+      <div class="hr"></div>
+
+      <section class="hero" id="three">
+        <h1 class="h1">3-Bundle Deals</h1>
+        <p class="p">Curated sets. Checkout will open in Stripe.</p>
+      </section>
+
+      <
