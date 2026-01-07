@@ -1,4 +1,4 @@
-/* NIA BIA Hair — Luxury House Standard (Showroom Pacing) */
+/* NIA BIA — Luxury House Standard (Showroom Pacing) */
 
 :root{
   --bg:#ffffff;
@@ -46,6 +46,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   letter-spacing:.30em;
   text-transform:uppercase;
   line-height:1;
+  font-weight:600; /* IMPORTANT: bold brand across all pages/devices */
 }
 
 .nav{
@@ -77,7 +78,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   font-size:14px;
 }
 
-/* Grid (for text sections) */
+/* Grid (text sections) */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
@@ -130,7 +131,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   padding-top:6px;
 }
 
-/* ===== Showroom plates (global) ===== */
+/* Base plate helpers (for pages using plates/tiles) */
 .plate{
   margin-top:40px;
   padding-top:16px;
@@ -143,7 +144,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   border:1px solid var(--hairline);
 }
 
-/* Use these on elements that already have inline aspect-ratio */
 .media-line{
   display:flex;
   justify-content:space-between;
@@ -155,9 +155,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   text-transform:uppercase;
   color:var(--muted);
 }
-
-/* More “house” feel on hover: no buttons, just quiet underline */
-.media-line span{ white-space:nowrap; }
 
 /* Mobile */
 @media (max-width: 760px){
