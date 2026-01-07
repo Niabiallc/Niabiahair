@@ -8,18 +8,19 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* Fendi-style modular layout for NIA BIA */
+    /* Catalog-first modular system (mobile stacks to 1 column) */
     .catalog-grid{
-      display: grid;
+      display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 34px;
+      gap:18px;
+      margin-top:34px;
     }
 
     .tile{
-      background: var(--plate);
-      border: 1px solid var(--hairline);
-      aspect-ratio: 4 / 5; /* Consistent vertical tiles */
+      width:100%;
+      background: rgba(0,0,0,.03);
+      border: 1px solid rgba(0,0,0,.10);
+      aspect-ratio: 4 / 5;
     }
 
     .tile-line{
@@ -27,15 +28,22 @@
       justify-content:space-between;
       gap:16px;
       flex-wrap:wrap;
-      margin-top:8px;
+      margin-top:10px;
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
-      color: var(--muted);
+      color: rgba(0,0,0,.62);
+    }
+
+    .tile-note{
+      margin:0;
+      font-size:12px;
+      color: rgba(0,0,0,.62);
+      line-height:1.6;
     }
 
     @media (max-width: 760px){
-      .catalog-grid{ grid-template-columns: 1fr; } /* Single column on mobile */
+      .catalog-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -59,10 +67,9 @@
           Reinstall-quality hair designed for longevity, coloring, and consistent performance over time.
         </p>
 
-        <div class="catalog-grid">
-          <!-- Consistent tile system -->
+        <div class="catalog-grid" aria-label="Catalog tiles">
           <div>
-            <div class="tile" aria-label="Editorial image placeholder"></div>
+            <div class="tile" aria-label="Editorial tile placeholder"></div>
             <div class="tile-line">
               <span>House Standard</span>
               <span>Tile I</span>
@@ -70,7 +77,7 @@
           </div>
 
           <div>
-            <div class="tile" aria-label="Editorial image placeholder"></div>
+            <div class="tile" aria-label="Editorial tile placeholder"></div>
             <div class="tile-line">
               <span>Raw</span>
               <span>Tile II</span>
@@ -78,5 +85,38 @@
           </div>
 
           <div>
-            <div class="tile" aria-label="Editorial image placeholder"></div>
-            <div class="t
+            <div class="tile" aria-label="Editorial tile placeholder"></div>
+            <div class="tile-line">
+              <span>Virgin</span>
+              <span>Tile III</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="tile" aria-label="Editorial tile placeholder"></div>
+            <div class="tile-line">
+              <span>Sets</span>
+              <span>Tile IV</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <p class="tile-note">
+          This homepage is catalog-led: imagery rhythm first, copy second. Checkout remains separate via Stripe.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <div>© <span id="y"></span> Nia Bia LLC</div>
+        <div>v-index-1</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
