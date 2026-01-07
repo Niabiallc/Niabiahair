@@ -3,66 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NIA BIA Hair</title>
+  <title>NIA BIA</title>
   <meta name="description" content="Luxury raw and virgin human hair." />
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    .home-split{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 22px;
-      align-items:start;
+    /* Fendi-style modular layout for NIA BIA */
+    .catalog-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
       margin-top: 34px;
     }
 
-    .home-copy{ padding-right: 6px; }
-
-    .plate{
-      margin-top:0;
-      padding-top:16px;
-      border-top:1px solid rgba(0,0,0,.10);
+    .tile{
+      background: var(--plate);
+      border: 1px solid var(--hairline);
+      aspect-ratio: 4 / 5; /* Consistent vertical tiles */
     }
 
-    .media{
-      width:100%;
-      background: rgba(0,0,0,.03);
-      border: 1px solid rgba(0,0,0,.10);
-      max-width: 520px;         /* prevents awkward “too wide” plates */
-      margin-left: auto;        /* keeps the panel visually right-aligned */
-    }
-
-    .media.hero{ aspect-ratio: 16 / 10; }
-    .media.tall{ aspect-ratio: 4 / 6; }
-
-    .media-line{
+    .tile-line{
       display:flex;
       justify-content:space-between;
       gap:16px;
       flex-wrap:wrap;
-      margin-top:10px;
+      margin-top:8px;
       font-size:11px;
       letter-spacing:.18em;
       text-transform:uppercase;
-      color: rgba(0,0,0,.62);
-      max-width: 520px;
-      margin-left: auto;
+      color: var(--muted);
     }
 
-    .two{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
-      max-width: 520px;
-      margin-left: auto;
-    }
-
-    /* Only collapse on truly small screens */
-    @media (max-width: 680px){
-      .home-split{ grid-template-columns: 1fr; }
-      .plate{ margin-top: 26px; }
-      .media, .media-line, .two{ max-width: none; margin-left: 0; }
+    @media (max-width: 760px){
+      .catalog-grid{ grid-template-columns: 1fr; } /* Single column on mobile */
     }
   </style>
 </head>
@@ -70,7 +43,7 @@
 <body>
   <div class="wrapper">
     <header class="header">
-      <div class="brand">NIA BIA Hair</div>
+      <div class="brand">NIA BIA</div>
       <nav class="nav">
         <a href="collections.html">Collections</a>
         <a href="care.html">Care</a>
@@ -81,41 +54,29 @@
 
     <main>
       <section class="hero">
-        <div class="home-split">
-          <div class="home-copy">
-            <h1 class="h1">Raw and virgin human hair, curated for long-term ownership.</h1>
-            <p class="p">
-              Reinstall-quality hair designed for longevity, coloring, and consistent performance over time.
-            </p>
-          </div>
+        <h1 class="h1">Raw and virgin human hair, curated for long-term ownership.</h1>
+        <p class="p">
+          Reinstall-quality hair designed for longevity, coloring, and consistent performance over time.
+        </p>
 
-          <div class="plate" aria-label="Editorial panel">
-            <div class="media hero" aria-label="Editorial image placeholder"></div>
-            <div class="media-line">
+        <div class="catalog-grid">
+          <!-- Consistent tile system -->
+          <div>
+            <div class="tile" aria-label="Editorial image placeholder"></div>
+            <div class="tile-line">
               <span>House Standard</span>
-              <span>Plate I</span>
-            </div>
-
-            <div class="two">
-              <div>
-                <div class="media tall" aria-label="Editorial image placeholder"></div>
-                <div class="media-line">
-                  <span>Raw</span>
-                  <span>Plate II</span>
-                </div>
-              </div>
-              <div>
-                <div class="media tall" aria-label="Editorial image placeholder"></div>
-                <div class="media-line">
-                  <span>Virgin</span>
-                  <span>Plate III</span>
-                </div>
-              </div>
+              <span>Tile I</span>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
-  </div>
-</body>
-</html>
+
+          <div>
+            <div class="tile" aria-label="Editorial image placeholder"></div>
+            <div class="tile-line">
+              <span>Raw</span>
+              <span>Tile II</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="tile" aria-label="Editorial image placeholder"></div>
+            <div class="t
