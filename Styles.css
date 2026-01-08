@@ -1,4 +1,4 @@
-/* NIA BIA — Luxury House Standard */
+/* NIA BIA — Luxury House Standard (DEBUG vSTAMP-1) */
 
 :root{
   --bg:#ffffff;
@@ -6,14 +6,12 @@
   --muted:rgba(0,0,0,.62);
   --hairline:rgba(0,0,0,.10);
 
-  /* Catalog plate look */
   --tilebg:rgba(0,0,0,.06);
   --tileline:rgba(0,0,0,.18);
 
-  /* Page + catalog widths */
-  --max:1040px;      /* page wrapper */
-  --catalog:900px;   /* centered catalog block (Fendi behavior) */
-  --tilemax:520px;   /* mobile tile max width */
+  --max:1040px;
+  --catalog:900px;
+  --tilemax:520px;
 }
 
 *{ box-sizing:border-box; }
@@ -27,19 +25,34 @@ body{
   letter-spacing:.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x:hidden; /* protects against any accidental horizontal overflow */
+}
+
+/* TEMP DEBUG STAMP — remove after confirmed */
+body::after{
+  content:"CSS vSTAMP-1";
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#000;
+  background:#fff;
+  border:1px solid rgba(0,0,0,.18);
+  padding:6px 8px;
+  z-index:9999;
 }
 
 a{ color:inherit; text-decoration:none; }
 a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
-/* Page wrapper */
 .wrapper{
   max-width:var(--max);
   margin:0 auto;
   padding:42px 22px 96px;
 }
 
-/* Header */
 .header{
   display:flex;
   align-items:flex-end;
@@ -49,7 +62,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   border-bottom:1px solid var(--hairline);
 }
 
-/* BRAND — premium behavior */
 .brand{
   font-size:12px;
   letter-spacing:.32em;
@@ -59,7 +71,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   color:#000;
 }
 
-/* Nav — quieter */
 .nav{
   display:flex;
   gap:20px;
@@ -70,7 +81,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   color:rgba(0,0,0,.70);
 }
 
-/* Hero copy */
 .hero{ padding:76px 0 18px; }
 
 .h1{
@@ -90,7 +100,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   font-size:14px;
 }
 
-/* Separators + footer */
 .hr{
   height:1px;
   background:var(--hairline);
@@ -108,9 +117,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   padding-top:6px;
 }
 
-/* ===== Catalog tiles (GLOBAL + device-correct) ===== */
-
-/* Center the catalog block on iPad/desktop */
+/* Catalog tiles */
 .catalog-grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -122,19 +129,18 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   margin-right:auto;
 }
 
-/* Tile class used by <img> — make it behave like a plate */
 .tile{
   width:100%;
-  display:block;                 /* prevents inline image weirdness */
+  display:block;
   background: var(--tilebg);
   border: 1px solid var(--tileline);
   aspect-ratio: 4 / 5;
   min-height: 220px;
 
-  object-fit: cover;             /* IMPORTANT: crop, don’t stretch */
+  object-fit:cover;
+  max-width:100%;
 }
 
-/* Caption line under each tile */
 .tile-line{
   display:flex;
   justify-content:space-between;
@@ -145,88 +151,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   letter-spacing:.18em;
   text-transform:uppercase;
   color: var(--muted);
-
-  max-width: var(--catalog);
-  margin-left:auto;
-  margin-right:auto;
-}
-
-/* ===== Catalog index rows (GLOBAL) ===== */
-.index{
-  margin-top: 28px;
-  border-top: 1px solid var(--hairline);
-  padding-top: 12px;
-
-  max-width: var(--catalog);
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.row{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  padding: 12px 0;
-  border-top: 1px solid var(--hairline);
-}
-.row:first-child{ border-top:none; padding-top:0; }
-
-.left{
-  font-size:10px;
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  color: var(--muted);
-  min-width: 140px;
-}
-
-.mid{
-  flex:1;
-  min-width: 220px;
-  font-size:16px;
-  line-height:1.35;
-  font-weight:500;
-}
-
-.right{
-  min-width: 90px;
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color: var(--muted);
-  text-align:right;
-}
-
-/* Product grid */
-.grid{
-  display:grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap:18px;
-  margin-top:46px;
-}
-.card{
-  grid-column: span 6;
-  padding:18px 0 8px;
-  border-top:1px solid var(--hairline);
-}
-.kicker{
-  font-size:10px;
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin:0 0 10px;
-}
-.title{
-  margin:0 0 10px;
-  font-size:18px;
-  font-weight:500;
-  line-height:1.35;
-}
-.meta{
-  margin:0;
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.85;
 }
 
 /* Mobile */
@@ -243,16 +167,10 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   .hero{ padding:54px 0 14px; }
   .h1{ font-size:30px; line-height:1.10; }
 
-  /* Stack tiles */
   .catalog-grid{ grid-template-columns: 1fr; }
 
-  /* Make tiles NOT feel edge-to-edge on mobile */
-  .catalog-grid,
-  .tile-line,
-  .index{
-    max-width: var(--tilemax);
-  }
+  /* makes mobile feel intentionally narrower */
+  .catalog-grid{ max-width: var(--tilemax); }
 
-  .right{ text-align:left; }
-  .card{ grid-column: span 12; }
+  .tile{ min-height:260px; }
 }
