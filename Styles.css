@@ -1,6 +1,6 @@
 /* =========================================================
    NIA BIA — LUXURY HOUSE STANDARD
-   iOS-safe overflow fix WITHOUT pan-y snapping feel
+   (Fixed: mobile overflow + tile link appearance + luxury layout)
    ========================================================= */
 
 :root{
@@ -11,6 +11,7 @@
 
   --pageMax:1120px;
   --moduleMax:860px;
+  --moduleTight:720px;
 }
 
 *,
@@ -24,8 +25,8 @@ html, body{
   height:100%;
   margin:0;
   padding:0;
-  overflow-x:hidden;           /* hard stop real overflow */
-  overscroll-behavior-x:none;  /* reduce sideways overscroll where supported */
+  overflow-x:hidden;
+  overscroll-behavior-x:none;
 }
 
 body{
@@ -35,8 +36,6 @@ body{
   letter-spacing:.01em;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-
-  /* IMPORTANT: remove touch-action pan-y to prevent the “two-page” feel */
 }
 
 /* Media safety */
@@ -49,15 +48,9 @@ svg{
   height:auto;
 }
 
-/* Links */
-a{
-  color:inherit;
-  text-decoration:none;
-}
-a:hover{
-  text-decoration:underline;
-  text-underline-offset:4px;
-}
+/* Links (global) */
+a{ color:inherit; text-decoration:none; }
+a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
 /* Layout */
 .wrapper{
@@ -65,7 +58,7 @@ a:hover{
   max-width:var(--pageMax);
   margin:0 auto;
   padding:42px 22px 96px;
-  overflow-x:hidden; /* extra guard */
+  overflow-x:hidden;
 }
 
 /* Header */
@@ -98,9 +91,7 @@ a:hover{
 }
 
 /* Hero */
-.hero{
-  padding:76px 0 18px;
-}
+.hero{ padding:76px 0 18px; }
 
 .h1{
   font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -119,22 +110,41 @@ a:hover{
   color:var(--muted);
 }
 
-/* Image module */
+/* =========================================================
+   TILE MODULE (Collections + showrooms)
+   ========================================================= */
+
+/* Grid container */
 .catalog-grid{
   width:100%;
   max-width:var(--moduleMax);
   margin:34px auto 0;
   display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr)); /* iOS-proof */
+  grid-template-columns:repeat(2, minmax(0, 1fr));
   gap:18px;
-
-  overflow:hidden; /* prevents any micro-bleed */
+  overflow:hidden; /* prevents micro-bleed */
 }
 
-.catalog-grid > div{
-  min-width:0;
+.catalog-grid > *{ min-width:0; }
+
+/* Tile link reset (THIS removes “hyperlink-looking” labels) */
+.catalog-grid a{
+  display:block;
+  text-decoration:none !important;
+  color:inherit;
+}
+.catalog-grid a:hover{
+  text-decoration:none !important;  /* overrides global underline */
+}
+.catalog-grid a:active{
+  text-decoration:none !important;
+}
+.catalog-grid a:focus-visible{
+  outline:1px solid var(--hairline);
+  outline-offset:6px;
 }
 
+/* Tile media + caption */
 .tile-img{
   width:100%;
   aspect-ratio:4 / 5;
@@ -153,16 +163,96 @@ a:hover{
   text-transform:uppercase;
   color:var(--muted);
   flex-wrap:wrap;
+  text-decoration:none !important; /* extra safety */
+}
+.tile-line *{
+  text-decoration:none !important; /* extra safety */
 }
 
-/* Divider */
+/* =========================================================
+   LUXURY CONTENT MODULES (for product pages)
+   ========================================================= */
+
+.module{
+  width:100%;
+  max-width:var(--moduleTight);
+  margin:0 auto;
+}
+
+.hero-media{
+  width:100%;
+  max-width:var(--moduleMax);
+  margin:26px auto 0;
+  overflow:hidden;
+  border:1px solid var(--hairline);
+}
+
+.hero-media img{
+  width:100%;
+  display:block;
+  aspect-ratio: 16 / 9;
+  object-fit:cover;
+  filter: grayscale(100%);
+}
+
+/* Minimal “spec list” */
+.spec{
+  margin-top:26px;
+  border-top:1px solid var(--hairline);
+}
+.spec-row{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  padding:14px 0;
+  border-bottom:1px solid var(--hairline);
+}
+.spec-label{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.spec-value{
+  font-size:13px;
+  color:rgba(0,0,0,.78);
+  line-height:1.6;
+  text-align:right;
+  max-width:62%;
+}
+
+/* CTA links that don’t look “buttony” */
+.cta-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:18px;
+  padding:14px 0;
+  border-bottom:1px solid var(--hairline);
+}
+.cta-title{
+  font-size:14px;
+  color:rgba(0,0,0,.78);
+}
+.cta-link{
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(0,0,0,.78);
+  text-decoration:none !important;
+}
+.cta-link:hover{
+  text-decoration:underline !important;
+  text-underline-offset:4px;
+}
+
+/* Divider + footer */
 .hr{
   height:1px;
   background:var(--hairline);
   margin:72px 0 26px;
 }
 
-/* Footer */
 .footer{
   display:flex;
   justify-content:space-between;
@@ -175,9 +265,7 @@ a:hover{
 
 /* Mobile */
 @media (max-width:720px){
-  .wrapper{
-    padding:32px 18px 80px;
-  }
+  .wrapper{ padding:32px 18px 80px; }
 
   .header{
     flex-direction:column;
@@ -185,36 +273,16 @@ a:hover{
     gap:14px;
   }
 
-  .hero{
-    padding:54px 0 14px;
-  }
+  .hero{ padding:54px 0 14px; }
 
-  .h1{
-    font-size:30px;
-    line-height:1.1;
-  }
+  .h1{ font-size:30px; line-height:1.1; }
 
   .catalog-grid{
     grid-template-columns:minmax(0, 1fr);
     max-width:560px;
   }
 
-  .tile-img{
-    aspect-ratio:5 / 6;
-  }
-}
-/* Luxury tile links: invisible interaction */
-.catalog-grid a{
-  text-decoration:none;
-  color:inherit;
-  display:block;
-}
+  .tile-img{ aspect-ratio:5 / 6; }
 
-.catalog-grid a:hover{
-  text-decoration:none;
-}
-
-.catalog-grid a:focus-visible{
-  outline:1px solid var(--hairline);
-  outline-offset:6px;
+  .spec-value{ max-width:58%; }
 }
