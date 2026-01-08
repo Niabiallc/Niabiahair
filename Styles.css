@@ -1,9 +1,8 @@
 /* =========================================================
-   NIA BIA — LUXURY HOUSE STANDARD
-   PROVEN MOBILE FIX:
-   - No horizontal scroll (real overflow)
-   - No iOS sideways pan feel
-   - Tiles clickable, captions NEVER look like hyperlinks
+   NIA BIA — LUXURY HOUSE STANDARD (FINAL)
+   - White background, black type
+   - No visible link styling on tiles
+   - No horizontal scroll on iOS / mobile
    ========================================================= */
 
 :root{
@@ -17,12 +16,10 @@
   --moduleTight:720px;
 }
 
-/* Reset */
 *,
 *::before,
 *::after{ box-sizing:border-box; }
 
-/* HARD LOCK horizontal overflow — keep this forever */
 html, body{
   width:100%;
   max-width:100%;
@@ -33,7 +30,6 @@ html, body{
   overscroll-behavior-x:none;
 }
 
-/* IMPORTANT: do NOT use touch-action: pan-y (it caused “two page” feel) */
 body{
   background:var(--bg);
   color:var(--fg);
@@ -43,7 +39,13 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
-/* Prevent any media from forcing width */
+/* Viewport clamp (prevents sideways reveal even if Safari tries to pan) */
+#viewport-lock{
+  width:100vw;
+  overflow:hidden;
+}
+
+/* Media safety */
 img, video, svg{
   display:block;
   width:100%;
@@ -51,15 +53,9 @@ img, video, svg{
   height:auto;
 }
 
-/* Global links (allowed) */
+/* Global links */
 a{ color:inherit; text-decoration:none; }
 a:hover{ text-decoration:underline; text-underline-offset:4px; }
-
-/* Viewport clamp (prevents any sideways “page” reveal) */
-#viewport-lock{
-  width:100vw;
-  overflow:hidden;
-}
 
 /* Layout */
 .wrapper{
@@ -119,37 +115,34 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   color:var(--muted);
 }
 
-/* =========================================================
-   COLLECTION TILES (SHOWROOM)
-   ========================================================= */
-
+/* Collections tiles */
 .catalog-grid{
   width:100%;
   max-width:var(--moduleMax);
   margin:34px auto 0;
   display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr)); /* iOS-safe */
+  grid-template-columns:repeat(2, minmax(0, 1fr));
   gap:18px;
-  overflow:hidden; /* prevents micro-bleed */
+  overflow:hidden;
 }
 
 .catalog-grid > *{ min-width:0; }
 
-/* Tile links MUST NOT look like links (override global underline completely) */
-.catalog-grid a,
-.catalog-grid a:hover,
-.catalog-grid a:active,
-.catalog-grid a:visited{
+/* Tile links: no “hyperlink look” */
+.tile-link,
+.tile-link:hover,
+.tile-link:active,
+.tile-link:visited{
   text-decoration:none !important;
   color:inherit !important;
   display:block;
 }
-.catalog-grid a *{
+.tile-link *{
   text-decoration:none !important;
   color:inherit !important;
 }
 
-/* Make caption non-interactive so it never behaves like a “link label” */
+/* Caption should behave like label */
 .tile-line{ pointer-events:none; }
 
 .tile-img{
@@ -172,10 +165,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   flex-wrap:wrap;
 }
 
-/* =========================================================
-   SHOWROOM PAGE MODULES
-   ========================================================= */
-
+/* Showroom modules (for inside pages) */
 .module{
   width:100%;
   max-width:var(--moduleTight);
@@ -197,7 +187,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   filter: grayscale(100%);
 }
 
-/* Prevent long text from forcing horizontal scroll anywhere */
 .spec{
   margin-top:22px;
   border-top:1px solid var(--hairline);
@@ -225,8 +214,8 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   line-height:1.6;
   text-align:right;
   max-width:62%;
-  overflow-wrap:anywhere;  /* critical */
-  word-break:break-word;   /* critical */
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 
 /* Divider + footer */
