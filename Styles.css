@@ -203,3 +203,18 @@ a:hover{
     aspect-ratio:5 / 6;
   }
 }
+/* Luxury tile links: invisible interaction */
+.catalog-grid a{
+  text-decoration:none;
+  color:inherit;
+  display:block;
+}
+
+.catalog-grid a:hover{
+  text-decoration:none;
+}
+
+.catalog-grid a:focus-visible{
+  outline:1px solid var(--hairline);
+  outline-offset:6px;
+}
