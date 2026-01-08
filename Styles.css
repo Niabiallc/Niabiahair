@@ -174,3 +174,14 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
   .tile{ min-height:260px; }
 }
+/* Prevent horizontal overflow */
+body {
+  overflow-x: hidden;
+}
+
+.img-tile {
+  width: 100%;
+  height: auto; /* Ensures it scales proportionally */
+  max-width: 100%; /* Never goes beyond its container */
+  object-fit: cover; /* Ensures it fills the tile nicely */
+}
