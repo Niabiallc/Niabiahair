@@ -3,95 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Collections — NIA BIA Hair</title>
+  <title>Collections — NIA BIA</title>
   <meta name="description" content="Curated raw and virgin human hair offerings." />
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Editorial placeholders (collections only) -->
-  <style>
-    .plate{
-      border-top: 1px solid rgba(0,0,0,.10);
-      padding-top: 16px;
-      margin-top: 42px;
-    }
-    .media{
-      width: 100%;
-      background: rgba(0,0,0,.04);
-      border: 1px solid rgba(0,0,0,.10);
-    }
-    .wide{ aspect-ratio: 16 / 7; }
-    .tall{ aspect-ratio: 4 / 5; }
-    .media-line{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      margin-top: 10px;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color: rgba(0,0,0,.62);
-    }
-    .two{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
-    .three{
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
-    }
-    .index{
-      margin-top: 40px;
-      border-top: 1px solid rgba(0,0,0,.10);
-      padding-top: 16px;
-    }
-    .row{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-      padding: 14px 0;
-      border-top: 1px solid rgba(0,0,0,.10);
-    }
-    .row:first-child{ border-top: none; padding-top: 0; }
-    .row .left{
-      font-size:11px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color: rgba(0,0,0,.62);
-      min-width: 140px;
-    }
-    .row .mid{
-      flex:1;
-      min-width: 220px;
-      font-size:16px;
-      line-height:1.35;
-      font-weight:500;
-    }
-    .row .right{
-      min-width: 120px;
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color: rgba(0,0,0,.62);
-      text-align:right;
-    }
-    @media (max-width: 900px){
-      .three{ grid-template-columns: 1fr; }
-      .two{ grid-template-columns: 1fr; }
-      .row .right{ text-align:left; }
-    }
-  </style>
 </head>
 
 <body>
   <div class="wrapper">
     <header class="header">
-      <div class="brand"><a href="index.html">NIA BIA Hair</a></div>
+      <div class="brand"><a href="index.html">NIA BIA</a></div>
       <nav class="nav">
         <a href="collections.html">Collections</a>
         <a href="care.html">Care</a>
@@ -102,81 +22,43 @@
 
     <main>
       <section class="hero">
-        <h1 class="h1">Collections</h1>
-        <p class="p">
-          A focused offering. Built for longevity, reinstallation, and consistent quality over time.
-        </p>
-
-        <!-- Editorial plates -->
-        <div class="plate">
-          <div class="media wide" aria-label="Editorial image placeholder"></div>
-          <div class="media-line">
-            <span>Catalog</span>
-            <span>Plate I</span>
+        <!-- Tiles first -->
+        <div class="catalog-grid" aria-label="Collection tiles">
+          <div>
+            <div class="tile" aria-label="Tile placeholder"></div>
+            <div class="tile-line"><span>Raw</span><span>Tile I</span></div>
           </div>
-
-          <div class="two">
-            <div>
-              <div class="media tall" aria-label="Editorial image placeholder"></div>
-              <div class="media-line">
-                <span>Raw</span>
-                <span>Plate II</span>
-              </div>
-            </div>
-            <div>
-              <div class="media tall" aria-label="Editorial image placeholder"></div>
-              <div class="media-line">
-                <span>Virgin</span>
-                <span>Plate III</span>
-              </div>
-            </div>
+          <div>
+            <div class="tile" aria-label="Tile placeholder"></div>
+            <div class="tile-line"><span>Virgin</span><span>Tile II</span></div>
           </div>
-
-          <div class="three">
-            <div>
-              <div class="media wide" aria-label="Editorial image placeholder"></div>
-              <div class="media-line">
-                <span>Set</span>
-                <span>Plate IV</span>
-              </div>
-            </div>
-            <div>
-              <div class="media wide" aria-label="Editorial image placeholder"></div>
-              <div class="media-line">
-                <span>Set</span>
-                <span>Plate V</span>
-              </div>
-            </div>
-            <div>
-              <div class="media wide" aria-label="Editorial image placeholder"></div>
-              <div class="media-line">
-                <span>Detail</span>
-                <span>Plate VI</span>
-              </div>
-            </div>
+          <div>
+            <div class="tile" aria-label="Tile placeholder"></div>
+            <div class="tile-line"><span>3 Bundle</span><span>Tile III</span></div>
+          </div>
+          <div>
+            <div class="tile" aria-label="Tile placeholder"></div>
+            <div class="tile-line"><span>4 Bundle</span><span>Tile IV</span></div>
           </div>
         </div>
 
-        <!-- Catalog index (quiet luxury list) -->
-        <div class="index">
+        <!-- Quiet index -->
+        <div class="index" aria-label="Catalog index">
           <div class="row">
             <div class="left">Collection</div>
             <div class="mid">Raw Hair — Single Bundles (28"–40")</div>
             <div class="right"><a href="#raw">View</a></div>
           </div>
-
           <div class="row">
             <div class="left">Collection</div>
             <div class="mid">Virgin Hair — Single Bundles (28"–40")</div>
             <div class="right"><a href="#virgin">View</a></div>
           </div>
-
           <div class="row">
             <div class="left">Sets</div>
             <div class="mid">3-Bundle Deals</div>
             <div class="right"><a href="#three">View</a></div>
           </div>
-
           <div class="row">
             <div class="left">Sets</div>
             <div class="mid">4-Bundle Deals</div>
@@ -187,10 +69,9 @@
 
       <div class="hr"></div>
 
-      <!-- Sections (structure only, Stripe links later) -->
       <section class="hero" id="raw">
         <h1 class="h1">Raw Hair — Single Bundles</h1>
-        <p class="p">Lengths: 28"–40". Checkout will open in Stripe.</p>
+        <p class="p">Lengths: 28"–40". Checkout opens separately via Stripe.</p>
       </section>
 
       <section class="grid">
@@ -207,7 +88,7 @@
 
       <section class="hero" id="virgin">
         <h1 class="h1">Virgin Hair — Single Bundles</h1>
-        <p class="p">Lengths: 28"–40". Checkout will open in Stripe.</p>
+        <p class="p">Lengths: 28"–40". Checkout opens separately via Stripe.</p>
       </section>
 
       <section class="grid">
@@ -224,7 +105,43 @@
 
       <section class="hero" id="three">
         <h1 class="h1">3-Bundle Deals</h1>
-        <p class="p">Curated sets. Checkout will open in Stripe.</p>
+        <p class="p">Curated sets. Checkout opens separately via Stripe.</p>
       </section>
 
-      <
+      <section class="grid">
+        <article class="card"><p class="kicker">3 Bundles</p><h2 class="title">20" 22" 24"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">3 Bundles</p><h2 class="title">22" 24" 26"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">3 Bundles</p><h2 class="title">24" 26" 28"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">3 Bundles</p><h2 class="title">26" 28" 30"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">3 Bundles</p><h2 class="title">30" 30" 30"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+      </section>
+
+      <div class="hr"></div>
+
+      <section class="hero" id="four">
+        <h1 class="h1">4-Bundle Deals</h1>
+        <p class="p">Curated sets. Checkout opens separately via Stripe.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card"><p class="kicker">4 Bundles</p><h2 class="title">30" 32" 34" 34"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">4 Bundles</p><h2 class="title">32" 34" 36" 36"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">4 Bundles</p><h2 class="title">34" 36" 38" 38"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">4 Bundles</p><h2 class="title">36" 38" 40" 40"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+        <article class="card"><p class="kicker">4 Bundles</p><h2 class="title">40" 40" 40" 40"</h2><p class="meta"><a href="#">Purchase</a></p></article>
+      </section>
+
+      <div class="hr"></div>
+
+      <footer class="footer">
+        <div>© <span id="y"></span> Nia Bia LLC</div>
+        <div>Catalog presentation.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
