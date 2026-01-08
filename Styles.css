@@ -1,53 +1,75 @@
-/* NIA BIA — Luxury House Standard (Mobile: lock horizontal pan) */
+/* =========================================================
+   NIA BIA — LUXURY HOUSE STANDARD
+   Mobile-first, overflow-safe, iOS-correct
+   ========================================================= */
 
 :root{
   --bg:#ffffff;
   --fg:#000000;
   --muted:rgba(0,0,0,.62);
   --hairline:rgba(0,0,0,.10);
-  --max:1120px;
-  --tileMax:860px;
+
+  --pageMax:1120px;     /* overall page width */
+  --moduleMax:860px;   /* centered image module width */
 }
 
-*{ box-sizing:border-box; }
+/* ---------- GLOBAL RESET ---------- */
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
 
 html, body{
   width:100%;
   height:100%;
-  overflow-x:hidden;          /* no horizontal scrollbars */
-  overscroll-behavior-x:none; /* stop sideways overscroll where supported */
+  margin:0;
+  padding:0;
+  overflow-x:hidden;           /* hard stop overflow */
+  overscroll-behavior-x:none;  /* stop sideways rubber-band */
 }
 
+/* ---------- BODY ---------- */
 body{
-  margin:0;
   background:var(--bg);
   color:var(--fg);
   font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   letter-spacing:.01em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  touch-action: pan-y;        /* KEY: only allow vertical pan */
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  touch-action: pan-y;         /* IMPORTANT: vertical scroll only */
 }
 
-img{
+/* ---------- MEDIA SAFETY ---------- */
+img,
+video,
+svg{
   display:block;
   width:100%;
   max-width:100%;
   height:auto;
 }
 
-a{ color:inherit; text-decoration:none; }
-a:hover{ text-decoration:underline; text-underline-offset:4px; }
-
-.wrapper{
-  width:100%;
-  max-width:var(--max);
-  margin:0 auto;
-  padding:42px 22px 96px;
+/* ---------- LINKS ---------- */
+a{
+  color:inherit;
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+  text-underline-offset:4px;
 }
 
-/* Header */
+/* ---------- LAYOUT ---------- */
+.wrapper{
+  width:100%;
+  max-width:var(--pageMax);
+  margin:0 auto;
+  padding:42px 22px 96px;
+  overflow-x:hidden;
+}
+
+/* ---------- HEADER ---------- */
 .header{
   display:flex;
   align-items:flex-end;
@@ -59,11 +81,10 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
 .brand{
   font-size:12px;
+  font-weight:700;
   letter-spacing:.32em;
   text-transform:uppercase;
   line-height:1;
-  font-weight:700;
-  color:#000;
 }
 
 .nav{
@@ -72,14 +93,15 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   font-size:11px;
   letter-spacing:.22em;
   text-transform:uppercase;
-  line-height:1;
-  color:rgba(0,0,0,.70);
+  color:rgba(0,0,0,.7);
   flex-wrap:wrap;
   max-width:100%;
 }
 
-/* Hero */
-.hero{ padding:76px 0 18px; }
+/* ---------- HERO ---------- */
+.hero{
+  padding:76px 0 18px;
+}
 
 .h1{
   font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -92,51 +114,56 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
 .p{
   margin:0;
-  color:var(--muted);
   max-width:640px;
-  line-height:1.9;
   font-size:14px;
+  line-height:1.9;
+  color:var(--muted);
 }
 
-/* Tiles grid */
+/* ---------- IMAGE MODULE (CORE FIX) ---------- */
 .catalog-grid{
   width:100%;
-  max-width:var(--tileMax);
+  max-width:var(--moduleMax);
   margin:34px auto 0;
   display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns:repeat(2, minmax(0, 1fr));
   gap:18px;
+  overflow:hidden;             /* prevents bleed on mobile */
 }
 
-.catalog-grid > div{ min-width:0; }
+.catalog-grid > div{
+  min-width:0;                 /* REQUIRED for iOS */
+}
 
+/* ---------- IMAGE TILE ---------- */
 .tile-img{
   width:100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio:4 / 5;
   object-fit:cover;
-  display:block;
   border:1px solid var(--hairline);
-  filter: grayscale(100%);
+  filter:grayscale(100%);
 }
 
 .tile-line{
   display:flex;
   justify-content:space-between;
   gap:16px;
-  flex-wrap:wrap;
   margin-top:10px;
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
   color:var(--muted);
+  flex-wrap:wrap;
 }
 
+/* ---------- DIVIDER ---------- */
 .hr{
   height:1px;
   background:var(--hairline);
   margin:72px 0 26px;
 }
 
+/* ---------- FOOTER ---------- */
 .footer{
   display:flex;
   justify-content:space-between;
@@ -145,26 +172,35 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   font-size:12px;
   letter-spacing:.04em;
   color:var(--muted);
-  padding-top:6px;
 }
 
-/* Mobile */
-@media (max-width: 720px){
-  .wrapper{ padding:32px 18px 80px; }
+/* ---------- MOBILE ---------- */
+@media (max-width:720px){
+  .wrapper{
+    padding:32px 18px 80px;
+  }
 
   .header{
-    align-items:flex-start;
     flex-direction:column;
+    align-items:flex-start;
     gap:14px;
   }
 
-  .hero{ padding:54px 0 14px; }
-  .h1{ font-size:30px; line-height:1.10; }
+  .hero{
+    padding:54px 0 14px;
+  }
+
+  .h1{
+    font-size:30px;
+    line-height:1.1;
+  }
 
   .catalog-grid{
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns:minmax(0, 1fr);
     max-width:560px;
   }
 
-  .tile-img{ aspect-ratio: 5 / 6; }
+  .tile-img{
+    aspect-ratio:5 / 6;        /* keeps images large but not overwhelming */
+  }
 }
