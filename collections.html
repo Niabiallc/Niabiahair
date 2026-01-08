@@ -5,127 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Collections — NIA BIA</title>
   <meta name="description" content="Curated raw and virgin human hair offerings." />
-
-  <!-- IMPORTANT: this is inline on purpose to PROVE changes are loading -->
-  <style>
-    /* PROOF BANNER (temporary): if you do not see a thin line at very top, you are not loading this file */
-    body::before{
-      content:"";
-      position:fixed;
-      top:0; left:0; right:0;
-      height:2px;
-      background:#000;
-      z-index:9999;
-    }
-
-    html, body{
-      width:100%;
-      max-width:100%;
-      overflow-x:hidden !important;
-      overscroll-behavior-x:none;
-      margin:0;
-      padding:0;
-    }
-
-    /* Remove ANY link look inside tiles */
-    .catalog-grid a,
-    .catalog-grid a:visited,
-    .catalog-grid a:hover,
-    .catalog-grid a:active,
-    .catalog-grid a *{
-      color:inherit !important;
-      text-decoration:none !important;
-      -webkit-text-decoration:none !important;
-    }
-
-    /* Make captions behave like labels, not links */
-    .tile-line{
-      pointer-events:none;
-      text-decoration:none !important;
-    }
-
-    /* Overflow-safe grid */
-    .catalog-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:18px;
-      overflow:hidden;
-      max-width:860px;
-      margin:34px auto 0;
-      padding:0;
-    }
-    .catalog-grid > *{ min-width:0; }
-
-    img{
-      display:block;
-      width:100%;
-      max-width:100%;
-      height:auto;
-    }
-  </style>
-
-  <link rel="stylesheet" href="styles.css?v=999">
+  <link rel="stylesheet" href="styles.css?v=200">
 </head>
 
 <body>
-  <div class="wrapper">
-    <header class="header">
-      <div class="brand"><a href="index.html">NIA BIA</a></div>
-      <nav class="nav">
-        <a href="collections.html">Collections</a>
-        <a href="care.html">Care</a>
-        <a href="policies.html">Policies</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
+  <div id="viewport-lock">
+    <div class="wrapper">
+      <header class="header">
+        <div class="brand"><a href="index.html">NIA BIA</a></div>
+        <nav class="nav">
+          <a href="collections.html">Collections</a>
+          <a href="care.html">Care</a>
+          <a href="policies.html">Policies</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
 
-    <main>
-      <section class="hero">
-        <h1 class="h1">Collections</h1>
-        <p class="p">A curated offering designed for longevity and reinstallation.</p>
+      <main>
+        <section class="hero">
+          <h1 class="h1">Collections</h1>
+          <p class="p">A curated offering designed for longevity and reinstallation.</p>
 
-        <div class="catalog-grid" aria-label="Collections overview">
-          <a href="raw.html" aria-label="Raw">
-            <img class="tile-img" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="">
-            <div class="tile-line"><span>Raw</span><span>I</span></div>
-          </a>
+          <div class="catalog-grid" aria-label="Collections overview">
+            <a class="tile-link" href="raw.html" aria-label="Raw">
+              <img class="tile-img" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="tile-line"><span>Raw</span><span>I</span></div>
+            </a>
 
-          <a href="virgin.html" aria-label="Virgin">
-            <img class="tile-img" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80" alt="">
-            <div class="tile-line"><span>Virgin</span><span>II</span></div>
-          </a>
+            <a class="tile-link" href="virgin.html" aria-label="Virgin">
+              <img class="tile-img" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="tile-line"><span>Virgin</span><span>II</span></div>
+            </a>
 
-          <a href="sets-3.html" aria-label="3 Bundle Sets">
-            <img class="tile-img" src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80" alt="">
-            <div class="tile-line"><span>3 Bundle Sets</span><span>III</span></div>
-          </a>
+            <a class="tile-link" href="sets-3.html" aria-label="3 Bundle Sets">
+              <img class="tile-img" src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="tile-line"><span>3 Bundle Sets</span><span>III</span></div>
+            </a>
 
-          <a href="sets-4.html" aria-label="4 Bundle Sets">
-            <img class="tile-img" src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1200&q=80" alt="">
-            <div class="tile-line"><span>4 Bundle Sets</span><span>IV</span></div>
-          </a>
-        </div>
-      </section>
+            <a class="tile-link" href="sets-4.html" aria-label="4 Bundle Sets">
+              <img class="tile-img" src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1200&q=80" alt="">
+              <div class="tile-line"><span>4 Bundle Sets</span><span>IV</span></div>
+            </a>
+          </div>
+        </section>
 
-      <div class="hr"></div>
+        <div class="hr"></div>
 
-      <footer class="footer">
-        <div>© <span id="y"></span> Nia Bia LLC</div>
-        <div>Showroom.</div>
-      </footer>
-    </main>
+        <footer class="footer">
+          <div>© <span id="y"></span> Nia Bia LLC</div>
+          <div>Showroom.</div>
+        </footer>
+      </main>
+    </div>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    // OVERFLOW CHECK (prints to console; also shows you if page is truly wider than screen)
-    (function(){
-      const doc = document.documentElement;
-      const w = doc.clientWidth;
-      const sw = doc.scrollWidth;
-      console.log("clientWidth:", w, "scrollWidth:", sw);
-    })();
   </script>
 </body>
 </html>
