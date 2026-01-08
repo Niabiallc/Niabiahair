@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Collections — NIA BIA</title>
   <meta name="description" content="Curated raw and virgin human hair offerings." />
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 
 <body>
@@ -57,22 +57,21 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // OVERFLOW DETECTOR (temporary)
-    (function(){
-      const vw = document.documentElement.clientWidth;
-      const all = document.querySelectorAll("body *");
-      let found = 0;
+    // iOS Safari: block horizontal swipe (prevents sideways "rubber-band")
+    (function () {
+      let startX = 0, startY = 0;
+      document.addEventListener("touchstart", function (e) {
+        if (!e.touches || e.touches.length !== 1) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
 
-      all.forEach(el => {
-        el.classList.remove("__overflow-bad");
-        const r = el.getBoundingClientRect();
-        if (r.right > vw + 1) {
-          el.classList.add("__overflow-bad");
-          found++;
-        }
-      });
-
-      if (found) console.log("Overflow elements found:", found);
+      document.addEventListener("touchmove", function (e) {
+        if (!e.touches || e.touches.length !== 1) return;
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+        if (dx > dy + 4) e.preventDefault();
+      }, { passive: false });
     })();
   </script>
 </body>
