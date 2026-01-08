@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NIA BIA</title>
   <meta name="description" content="Luxury raw and virgin human hair." />
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 
 <body>
@@ -61,6 +61,24 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // OVERFLOW DETECTOR (temporary)
+    (function(){
+      const vw = document.documentElement.clientWidth;
+      const all = document.querySelectorAll("body *");
+      let found = 0;
+
+      all.forEach(el => {
+        el.classList.remove("__overflow-bad");
+        const r = el.getBoundingClientRect();
+        if (r.right > vw + 1) {
+          el.classList.add("__overflow-bad");
+          found++;
+        }
+      });
+
+      if (found) console.log("Overflow elements found:", found);
+    })();
   </script>
 </body>
 </html>
