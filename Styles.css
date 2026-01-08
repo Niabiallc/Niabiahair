@@ -1,4 +1,4 @@
-/* NIA BIA — Luxury House Standard (Showroom Pacing) */
+/* NIA BIA — Luxury House Standard */
 
 :root{
   --bg:#ffffff;
@@ -41,14 +41,17 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   border-bottom:1px solid var(--hairline);
 }
 
+/* BRAND — stronger than nav, still quiet */
 .brand{
   font-size:12px;
-  letter-spacing:.30em;
+  letter-spacing:.32em;
   text-transform:uppercase;
   line-height:1;
-  font-weight:600; /* IMPORTANT: bold brand across all pages/devices */
+  font-weight:700;        /* heavier */
+  color:#000000;          /* true black */
 }
 
+/* Nav — intentionally lighter */
 .nav{
   display:flex;
   gap:20px;
@@ -56,6 +59,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   letter-spacing:.22em;
   text-transform:uppercase;
   line-height:1;
+  color:rgba(0,0,0,.70);
 }
 
 /* Hero copy */
@@ -78,7 +82,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   font-size:14px;
 }
 
-/* Grid (text sections) */
+/* Grid */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
@@ -129,31 +133,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   letter-spacing:.04em;
   color:var(--muted);
   padding-top:6px;
-}
-
-/* Base plate helpers (for pages using plates/tiles) */
-.plate{
-  margin-top:40px;
-  padding-top:16px;
-  border-top:1px solid var(--hairline);
-}
-
-.media{
-  width:100%;
-  background:var(--plate);
-  border:1px solid var(--hairline);
-}
-
-.media-line{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-  margin-top:10px;
-  font-size:11px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted);
 }
 
 /* Mobile */
