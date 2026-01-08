@@ -9,8 +9,9 @@
 }
 
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
+html,body{ height:100%; width:100%; }
 
+/* Hard guard: nothing can create horizontal overflow */
 body{
   margin:0;
   background:var(--bg);
@@ -19,16 +20,28 @@ body{
   letter-spacing:.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x:hidden; /* hard lock: no horizontal scrolling */
+
+  max-width:100vw;
+  overflow-x: clip; /* best-practice: prevents horizontal scroll without layout weirdness */
 }
 
-/* ensure media never overflows */
-img{ max-width:100%; height:auto; display:block; }
+/* fallback for browsers that don’t support overflow-x:clip well */
+@supports not (overflow-x: clip){
+  body{ overflow-x:hidden; }
+}
+
+/* Media must obey container width */
+img{
+  display:block;
+  max-width:100%;
+  height:auto;
+}
 
 a{ color:inherit; text-decoration:none; }
 a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
 .wrapper{
+  width:100%;              /* critical: wrapper can’t exceed viewport */
   max-width:var(--max);
   margin:0 auto;
   padding:42px 22px 96px;
@@ -53,6 +66,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   color:#000;
 }
 
+/* Nav */
 .nav{
   display:flex;
   gap:20px;
@@ -61,6 +75,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   text-transform:uppercase;
   line-height:1;
   color:rgba(0,0,0,.70);
+  flex-wrap:wrap;          /* prevents nav from pushing width */
 }
 
 /* Hero copy */
@@ -85,23 +100,27 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
 /* Tiles grid */
 .catalog-grid{
+  width:100%;
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap:18px;
   margin-top:34px;
+  overflow:hidden;         /* belt + suspenders: clips any accidental bleed */
 }
 
-/* critical: prevents grid children from forcing overflow */
-.catalog-grid > div{ min-width:0; }
+/* Critical overflow fix for grid items */
+.catalog-grid > div{
+  min-width:0;
+}
 
-/* image tile (use this class on <img>) */
+/* Image tile */
 .tile-img{
   width:100%;
   aspect-ratio: 4 / 5;
   object-fit:cover;
   display:block;
   border:1px solid var(--hairline);
-  filter: grayscale(100%); /* temporary editorial */
+  filter: grayscale(100%);
 }
 
 .tile-line{
@@ -136,14 +155,21 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 /* Mobile */
 @media (max-width: 760px){
   .wrapper{ padding:32px 18px 80px; }
+
   .header{
     align-items:flex-start;
     flex-direction:column;
     gap:14px;
   }
-  .nav{ flex-wrap:wrap; row-gap:10px; }
-  .hero{ padding:54px 0 14px; }
-  .h1{ font-size:30px; line-height:1.10; }
 
-  .catalog-grid{ grid-template-columns: 1fr; }
+  .hero{ padding:54px 0 14px; }
+
+  .h1{
+    font-size:30px;
+    line-height:1.10;
+  }
+
+  .catalog-grid{
+    grid-template-columns: 1fr;
+  }
 }
