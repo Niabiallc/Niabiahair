@@ -1,4 +1,4 @@
-/* NIA BIA — Luxury House Standard (Overflow Detector ON) */
+/* NIA BIA — Luxury House Standard (Mobile: lock horizontal pan) */
 
 :root{
   --bg:#ffffff;
@@ -10,10 +10,12 @@
 }
 
 *{ box-sizing:border-box; }
+
 html, body{
   width:100%;
-  max-width:100%;
-  overflow-x:hidden;
+  height:100%;
+  overflow-x:hidden;          /* no horizontal scrollbars */
+  overscroll-behavior-x:none; /* stop sideways overscroll where supported */
 }
 
 body{
@@ -24,19 +26,15 @@ body{
   letter-spacing:.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  touch-action: pan-y;        /* KEY: only allow vertical pan */
 }
 
-/* universal media safety */
-img, svg, video, canvas{
+img{
   display:block;
+  width:100%;
   max-width:100%;
   height:auto;
-}
-
-/* structural overflow guards */
-.wrapper, main, section, header, nav, footer{
-  max-width:100%;
-  overflow-x:hidden;
 }
 
 a{ color:inherit; text-decoration:none; }
@@ -78,7 +76,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   color:rgba(0,0,0,.70);
   flex-wrap:wrap;
   max-width:100%;
-  word-break:break-word;
 }
 
 /* Hero */
@@ -107,7 +104,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   max-width:var(--tileMax);
   margin:34px auto 0;
   display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* iOS overflow-proof */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap:18px;
 }
 
@@ -115,7 +112,6 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
 .tile-img{
   width:100%;
-  max-width:100%;
   aspect-ratio: 4 / 5;
   object-fit:cover;
   display:block;
@@ -171,10 +167,4 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   }
 
   .tile-img{ aspect-ratio: 5 / 6; }
-}
-
-/* ===== OVERFLOW DETECTOR (temporary) =====
-   Any element causing horizontal bleed will be outlined RED by JS. */
-.__overflow-bad{
-  outline: 3px solid red !important;
 }
