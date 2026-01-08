@@ -1,6 +1,6 @@
 /* =========================================================
    NIA BIA — LUXURY HOUSE STANDARD
-   (Fixed: mobile overflow + tile link appearance + luxury layout)
+   (PERMANENT: no horizontal scroll + clean tile captions + luxury modules)
    ========================================================= */
 
 :root{
@@ -14,14 +14,17 @@
   --moduleTight:720px;
 }
 
+/* Reset */
 *,
 *::before,
 *::after{
   box-sizing:border-box;
 }
 
+/* HARD STOP: horizontal overflow on every page */
 html, body{
   width:100%;
+  max-width:100%;
   height:100%;
   margin:0;
   padding:0;
@@ -38,17 +41,15 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
-/* Media safety */
-img,
-video,
-svg{
+/* Media safety (prevents image bleed) */
+img, video, svg{
   display:block;
   width:100%;
   max-width:100%;
   height:auto;
 }
 
-/* Links (global) */
+/* Global links */
 a{ color:inherit; text-decoration:none; }
 a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
@@ -58,7 +59,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   max-width:var(--pageMax);
   margin:0 auto;
   padding:42px 22px 96px;
-  overflow-x:hidden;
+  overflow-x:hidden; /* extra guard */
 }
 
 /* Header */
@@ -77,6 +78,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   letter-spacing:.32em;
   text-transform:uppercase;
   line-height:1;
+  color:#000;
 }
 
 .nav{
@@ -111,10 +113,9 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 }
 
 /* =========================================================
-   TILE MODULE (Collections + showrooms)
+   COLLECTION TILES — CLEAN, NOT LINK-LOOKING
    ========================================================= */
 
-/* Grid container */
 .catalog-grid{
   width:100%;
   max-width:var(--moduleMax);
@@ -122,29 +123,37 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   display:grid;
   grid-template-columns:repeat(2, minmax(0, 1fr));
   gap:18px;
-  overflow:hidden; /* prevents micro-bleed */
+  overflow:hidden; /* stops micro-bleed */
 }
 
 .catalog-grid > *{ min-width:0; }
 
-/* Tile link reset (THIS removes “hyperlink-looking” labels) */
-.catalog-grid a{
-  display:block;
+/* IMPORTANT: override global hover underline specifically in tiles */
+.catalog-grid a,
+.catalog-grid a *{
   text-decoration:none !important;
   color:inherit;
 }
-.catalog-grid a:hover{
-  text-decoration:none !important;  /* overrides global underline */
-}
-.catalog-grid a:active{
+
+.catalog-grid a:hover,
+.catalog-grid a:hover *{
   text-decoration:none !important;
 }
+
+.catalog-grid a:visited,
+.catalog-grid a:visited *{
+  color:inherit;
+}
+
+.catalog-grid a{
+  display:block;
+}
+
 .catalog-grid a:focus-visible{
   outline:1px solid var(--hairline);
   outline-offset:6px;
 }
 
-/* Tile media + caption */
 .tile-img{
   width:100%;
   aspect-ratio:4 / 5;
@@ -163,14 +172,10 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   text-transform:uppercase;
   color:var(--muted);
   flex-wrap:wrap;
-  text-decoration:none !important; /* extra safety */
-}
-.tile-line *{
-  text-decoration:none !important; /* extra safety */
 }
 
 /* =========================================================
-   LUXURY CONTENT MODULES (for product pages)
+   LUXURY SHOWROOM MODULES (product pages)
    ========================================================= */
 
 .module{
@@ -179,6 +184,7 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   margin:0 auto;
 }
 
+/* editorial hero media */
 .hero-media{
   width:100%;
   max-width:var(--moduleMax);
@@ -195,11 +201,12 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   filter: grayscale(100%);
 }
 
-/* Minimal “spec list” */
+/* spec list (no overflow) */
 .spec{
-  margin-top:26px;
+  margin-top:22px;
   border-top:1px solid var(--hairline);
 }
+
 .spec-row{
   display:flex;
   justify-content:space-between;
@@ -207,21 +214,26 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   padding:14px 0;
   border-bottom:1px solid var(--hairline);
 }
+
 .spec-label{
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
   color:var(--muted);
+  white-space:nowrap;
 }
+
 .spec-value{
   font-size:13px;
   color:rgba(0,0,0,.78);
   line-height:1.6;
   text-align:right;
   max-width:62%;
+  overflow-wrap:anywhere; /* PREVENTS horizontal scroll from long text */
+  word-break:break-word;
 }
 
-/* CTA links that don’t look “buttony” */
+/* purchase rows */
 .cta-row{
   display:flex;
   justify-content:space-between;
@@ -230,19 +242,24 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
   padding:14px 0;
   border-bottom:1px solid var(--hairline);
 }
+
 .cta-title{
-  font-size:14px;
+  font-size:13px;
   color:rgba(0,0,0,.78);
 }
+
 .cta-link{
   font-size:12px;
   letter-spacing:.14em;
   text-transform:uppercase;
   color:rgba(0,0,0,.78);
-  text-decoration:none !important;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
+
 .cta-link:hover{
-  text-decoration:underline !important;
+  text-decoration:underline;
   text-underline-offset:4px;
 }
 
@@ -284,5 +301,21 @@ a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
   .tile-img{ aspect-ratio:5 / 6; }
 
-  .spec-value{ max-width:58%; }
+  /* Prevent spec rows from forcing width on mobile */
+  .spec-row{
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .spec-label{ white-space:normal; }
+  .spec-value{
+    max-width:100%;
+    text-align:left;
+  }
+
+  .cta-row{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
 }
