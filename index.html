@@ -1,89 +1,139 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NIA BIA</title>
-  <meta name="description" content="Luxury raw and virgin human hair." />
-  <link rel="stylesheet" href="styles.css?v=11">
+  <meta name="description" content="Luxury hair house." />
+
+  <style>
+    html, body{
+      margin:0;
+      padding:0;
+      width:100%;
+      max-width:100%;
+      overflow-x:hidden;
+      background:#fff;
+      color:#000;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    }
+    #viewport-lock{ width:100vw; overflow:hidden; }
+
+    a, a:visited, a:hover, a:active{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .hero{
+      height:100vh;
+      min-height:640px;
+      position:relative;
+      overflow:hidden;
+    }
+    .media{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)),
+        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=2200&q=85");
+      background-size:cover;
+      background-position:center;
+    }
+    .brand{
+      position:absolute;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:3;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      color:#fff;
+      white-space:nowrap;
+    }
+    .copy{
+      position:absolute;
+      left:50%;
+      bottom:74px;
+      transform:translateX(-50%);
+      z-index:3;
+      width:min(680px, calc(100% - 36px));
+      text-align:center;
+      color:#fff;
+    }
+    .kicker{
+      margin:0 0 10px;
+      font-size:12px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      opacity:.9;
+    }
+    .headline{
+      margin:0 0 18px;
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      line-height:1.05;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:52px;
+      min-width:220px;
+      padding:0 22px;
+      background:#fff;
+      color:#000;
+      border:1px solid rgba(255,255,255,.70);
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+    .footer{
+      position:absolute;
+      bottom:18px;
+      left:0;
+      right:0;
+      z-index:3;
+      text-align:center;
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.75);
+    }
+
+    @media (max-width:720px){
+      .brand{ font-size:16px; }
+      .headline{ font-size:28px; }
+      .copy{ bottom:64px; }
+      .cta{ min-width:200px; }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Viewport lock: prevents any sideways panning from showing -->
   <div id="viewport-lock">
-    <div class="wrapper">
-      <header class="header">
-        <div class="brand">NIA BIA</div>
-        <nav class="nav">
-          <a href="collections.html">Collections</a>
-          <a href="care.html">Care</a>
-          <a href="policies.html">Policies</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </header>
+    <main class="hero">
+      <div class="media" aria-hidden="true"></div>
 
-      <main>
-        <section class="hero">
-          <h1 class="h1">Raw and virgin human hair, curated for long-term ownership.</h1>
-          <p class="p">
-            Reinstall-quality hair designed for longevity, coloring, and consistent performance over time.
-          </p>
+      <div class="brand">NIA BIA</div>
 
-          <div class="catalog-grid" aria-label="Home tiles">
-            <div>
-              <img class="tile-img" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80" alt="">
-              <div class="tile-line"><span>House Standard</span><span>I</span></div>
-            </div>
+      <div class="copy">
+        <p class="kicker">Collections</p>
+        <h1 class="headline">Showroom</h1>
+        <a class="cta" href="collections.html" aria-label="Enter collections">See More</a>
+      </div>
 
-            <div>
-              <img class="tile-img" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80" alt="">
-              <div class="tile-line"><span>Raw</span><span>II</span></div>
-            </div>
-
-            <div>
-              <img class="tile-img" src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=900&q=80" alt="">
-              <div class="tile-line"><span>Virgin</span><span>III</span></div>
-            </div>
-
-            <div>
-              <img class="tile-img" src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=900&q=80" alt="">
-              <div class="tile-line"><span>Sets</span><span>IV</span></div>
-            </div>
-          </div>
-        </section>
-
-        <div class="hr"></div>
-
-        <footer class="footer">
-          <div>© <span id="y"></span> Nia Bia LLC</div>
-          <div>Catalog presentation.</div>
-        </footer>
-      </main>
-    </div>
+      <div class="footer">© <span id="y"></span> Nia Bia LLC</div>
+    </main>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    // iOS Safari: block horizontal rubber-band/pan
-    (function () {
-      let startX = 0, startY = 0;
-
-      document.addEventListener("touchstart", function (e) {
-        if (!e.touches || e.touches.length !== 1) return;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      }, { passive: true });
-
-      document.addEventListener("touchmove", function (e) {
-        if (!e.touches || e.touches.length !== 1) return;
-        const dx = Math.abs(e.touches[0].clientX - startX);
-        const dy = Math.abs(e.touches[0].clientY - startY);
-
-        // If user intent is horizontal, prevent it (keeps vertical scroll normal)
-        if (dx > dy + 6) e.preventDefault();
-      }, { passive: false });
-    })();
   </script>
 </body>
 </html>
