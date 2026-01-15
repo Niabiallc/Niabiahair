@@ -63,6 +63,8 @@
       stroke:#000;
       stroke-width:1.6;
       fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
     }
 
     .page{ padding-top:64px; }
@@ -85,6 +87,7 @@
       aspect-ratio:4/5;
       object-fit:cover;
       display:block;
+      filter:none;
     }
 
     .tile-overlay{
@@ -161,17 +164,21 @@
     <div class="right-icons">
       <!-- Profile -->
       <button class="icon-btn" aria-label="Profile">
-        <svg class="icon" viewBox="0 0 24 24">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="8" r="4" />
           <path d="M20 21a8 8 0 0 0-16 0" />
         </svg>
       </button>
 
-      <!-- SHOPPING BAG (FIXED) -->
+      <!-- SHOPPING BAG (CHANELBAG) -->
       <button class="icon-btn" aria-label="Shopping bag">
-        <svg class="icon" viewBox="0 0 24 24">
-          <path d="M6 7h12l-1 14H7L6 7z"/>
-          <path d="M9 7V6a3 3 0 0 1 6 0v1"/>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <!-- bag body -->
+          <path d="M6.5 8.5h11l-0.9 12H7.4l-0.9-12z"/>
+          <!-- open top line -->
+          <path d="M6.8 8.5h10.4"/>
+          <!-- handles -->
+          <path d="M9 8.5V7.2a3 3 0 0 1 6 0v1.3"/>
         </svg>
       </button>
     </div>
