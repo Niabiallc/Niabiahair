@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NIA BIA</title>
-  <meta name="description" content="Luxury hair house." />
 
   <style>
     html, body{
@@ -12,16 +11,12 @@
       max-width:100%;
       margin:0;
       padding:0;
-      overflow-x:hidden !important;
-      overscroll-behavior-x:none;
-      background:#ffffff;
-      color:#000000;
+      overflow-x:hidden;
+      background:#fff;
       font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     }
 
-    #viewport-lock{ width:100vw; overflow:hidden; }
-
-    a{ color:inherit; text-decoration:none !important; }
+    a{ color:inherit; text-decoration:none; }
 
     .brand-top{
       text-align:center;
@@ -42,7 +37,7 @@
       max-width:980px;
       margin:0 auto;
       display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
+      grid-template-columns:repeat(2, minmax(0,1fr));
       gap:18px;
     }
 
@@ -51,23 +46,24 @@
       display:block;
       overflow:hidden;
       border:1px solid rgba(0,0,0,.10);
-      background:#fff;
     }
 
     .tile img{
       width:100%;
       height:auto;
-      aspect-ratio:4 / 5;
+      aspect-ratio:4/5;
       object-fit:cover;
       display:block;
+      filter:grayscale(100%);
     }
 
     .tile-overlay{
       position:absolute;
       left:50%;
-      bottom:22px;
+      bottom:18px;
       transform:translateX(-50%);
       text-align:center;
+      color:#fff;
     }
 
     .tile-kicker{
@@ -75,8 +71,6 @@
       letter-spacing:.28em;
       text-transform:uppercase;
       margin-bottom:6px;
-      color:#ffffff;
-      text-shadow:0 1px 2px rgba(0,0,0,.45);
     }
 
     .tile-title{
@@ -85,21 +79,18 @@
       letter-spacing:.08em;
       text-transform:uppercase;
       margin-bottom:12px;
-      color:#ffffff;
-      text-shadow:0 1px 2px rgba(0,0,0,.45);
     }
 
     .tile-cta{
       display:inline-block;
       padding:10px 18px;
+      border:1px solid #fff;
       font-size:11px;
       font-weight:600;
       letter-spacing:.22em;
       text-transform:uppercase;
-      background:#ffffff;
-      color:#000000;
-      border:none;
-      cursor:pointer;
+      background:#fff;
+      color:#000;
     }
 
     .site-footer{
@@ -112,74 +103,66 @@
     }
 
     @media (max-width:720px){
-      .brand-top{ font-size:16px; }
-      .page{ padding:0 18px 80px; }
-      .grid{
-        grid-template-columns:minmax(0,1fr);
-        max-width:560px;
-      }
-      .tile img{ aspect-ratio:5 / 6; }
+      .grid{ grid-template-columns:1fr; }
     }
   </style>
 </head>
 
 <body>
-  <div id="viewport-lock">
 
-    <header class="brand-top">NIA BIA</header>
+  <header class="brand-top">NIA BIA</header>
 
-    <main class="page">
-      <div class="grid">
+  <main class="page">
+    <div class="grid">
 
-        <!-- TILE 1: SINGLE DONOR -->
-        <a class="tile" href="raw.html">
-          <img src="One Donor Hair.jpg" alt="">
-          <div class="tile-overlay">
-            <div class="tile-kicker">WEFTS</div>
-            <div class="tile-title">SINGLE DONOR</div>
-            <div class="tile-cta">SEE MORE</div>
-          </div>
-        </a>
+      <!-- SINGLE DONOR (IMAGE UPDATED) -->
+      <a class="tile" href="raw.html">
+        <img src="Single donor.jpg" alt="Single Donor Wefts">
+        <div class="tile-overlay">
+          <div class="tile-kicker">WEFTS</div>
+          <div class="tile-title">Single Donor</div>
+          <div class="tile-cta">See More</div>
+        </div>
+      </a>
 
-        <!-- TILE 2: VIRGIN -->
-        <a class="tile" href="virgin.html">
-          <img src="Virgin Hair.jpg" alt="">
-          <div class="tile-overlay">
-            <div class="tile-kicker">WEFTS</div>
-            <div class="tile-title">VIRGIN</div>
-            <div class="tile-cta">SEE MORE</div>
-          </div>
-        </a>
+      <!-- VIRGIN (IMAGE UPDATED) -->
+      <a class="tile" href="virgin.html">
+        <img src="Virginhair.jpg" alt="Virgin Wefts">
+        <div class="tile-overlay">
+          <div class="tile-kicker">WEFTS</div>
+          <div class="tile-title">Virgin</div>
+          <div class="tile-cta">See More</div>
+        </div>
+      </a>
 
-        <!-- TILE 3: SPECIAL COLLECTION -->
-        <a class="tile" href="special-collection.html">
-          <img src="Vday 2026.jpg" alt="">
-          <div class="tile-overlay">
-            <div class="tile-kicker">HAUTE COUTURE HAIR</div>
-            <div class="tile-title">VALENTINE’S DAY 2026</div>
-            <div class="tile-cta">SEE MORE</div>
-          </div>
-        </a>
+      <!-- VALENTINE’S DAY 2026 (IMAGE UPDATED) -->
+      <a class="tile" href="special-collection.html">
+        <img src="Vday2026.jpg" alt="Valentine’s Day 2026 Collection">
+        <div class="tile-overlay">
+          <div class="tile-kicker">HAUTE</div>
+          <div class="tile-title">Valentine’s Day 2026</div>
+          <div class="tile-cta">See More</div>
+        </div>
+      </a>
 
-        <!-- TILE 4: CLIP INS -->
-        <a class="tile" href="clip-ins.html">
-          <img src="clip-ins.jpg" alt="">
-          <div class="tile-overlay">
-            <div class="tile-kicker">WEFTS</div>
-            <div class="tile-title">CLIP INS</div>
-            <div class="tile-cta">SEE MORE</div>
-          </div>
-        </a>
+      <!-- CLIP INS (UNCHANGED) -->
+      <a class="tile" href="clip-ins.html">
+        <img src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1800&q=85" alt="Clip Ins">
+        <div class="tile-overlay">
+          <div class="tile-kicker">WEFTS</div>
+          <div class="tile-title">Clip Ins</div>
+          <div class="tile-cta">See More</div>
+        </div>
+      </a>
 
-      </div>
+    </div>
 
-      <div class="site-footer">© <span id="y"></span> Nia Bia LLC</div>
-    </main>
-
-  </div>
+    <div class="site-footer">© <span id="y"></span> Nia Bia LLC</div>
+  </main>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
