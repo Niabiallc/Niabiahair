@@ -5,7 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Collections — NIA BIA</title>
   <meta name="description" content="Curated raw and virgin human hair offerings." />
-  <link rel="stylesheet" href="styles.css?v=200">
+
+  <!-- Keep your main stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=900">
+
+  <!-- Inline CSS (so it works even if GitHub Pages delays styles.css updates) -->
+  <style>
+    /* HARD STOP horizontal overflow/pan (same method as earlier) */
+    html, body{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      padding:0;
+      overflow-x:hidden !important;
+      overscroll-behavior-x:none;
+      background:#fff;
+      color:#000;
+    }
+
+    /* Clamp viewport so Safari can't "reveal" sideways */
+    #viewport-lock{
+      width:100vw;
+      overflow:hidden;
+    }
+
+    /* Make tile links visually invisible (no hyperlink styling) */
+    .catalog-grid a,
+    .catalog-grid a:visited,
+    .catalog-grid a:hover,
+    .catalog-grid a:active,
+    .catalog-grid a *{
+      color:inherit !important;
+      text-decoration:none !important;
+      -webkit-text-decoration:none !important;
+    }
+
+    /* Grid container */
+    .catalog-grid{
+      width:100%;
+      max-width:860px;
+      margin:34px auto 0;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      overflow:hidden;
+      padding:0;
+    }
+    .catalog-grid > *{ min-width:0; }
+
+    /* Each tile as a clickable panel */
+    .tile{
+      position:relative;
+      display:block;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.10);
+    }
+
+    /* Image */
+    .tile img{
+      display:block;
+      width:100%;
+      height:auto;
+      max-width:100%;
+      aspect-ratio:4 / 5;
+      object-fit:cover;
+      filter:grayscale(100%);
+      transform:translateZ(0);
+    }
+
+    /* Label overlay: bottom center on top of image */
+    .tile-label{
+      position:absolute;
+      left:50%;
+      bottom:12px;
+      transform:translateX(-50%);
+      text-align:center;
+
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+
+      color:#000;
+
+      /* Luxury readability without looking like a "button" */
+      background:rgba(255,255,255,.82);
+      padding:8px 12px;
+      border:1px solid rgba(0,0,0,.10);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+
+      white-space:nowrap;
+      max-width:calc(100% - 24px);
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* Optional subtle hover (desktop only) */
+    @media (hover:hover){
+      .tile:hover img{ opacity:.96; }
+    }
+
+    /* Mobile: one column */
+    @media (max-width:720px){
+      .catalog-grid{
+        grid-template-columns:minmax(0, 1fr);
+        max-width:560px;
+      }
+      .tile img{
+        aspect-ratio:5 / 6;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -27,24 +137,24 @@
           <p class="p">A curated offering designed for longevity and reinstallation.</p>
 
           <div class="catalog-grid" aria-label="Collections overview">
-            <a class="tile-link" href="raw.html" aria-label="Raw">
-              <img class="tile-img" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="">
-              <div class="tile-line"><span>Raw</span><span>I</span></div>
+            <a class="tile" href="raw.html" aria-label="Raw">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=80" alt="">
+              <div class="tile-label">Raw</div>
             </a>
 
-            <a class="tile-link" href="virgin.html" aria-label="Virgin">
-              <img class="tile-img" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80" alt="">
-              <div class="tile-line"><span>Virgin</span><span>II</span></div>
+            <a class="tile" href="virgin.html" aria-label="Virgin">
+              <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=80" alt="">
+              <div class="tile-label">Virgin</div>
             </a>
 
-            <a class="tile-link" href="sets-3.html" aria-label="3 Bundle Sets">
-              <img class="tile-img" src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80" alt="">
-              <div class="tile-line"><span>3 Bundle Sets</span><span>III</span></div>
+            <a class="tile" href="sets-3.html" aria-label="3 Bundle Sets">
+              <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1400&q=80" alt="">
+              <div class="tile-label">3 Bundle Sets</div>
             </a>
 
-            <a class="tile-link" href="sets-4.html" aria-label="4 Bundle Sets">
-              <img class="tile-img" src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1200&q=80" alt="">
-              <div class="tile-line"><span>4 Bundle Sets</span><span>IV</span></div>
+            <a class="tile" href="sets-4.html" aria-label="4 Bundle Sets">
+              <img src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1400&q=80" alt="">
+              <div class="tile-label">4 Bundle Sets</div>
             </a>
           </div>
         </section>
@@ -61,6 +171,24 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    /* iOS Safari: block sideways swipe/pan (same method as earlier) */
+    (function () {
+      let startX = 0, startY = 0;
+
+      document.addEventListener("touchstart", function (e) {
+        if (!e.touches || e.touches.length !== 1) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+
+      document.addEventListener("touchmove", function (e) {
+        if (!e.touches || e.touches.length !== 1) return;
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+        if (dx > dy + 6) e.preventDefault();
+      }, { passive: false });
+    })();
   </script>
 </body>
 </html>
