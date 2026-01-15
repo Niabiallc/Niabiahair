@@ -17,7 +17,7 @@
 
     a{ color:inherit; text-decoration:none; }
 
-    /* LOCKED HEADER (ONLY brand + profile + bag) */
+    /* LOCKED HEADER */
     .brand-top{
       position:fixed;
       top:0;
@@ -36,7 +36,6 @@
       font-weight:700;
       letter-spacing:.32em;
       text-transform:uppercase;
-      line-height:1;
     }
 
     .brand-top .right-icons{
@@ -50,9 +49,6 @@
     }
 
     .icon-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
       width:28px;
       height:28px;
       border:0;
@@ -69,16 +65,10 @@
       fill:none;
     }
 
-    /* PAGE OFFSET FOR FIXED HEADER */
-    .page{
-      width:100%;
-      margin:0;
-      padding-top:64px;
-    }
+    .page{ padding-top:64px; }
 
-    /* FULL-BLEED GRID */
+    /* TILE GRID */
     .grid{
-      width:100%;
       display:grid;
       grid-template-columns:repeat(2, 1fr);
       gap:0;
@@ -86,9 +76,7 @@
 
     .tile{
       position:relative;
-      display:block;
       overflow:hidden;
-      border:none;
     }
 
     .tile img{
@@ -97,7 +85,6 @@
       aspect-ratio:4/5;
       object-fit:cover;
       display:block;
-      filter:none;
     }
 
     .tile-overlay{
@@ -125,7 +112,6 @@
     }
 
     .tile-cta{
-      display:inline-block;
       padding:10px 18px;
       border:1px solid #fff;
       font-size:11px;
@@ -134,58 +120,33 @@
       text-transform:uppercase;
       background:#fff;
       color:#000;
+      display:inline-block;
     }
 
-    /* FOOTER (bold headings + non-bold items only) */
+    /* FOOTER */
     .footer{
       padding:56px 18px 64px;
-      background:#fff;
-      color:#000;
-    }
-
-    .footer-inner{
-      max-width:980px;
-      margin:0 auto;
-    }
-
-    .footer-section{
-      margin-bottom:46px;
     }
 
     .footer-heading{
-      font-weight:700; /* bold heading */
-      letter-spacing:.06em;
+      font-weight:700;
       text-transform:uppercase;
-      font-size:16px;
-      margin:0 0 18px;
+      margin-bottom:18px;
     }
 
     .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0 0 40px;
       display:flex;
       flex-direction:column;
       gap:16px;
-      font-weight:400; /* NOT bold items */
-      letter-spacing:.02em;
       text-transform:uppercase;
-      font-size:16px;
-      margin:0;
-      padding:0;
-      list-style:none;
-    }
-
-    .copyright{
-      margin-top:22px;
-      text-align:left;
-      font-size:11px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(0,0,0,.55);
     }
 
     @media (max-width:720px){
       .grid{ grid-template-columns:1fr; }
       .brand-top{ height:60px; }
-      .brand-top .right-icons{ height:60px; }
       .page{ padding-top:60px; }
     }
   </style>
@@ -193,24 +154,24 @@
 
 <body>
 
-  <!-- HEADER (ONLY profile + shopping bag) -->
+  <!-- HEADER -->
   <header class="brand-top">
     <div class="brand">NIA BIA</div>
 
-    <div class="right-icons" aria-label="Account and shopping">
-      <!-- Profile icon -->
-      <button class="icon-btn" type="button" aria-label="Profile">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20 21a8 8 0 0 0-16 0" />
+    <div class="right-icons">
+      <!-- Profile -->
+      <button class="icon-btn" aria-label="Profile">
+        <svg class="icon" viewBox="0 0 24 24">
           <circle cx="12" cy="8" r="4" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
         </svg>
       </button>
 
-      <!-- Shopping bag icon -->
-      <button class="icon-btn" type="button" aria-label="Shopping bag">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 8h12l-1 13H7L6 8z" />
-          <path d="M9 8a3 3 0 0 1 6 0" />
+      <!-- SHOPPING BAG (FIXED) -->
+      <button class="icon-btn" aria-label="Shopping bag">
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M6 7h12l-1 14H7L6 7z"/>
+          <path d="M9 7V6a3 3 0 0 1 6 0v1"/>
         </svg>
       </button>
     </div>
@@ -219,9 +180,8 @@
   <main class="page">
     <div class="grid">
 
-      <!-- SINGLE DONOR -->
       <a class="tile" href="raw.html">
-        <img src="Singledonor.jpg" alt="Single Donor Wefts">
+        <img src="Singledonor.jpg" alt="">
         <div class="tile-overlay">
           <div class="tile-kicker">WEFTS</div>
           <div class="tile-title">Single Donor</div>
@@ -229,9 +189,8 @@
         </div>
       </a>
 
-      <!-- VIRGIN -->
       <a class="tile" href="virgin.html">
-        <img src="Virginhair.jpg" alt="Virgin Wefts">
+        <img src="Virginhair.jpg" alt="">
         <div class="tile-overlay">
           <div class="tile-kicker">WEFTS</div>
           <div class="tile-title">Virgin</div>
@@ -239,9 +198,8 @@
         </div>
       </a>
 
-      <!-- VALENTINE’S DAY 2026 -->
       <a class="tile" href="special-collection.html">
-        <img src="valentines2026.jpg" alt="Valentine’s Day 2026 Collection">
+        <img src="valentines2026.jpg" alt="">
         <div class="tile-overlay">
           <div class="tile-kicker">HAUTE COUTURE HAIR</div>
           <div class="tile-title">Valentine’s Day 2026</div>
@@ -249,9 +207,8 @@
         </div>
       </a>
 
-      <!-- CLIP INS -->
       <a class="tile" href="clip-ins.html">
-        <img src="clip-ins.jpg" alt="Clip Ins">
+        <img src="clip-ins.jpg" alt="">
         <div class="tile-overlay">
           <div class="tile-kicker">WEFTS</div>
           <div class="tile-title">Clip Ins</div>
@@ -261,39 +218,25 @@
 
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer" aria-label="Footer">
-      <div class="footer-inner">
+    <footer class="footer">
+      <div class="footer-heading">HOUSE OF NIA BIA</div>
+      <ul class="footer-links">
+        <li>CONTACT AN ADVISOR</li>
+        <li>ABOUT NIA BIA</li>
+        <li>TESTIMONIES</li>
+        <li>HAIR CARE</li>
+        <li>FAQ</li>
+      </ul>
 
-        <section class="footer-section">
-          <h2 class="footer-heading">HOUSE OF NIA BIA</h2>
-          <ul class="footer-links">
-            <li>CONTACT AN ADVISOR</li>
-            <li>ABOUT NIA BIA</li>
-            <li>TESTIMONIES</li>
-            <li>HAIR CARE</li>
-            <li>FAQ</li>
-          </ul>
-        </section>
-
-        <section class="footer-section">
-          <h2 class="footer-heading">LEGAL</h2>
-          <ul class="footer-links">
-            <li>REFUND</li>
-            <li>PRIVACY</li>
-            <li>SHIPPING</li>
-            <li>TERMS OF SERVICE</li>
-          </ul>
-        </section>
-
-        <div class="copyright">© <span id="y"></span> Nia Bia LLC</div>
-      </div>
+      <div class="footer-heading">LEGAL</div>
+      <ul class="footer-links">
+        <li>REFUND</li>
+        <li>PRIVACY</li>
+        <li>SHIPPING</li>
+        <li>TERMS OF SERVICE</li>
+      </ul>
     </footer>
   </main>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 
 </body>
 </html>
