@@ -1,3 +1,10 @@
+Got it! We’ll remove the white box behind the text on all the tiles, so there’s no background shading on any of them. Then, on the “Special Collection” tile, we’ll change the small text to say “Haute Couture” and the larger text to say “Valentine’s Day 2026.” Everything else will remain as approved.
+
+Here’s the full, updated code for index.html:
+
+⸻
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,140 +14,123 @@
   <meta name="description" content="Luxury hair house." />
 
   <style>
-    /* =========================
-       GLOBAL RESET & LOCK
-       ========================= */
-    html, body{
-      width:100%;
-      max-width:100%;
-      margin:0;
-      padding:0;
-      overflow-x:hidden !important;
-      overscroll-behavior-x:none;
-      background:#ffffff;
-      color:#000000;
+    /* Global reset and base styles */
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden !important;
+      background: #ffffff;
+      color: #000000;
       font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     }
-    #viewport-lock{ width:100vw; overflow:hidden; }
+    #viewport-lock { width: 100vw; overflow: hidden; }
 
-    a{
-      color:inherit;
-      text-decoration:none !important;
+    a {
+      color: inherit;
+      text-decoration: none !important;
     }
 
-    /* =========================
-       TOP BRAND
-       ========================= */
-    .brand-top{
-      text-align:center;
-      padding:22px 0 14px;
-      font-size:18px;
-      font-weight:700;
-      letter-spacing:.32em;
-      text-transform:uppercase;
+    /* Top brand header */
+    .brand-top {
+      text-align: center;
+      padding: 22px 0 14px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .32em;
+      text-transform: uppercase;
     }
 
-    /* =========================
-       GRID
-       ========================= */
-    .page{
-      max-width:1120px;
-      margin:0 auto;
-      padding:0 22px 96px;
+    /* Grid styles */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 22px 96px;
     }
 
-    .grid{
-      max-width:980px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:18px;
+    .grid {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .tile{
-      position:relative;
-      display:block;
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,.10);
-      background:#fff;
+    .tile {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.10);
+      background: #fff;
     }
 
-    .tile img{
-      width:100%;
-      height:auto;
-      aspect-ratio:4 / 5;
-      object-fit:cover;
-      filter:grayscale(100%);
-      display:block;
+    .tile img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      filter: grayscale(100%);
+      display: block;
     }
 
-    /* =========================
-       TILE OVERLAY (APPROVED)
-       ========================= */
-    .tile-overlay{
-      position:absolute;
-      left:50%;
-      bottom:18px;
-      transform:translateX(-50%);
-      text-align:center;
-      color:#000;
-      background:rgba(255,255,255,.88);
-      padding:14px 18px 16px;
-      border:1px solid rgba(0,0,0,.12);
-      width:calc(100% - 36px);
-      max-width:320px;
+    /* Tile overlay text (no background box) */
+    .tile-overlay {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      text-align: center;
+      color: #000;
+      /* No background, no box */
     }
 
-    .tile-kicker{
-      font-size:11px;
-      letter-spacing:.28em;
-      text-transform:uppercase;
-      margin-bottom:6px;
+    .tile-kicker {
+      font-size: 11px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
-    .tile-title{
-      font-size:18px;
-      font-weight:600;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      margin-bottom:12px;
+    .tile-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .tile-cta{
-      display:inline-block;
-      padding:10px 18px;
-      border:1px solid rgba(0,0,0,.35);
-      font-size:11px;
-      font-weight:600;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      background:#fff;
-      cursor:pointer;
+    .tile-cta {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid rgba(0,0,0,.35);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      background: #fff;
+      cursor: pointer;
     }
 
-    /* =========================
-       FOOTER
-       ========================= */
-    .site-footer{
-      margin-top:40px;
-      text-align:center;
-      font-size:11px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(0,0,0,.55);
+    /* Site footer */
+    .site-footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.55);
     }
 
-    /* =========================
-       MOBILE
-       ========================= */
-    @media (max-width:720px){
-      .brand-top{ font-size:16px; }
-      .page{ padding:0 18px 80px; }
-      .grid{
-        grid-template-columns:minmax(0,1fr);
-        max-width:560px;
+    /* Mobile adjustments */
+    @media (max-width: 720px) {
+      .brand-top { font-size: 16px; }
+      .page { padding: 0 18px 80px; }
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 560px;
       }
-      .tile img{ aspect-ratio:5 / 6; }
+      .tile img { aspect-ratio: 5 / 6; }
     }
   </style>
 </head>
@@ -165,43 +155,4 @@
 
         <!-- VIRGIN -->
         <a class="tile" href="virgin.html">
-          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1800&q=85" alt="">
-          <div class="tile-overlay">
-            <div class="tile-kicker">Wefts</div>
-            <div class="tile-title">Virgin</div>
-            <div class="tile-cta">See More</div>
-          </div>
-        </a>
-
-        <!-- SPECIAL COLLECTION -->
-        <a class="tile" href="special-collection.html">
-          <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1800&q=85" alt="">
-          <div class="tile-overlay">
-            <div class="tile-kicker">Wefts</div>
-            <div class="tile-title">Special Collection</div>
-            <div class="tile-cta">See More</div>
-          </div>
-        </a>
-
-        <!-- CLIP INS -->
-        <a class="tile" href="clip-ins.html">
-          <img src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1800&q=85" alt="">
-          <div class="tile-overlay">
-            <div class="tile-kicker">Wefts</div>
-            <div class="tile-title">Clip Ins</div>
-            <div class="tile-cta">See More</div>
-          </div>
-        </a>
-
-      </div>
-
-      <div class="site-footer">© <span id="y"></span> Nia Bia LLC</div>
-    </main>
-
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef
