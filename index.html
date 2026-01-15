@@ -55,6 +55,9 @@
       background:transparent;
       padding:0;
       cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .icon{
@@ -79,6 +82,7 @@
     .tile{
       position:relative;
       overflow:hidden;
+      display:block;
     }
 
     .tile img{
@@ -163,22 +167,18 @@
 
     <div class="right-icons">
       <!-- Profile -->
-      <button class="icon-btn" aria-label="Profile">
+      <button class="icon-btn" aria-label="Profile" type="button">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="8" r="4" />
           <path d="M20 21a8 8 0 0 0-16 0" />
         </svg>
       </button>
 
-      <!-- SHOPPING BAG (CHANELBAG) -->
-      <button class="icon-btn" aria-label="Shopping bag">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <!-- bag body -->
-          <path d="M6.5 8.5h11l-0.9 12H7.4l-0.9-12z"/>
-          <!-- open top line -->
-          <path d="M6.8 8.5h10.4"/>
-          <!-- handles -->
-          <path d="M9 8.5V7.2a3 3 0 0 1 6 0v1.3"/>
+      <!-- Shopping bag (BAGFIX-BOOTSTRAP) -->
+      <button class="icon-btn" aria-label="Shopping bag" type="button">
+        <!-- This shape is a known shopping-bag icon silhouette -->
+        <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
         </svg>
       </button>
     </div>
