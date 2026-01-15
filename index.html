@@ -3,138 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NIA BIA</title>
-  <meta name="description" content="Luxury hair house." />
-
+  <title>NIA BIA - Home</title>
   <style>
-    html, body{
-      margin:0;
-      padding:0;
-      width:100%;
-      max-width:100%;
-      overflow-x:hidden;
-      background:#fff;
-      color:#000;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #000;
+      text-align: center;
+      padding: 50px;
     }
-    #viewport-lock{ width:100vw; overflow:hidden; }
-
-    a, a:visited, a:hover, a:active{
-      color:inherit;
-      text-decoration:none;
+    h1 {
+      font-size: 2.5em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
-
-    .hero{
-      height:100vh;
-      min-height:640px;
-      position:relative;
-      overflow:hidden;
+    p {
+      margin-top: 20px;
+      font-size: 1.2em;
     }
-    .media{
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)),
-        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=2200&q=85");
-      background-size:cover;
-      background-position:center;
-    }
-    .brand{
-      position:absolute;
-      top:18px;
-      left:50%;
-      transform:translateX(-50%);
-      z-index:3;
-      font-size:18px;
-      font-weight:700;
-      letter-spacing:.32em;
-      text-transform:uppercase;
-      color:#fff;
-      white-space:nowrap;
-    }
-    .copy{
-      position:absolute;
-      left:50%;
-      bottom:74px;
-      transform:translateX(-50%);
-      z-index:3;
-      width:min(680px, calc(100% - 36px));
-      text-align:center;
-      color:#fff;
-    }
-    .kicker{
-      margin:0 0 10px;
-      font-size:12px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      opacity:.9;
-    }
-    .headline{
-      margin:0 0 18px;
-      font-size:34px;
-      font-weight:700;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      line-height:1.05;
-    }
-    .cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      height:52px;
-      min-width:220px;
-      padding:0 22px;
-      background:#fff;
-      color:#000;
-      border:1px solid rgba(255,255,255,.70);
-      font-size:12px;
-      font-weight:600;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      cursor:pointer;
-    }
-    .footer{
-      position:absolute;
-      bottom:18px;
-      left:0;
-      right:0;
-      z-index:3;
-      text-align:center;
-      font-size:11px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.75);
-    }
-
-    @media (max-width:720px){
-      .brand{ font-size:16px; }
-      .headline{ font-size:28px; }
-      .copy{ bottom:64px; }
-      .cta{ min-width:200px; }
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
     }
   </style>
 </head>
-
 <body>
-  <div id="viewport-lock">
-    <main class="hero">
-      <div class="media" aria-hidden="true"></div>
-
-      <div class="brand">NIA BIA</div>
-
-      <div class="copy">
-        <p class="kicker">Collections</p>
-        <h1 class="headline">Showroom</h1>
-        <!-- UPDATED: go directly to your renamed page -->
-        <a class="cta" href="special-collection.html" aria-label="Enter collections">See More</a>
-      </div>
-
-      <div class="footer">© <span id="y"></span> Nia Bia LLC</div>
-    </main>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <h1>Welcome to NIA BIA</h1>
+  <p>Discover our luxury hair collections designed for longevity and elegance.</p>
+  <a href="special-collection.html">Explore Special Collection</a>
 </body>
 </html>
