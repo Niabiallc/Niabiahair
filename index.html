@@ -64,10 +64,10 @@
       width:22px;
       height:22px;
       stroke:#000;
-      stroke-width:1.6;
       fill:none;
       stroke-linecap:round;
       stroke-linejoin:round;
+      stroke-width:1.6;
     }
 
     .page{ padding-top:64px; }
@@ -91,7 +91,6 @@
       aspect-ratio:4/5;
       object-fit:cover;
       display:block;
-      filter:none;
     }
 
     .tile-overlay{
@@ -174,16 +173,19 @@
         </svg>
       </button>
 
-      <!-- Shopping bag (LUXURY OUTLINE / NOT BOLD) -->
+      <!-- Shopping bag (MATCHES YOUR ATTACHED ICON) -->
       <button class="icon-btn" aria-label="Shopping bag" type="button">
-        <!-- LUXBAG-V1 -->
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:1.05">
-          <!-- bag body (open top, no “lid” line) -->
-          <path d="M7.5 9.5h9L15.7 21H8.3L7.5 9.5z" />
-          <!-- left handle -->
-          <path d="M10 9.5V7.7c0-1.7 1-2.9 2-2.9" />
-          <!-- right handle -->
-          <path d="M14 9.5V7.7c0-1.7-1-2.9-2-2.9" />
+        <!-- NB-BAG-EXACT -->
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" style="stroke-width:1.9">
+          <!-- bag body with rounded corners -->
+          <path d="M6.5 10.5a1.8 1.8 0 0 1 1.8-1.8h7.4a1.8 1.8 0 0 1 1.8 1.8v8.2a2.2 2.2 0 0 1-2.2 2.2H8.7a2.2 2.2 0 0 1-2.2-2.2v-8.2z"/>
+          <!-- top bar -->
+          <path d="M6.5 11.2H17.5"/>
+          <!-- arched handle -->
+          <path d="M8.6 11.2c0-4 2-6.2 3.4-6.2s3.4 2.2 3.4 6.2"/>
+          <!-- handle “drops” (the little down connections) -->
+          <path d="M8.6 11.2v1.2"/>
+          <path d="M15.4 11.2v1.2"/>
         </svg>
       </button>
     </div>
