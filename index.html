@@ -3,39 +3,165 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NIA BIA - Home</title>
+  <title>NIA BIA</title>
+  <meta name="description" content="Luxury hair house." />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #000;
-      text-align: center;
-      padding: 50px;
+    html, body{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      padding:0;
+      overflow-x:hidden !important;
+      overscroll-behavior-x:none;
+      background:#fff;
+      color:#000;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     }
-    h1 {
-      font-size: 2.5em;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    #viewport-lock{ width:100vw; overflow:hidden; }
+
+    a, a:visited, a:hover, a:active{
+      color:inherit;
+      text-decoration:none !important;
+      -webkit-text-decoration:none !important;
     }
-    p {
-      margin-top: 20px;
-      font-size: 1.2em;
+
+    /* Top center brand like CHANEL */
+    .brand-top{
+      padding:22px 18px 10px;
+      text-align:center;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
     }
-    a {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 10px 20px;
-      background: #000;
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: bold;
+
+    /* Grid */
+    .page{
+      max-width:1120px;
+      margin:0 auto;
+      padding:0 22px 96px;
+    }
+
+    .grid{
+      width:100%;
+      max-width:980px;
+      margin:26px auto 0;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      overflow:hidden;
+    }
+    .grid > *{ min-width:0; }
+
+    .tile{
+      position:relative;
+      display:block;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
+    }
+
+    .tile img{
+      display:block;
+      width:100%;
+      max-width:100%;
+      height:auto;
+      aspect-ratio:4 / 5;
+      object-fit:cover;
+      filter:grayscale(100%);
+      transform:translateZ(0);
+    }
+
+    /* Bottom-center overlay label */
+    .tile-label{
+      position:absolute;
+      left:50%;
+      bottom:12px;
+      transform:translateX(-50%);
+      text-align:center;
+
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+
+      color:#000;
+      background:rgba(255,255,255,.86);
+      padding:8px 12px;
+      border:1px solid rgba(0,0,0,.10);
+
+      white-space:nowrap;
+      max-width:calc(100% - 24px);
+      overflow:hidden;
+      text-overflow:ellipsis;
+
+      pointer-events:none;
+    }
+
+    .footer{
+      margin-top:36px;
+      text-align:center;
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(0,0,0,.55);
+      padding:0 18px;
+    }
+
+    @media (max-width:720px){
+      .brand-top{ font-size:16px; }
+      .page{ padding:0 18px 80px; }
+      .grid{
+        grid-template-columns:minmax(0, 1fr);
+        max-width:560px;
+      }
+      .tile img{ aspect-ratio:5 / 6; }
     }
   </style>
 </head>
+
 <body>
-  <h1>Welcome to NIA BIA</h1>
-  <p>Discover our luxury hair collections designed for longevity and elegance.</p>
-  <a href="special-collection.html">Explore Special Collection</a>
+  <div id="viewport-lock">
+    <header class="brand-top">NIA BIA</header>
+
+    <main class="page" aria-label="NIA BIA showroom">
+      <section aria-label="Collections tiles">
+        <div class="grid">
+
+          <!-- 1) Single Donor (your renamed Raw) -->
+          <a class="tile" href="raw.html" aria-label="Single Donor">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1800&q=85" alt="">
+            <div class="tile-label">Single Donor</div>
+          </a>
+
+          <!-- 2) Virgin -->
+          <a class="tile" href="virgin.html" aria-label="Virgin">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1800&q=85" alt="">
+            <div class="tile-label">Virgin</div>
+          </a>
+
+          <!-- 3) Special Collection -->
+          <a class="tile" href="special-collection.html" aria-label="Special Collection">
+            <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1800&q=85" alt="">
+            <div class="tile-label">Special Collection</div>
+          </a>
+
+          <!-- 4) Clip Ins -->
+          <a class="tile" href="clip-ins.html" aria-label="Clip Ins">
+            <img src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1800&q=85" alt="">
+            <div class="tile-label">Clip Ins</div>
+          </a>
+
+        </div>
+
+        <div class="footer">© <span id="y"></span> Nia Bia LLC</div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
