@@ -8,7 +8,6 @@
   <style>
     html, body{
       width:100%;
-      max-width:100%;
       margin:0;
       padding:0;
       overflow-x:hidden;
@@ -27,30 +26,31 @@
       text-transform:uppercase;
     }
 
+    /* FULL-BLEED PAGE */
     .page{
-      max-width:1120px;
-      margin:0 auto;
-      padding:0 22px 96px;
+      width:100%;
+      margin:0;
+      padding:0;
     }
 
+    /* FULL-BLEED GRID */
     .grid{
-      max-width:980px;
-      margin:0 auto;
+      width:100%;
       display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:0; /* NO SPACE BETWEEN TILES */
+      grid-template-columns:repeat(2, 1fr);
+      gap:0;
     }
 
     .tile{
       position:relative;
       display:block;
       overflow:hidden;
-      border:none; /* REMOVE SEPARATION */
+      border:none;
     }
 
     .tile img{
       width:100%;
-      height:auto;
+      height:100%;
       aspect-ratio:4/5;
       object-fit:cover;
       display:block;
@@ -94,7 +94,7 @@
     }
 
     .site-footer{
-      margin-top:40px;
+      margin:40px 0;
       text-align:center;
       font-size:11px;
       letter-spacing:.14em;
