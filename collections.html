@@ -1,20 +1,17 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Collections — NIA BIA</title>
-  <meta name="description" content="Curated raw and virgin human hair offerings." />
+  <meta name="description" content="NIA BIA collections." />
 
-  <!-- Keep your main stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=900">
-
-  <!-- Inline CSS (so it works even if GitHub Pages delays styles.css updates) -->
+  <!-- Inline styles to ensure immediate visible change + prevent horizontal issues -->
   <style>
-    /* HARD STOP horizontal overflow/pan (same method as earlier) */
     html, body{
       width:100%;
       max-width:100%;
+      height:100%;
       margin:0;
       padding:0;
       overflow-x:hidden !important;
@@ -23,156 +20,171 @@
       color:#000;
     }
 
-    /* Clamp viewport so Safari can't "reveal" sideways */
+    /* Clamp viewport so Safari can't reveal sideways */
     #viewport-lock{
       width:100vw;
       overflow:hidden;
     }
 
-    /* Make tile links visually invisible (no hyperlink styling) */
-    .catalog-grid a,
-    .catalog-grid a:visited,
-    .catalog-grid a:hover,
-    .catalog-grid a:active,
-    .catalog-grid a *{
-      color:inherit !important;
-      text-decoration:none !important;
-      -webkit-text-decoration:none !important;
+    /* Reset link look everywhere on this page */
+    a, a:visited, a:hover, a:active{
+      color:inherit;
+      text-decoration:none;
+      -webkit-text-decoration:none;
     }
 
-    /* Grid container */
-    .catalog-grid{
-      width:100%;
-      max-width:860px;
-      margin:34px auto 0;
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:18px;
-      overflow:hidden;
-      padding:0;
-    }
-    .catalog-grid > *{ min-width:0; }
-
-    /* Each tile as a clickable panel */
-    .tile{
+    /* ===== HERO (Chanel-like) ===== */
+    .hero{
       position:relative;
-      display:block;
+      height:100vh;            /* full screen */
+      min-height:640px;        /* safety */
+      width:100%;
       overflow:hidden;
-      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
     }
 
-    /* Image */
-    .tile img{
-      display:block;
-      width:100%;
-      height:auto;
-      max-width:100%;
-      aspect-ratio:4 / 5;
-      object-fit:cover;
-      filter:grayscale(100%);
+    /* Temporary editorial image (replace later with your own photography) */
+    .hero-media{
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(0,0,0,.20), rgba(0,0,0,.20)),
+        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=2000&q=85");
+      background-size:cover;
+      background-position:center;
       transform:translateZ(0);
     }
 
-    /* Label overlay: bottom center on top of image */
-    .tile-label{
+    /* Top brand (centered like CHANEL) */
+    .brand-top{
+      position:absolute;
+      top:18px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:3;
+
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+
+      color:#fff; /* white on image */
+      text-align:center;
+      line-height:1;
+      padding:10px 12px;
+    }
+
+    /* Bottom-center copy block */
+    .hero-copy{
       position:absolute;
       left:50%;
-      bottom:12px;
+      bottom:74px;
       transform:translateX(-50%);
-      text-align:center;
+      z-index:3;
 
-      font-size:11px;
+      width:min(680px, calc(100% - 36px));
+      text-align:center;
+      color:#fff;
+    }
+
+    .kicker{
+      margin:0 0 10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-size:12px;
+      font-weight:500;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      opacity:.92;
+    }
+
+    .headline{
+      margin:0 0 18px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      line-height:1.05;
+    }
+
+    /* Button like “SEE MORE” */
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+
+      height:52px;
+      min-width:220px;
+      padding:0 22px;
+
+      background:#fff;
+      color:#000;
+      border:1px solid rgba(255,255,255,.70);
+
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-size:12px;
+      font-weight:600;
       letter-spacing:.22em;
       text-transform:uppercase;
 
-      color:#000;
-
-      /* Luxury readability without looking like a "button" */
-      background:rgba(255,255,255,.82);
-      padding:8px 12px;
-      border:1px solid rgba(0,0,0,.10);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-
-      white-space:nowrap;
-      max-width:calc(100% - 24px);
-      overflow:hidden;
-      text-overflow:ellipsis;
+      cursor:pointer;
     }
 
-    /* Optional subtle hover (desktop only) */
-    @media (hover:hover){
-      .tile:hover img{ opacity:.96; }
+    .cta:hover{
+      background:#fff;
+      text-decoration:none;
     }
 
-    /* Mobile: one column */
+    /* Small footer space (optional) */
+    .footer-strip{
+      position:absolute;
+      bottom:18px;
+      left:0;
+      right:0;
+      z-index:3;
+      text-align:center;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.78);
+      padding:0 18px;
+    }
+
+    /* Mobile tuning */
     @media (max-width:720px){
-      .catalog-grid{
-        grid-template-columns:minmax(0, 1fr);
-        max-width:560px;
-      }
-      .tile img{
-        aspect-ratio:5 / 6;
-      }
+      .brand-top{ font-size:16px; }
+      .headline{ font-size:28px; }
+      .hero-copy{ bottom:64px; }
+      .cta{ min-width:200px; }
     }
   </style>
 </head>
 
 <body>
   <div id="viewport-lock">
-    <div class="wrapper">
-      <header class="header">
-        <div class="brand"><a href="index.html">NIA BIA</a></div>
-        <nav class="nav">
-          <a href="collections.html">Collections</a>
-          <a href="care.html">Care</a>
-          <a href="policies.html">Policies</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </header>
+    <main class="hero" aria-label="Collections hero">
+      <div class="hero-media" aria-hidden="true"></div>
 
-      <main>
-        <section class="hero">
-          <h1 class="h1">Collections</h1>
-          <p class="p">A curated offering designed for longevity and reinstallation.</p>
+      <!-- Top center brand -->
+      <div class="brand-top">NIA BIA</div>
 
-          <div class="catalog-grid" aria-label="Collections overview">
-            <a class="tile" href="raw.html" aria-label="Raw">
-              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=80" alt="">
-              <div class="tile-label">Raw</div>
-            </a>
+      <!-- Bottom center text + CTA -->
+      <div class="hero-copy">
+        <p class="kicker">Wefts</p>
+        <h1 class="headline">Single Donor</h1>
+        <a class="cta" href="wefts.html" aria-label="See more: Wefts Single Donor">See More</a>
+      </div>
 
-            <a class="tile" href="virgin.html" aria-label="Virgin">
-              <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=80" alt="">
-              <div class="tile-label">Virgin</div>
-            </a>
-
-            <a class="tile" href="sets-3.html" aria-label="3 Bundle Sets">
-              <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1400&q=80" alt="">
-              <div class="tile-label">3 Bundle Sets</div>
-            </a>
-
-            <a class="tile" href="sets-4.html" aria-label="4 Bundle Sets">
-              <img src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1400&q=80" alt="">
-              <div class="tile-label">4 Bundle Sets</div>
-            </a>
-          </div>
-        </section>
-
-        <div class="hr"></div>
-
-        <footer class="footer">
-          <div>© <span id="y"></span> Nia Bia LLC</div>
-          <div>Showroom.</div>
-        </footer>
-      </main>
-    </div>
+      <div class="footer-strip">© <span id="y"></span> Nia Bia LLC</div>
+    </main>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    /* iOS Safari: block sideways swipe/pan (same method as earlier) */
+    /* iOS Safari: block sideways swipe/pan so it never "slides" */
     (function () {
       let startX = 0, startY = 0;
 
