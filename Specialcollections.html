@@ -6,8 +6,10 @@
   <title>Collections — NIA BIA</title>
   <meta name="description" content="NIA BIA collections." />
 
-  <!-- Inline styles to ensure immediate visible change + prevent horizontal issues -->
   <style>
+    /* =========================
+       GLOBAL LOCKS
+       ========================= */
     html, body{
       width:100%;
       max-width:100%;
@@ -20,42 +22,48 @@
       color:#000;
     }
 
-    /* Clamp viewport so Safari can't reveal sideways */
     #viewport-lock{
       width:100vw;
       overflow:hidden;
     }
 
-    /* Reset link look everywhere on this page */
     a, a:visited, a:hover, a:active{
       color:inherit;
-      text-decoration:none;
-      -webkit-text-decoration:none;
+      text-decoration:none !important;
+      -webkit-text-decoration:none !important;
     }
 
-    /* ===== HERO (Chanel-like) ===== */
+    /* =========================
+       PAGE CONTAINER
+       ========================= */
+    .page{
+      max-width:1120px;
+      margin:0 auto;
+      padding:0 22px 96px;
+    }
+
+    /* =========================
+       HERO (CHANEL STYLE)
+       ========================= */
     .hero{
       position:relative;
-      height:100vh;            /* full screen */
-      min-height:640px;        /* safety */
+      height:100vh;
+      min-height:640px;
       width:100%;
       overflow:hidden;
-      background:#fff;
     }
 
-    /* Temporary editorial image (replace later with your own photography) */
     .hero-media{
       position:absolute;
       inset:0;
       background-image:
-        linear-gradient(rgba(0,0,0,.20), rgba(0,0,0,.20)),
-        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=2000&q=85");
+        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)),
+        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=2200&q=85");
       background-size:cover;
       background-position:center;
-      transform:translateZ(0);
     }
 
-    /* Top brand (centered like CHANEL) */
+    /* Top center brand */
     .brand-top{
       position:absolute;
       top:18px;
@@ -68,21 +76,17 @@
       font-weight:700;
       letter-spacing:.32em;
       text-transform:uppercase;
-
-      color:#fff; /* white on image */
-      text-align:center;
-      line-height:1;
-      padding:10px 12px;
+      color:#fff;
+      white-space:nowrap;
     }
 
-    /* Bottom-center copy block */
+    /* Bottom center copy */
     .hero-copy{
       position:absolute;
       left:50%;
       bottom:74px;
       transform:translateX(-50%);
       z-index:3;
-
       width:min(680px, calc(100% - 36px));
       text-align:center;
       color:#fff;
@@ -90,17 +94,14 @@
 
     .kicker{
       margin:0 0 10px;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
       font-size:12px;
-      font-weight:500;
       letter-spacing:.26em;
       text-transform:uppercase;
-      opacity:.92;
+      opacity:.9;
     }
 
     .headline{
-      margin:0 0 18px;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      margin:0;
       font-size:34px;
       font-weight:700;
       letter-spacing:.10em;
@@ -108,35 +109,6 @@
       line-height:1.05;
     }
 
-    /* Button like “SEE MORE” */
-    .cta{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-
-      height:52px;
-      min-width:220px;
-      padding:0 22px;
-
-      background:#fff;
-      color:#000;
-      border:1px solid rgba(255,255,255,.70);
-
-      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-      font-size:12px;
-      font-weight:600;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-
-      cursor:pointer;
-    }
-
-    .cta:hover{
-      background:#fff;
-      text-decoration:none;
-    }
-
-    /* Small footer space (optional) */
     .footer-strip{
       position:absolute;
       bottom:18px;
@@ -144,63 +116,132 @@
       right:0;
       z-index:3;
       text-align:center;
-      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
       font-size:11px;
       letter-spacing:.14em;
       text-transform:uppercase;
-      color:rgba(255,255,255,.78);
-      padding:0 18px;
+      color:rgba(255,255,255,.75);
     }
 
-    /* Mobile tuning */
+    /* =========================
+       COLLECTION TILES
+       ========================= */
+    .section{
+      padding-top:34px;
+    }
+
+    .grid{
+      width:100%;
+      max-width:980px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      overflow:hidden;
+    }
+    .grid > *{ min-width:0; }
+
+    .tile{
+      position:relative;
+      display:block;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
+    }
+
+    .tile img{
+      display:block;
+      width:100%;
+      height:auto;
+      aspect-ratio:4 / 5;
+      object-fit:cover;
+      filter:grayscale(100%);
+    }
+
+    .tile-label{
+      position:absolute;
+      left:50%;
+      bottom:12px;
+      transform:translateX(-50%);
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:#000;
+      background:rgba(255,255,255,.86);
+      padding:8px 12px;
+      border:1px solid rgba(0,0,0,.10);
+      white-space:nowrap;
+      pointer-events:none;
+    }
+
     @media (max-width:720px){
+      .page{ padding:0 18px 80px; }
       .brand-top{ font-size:16px; }
       .headline{ font-size:28px; }
       .hero-copy{ bottom:64px; }
-      .cta{ min-width:200px; }
+      .grid{
+        grid-template-columns:minmax(0, 1fr);
+        max-width:560px;
+      }
+      .tile img{ aspect-ratio:5 / 6; }
     }
   </style>
 </head>
 
 <body>
   <div id="viewport-lock">
-    <main class="hero" aria-label="Collections hero">
-      <div class="hero-media" aria-hidden="true"></div>
 
-      <!-- Top center brand -->
+    <!-- HERO -->
+    <main class="hero">
+      <div class="hero-media"></div>
+
       <div class="brand-top">NIA BIA</div>
 
-      <!-- Bottom center text + CTA -->
       <div class="hero-copy">
         <p class="kicker">Wefts</p>
         <h1 class="headline">Single Donor</h1>
-        <a class="cta" href="wefts.html" aria-label="See more: Wefts Single Donor">See More</a>
       </div>
 
       <div class="footer-strip">© <span id="y"></span> Nia Bia LLC</div>
     </main>
+
+    <!-- COLLECTION GRID -->
+    <div class="page">
+      <section class="section">
+        <div class="grid">
+
+          <!-- Single Donor (RAW) -->
+          <a class="tile" href="raw.html">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1800&q=85" alt="">
+            <div class="tile-label">Single Donor</div>
+          </a>
+
+          <!-- Virgin -->
+          <a class="tile" href="virgin.html">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1800&q=85" alt="">
+            <div class="tile-label">Virgin</div>
+          </a>
+
+          <!-- Special Collection -->
+          <a class="tile" href="special-collection.html">
+            <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1800&q=85" alt="">
+            <div class="tile-label">Special Collection</div>
+          </a>
+
+          <!-- Clip Ins -->
+          <a class="tile" href="clip-ins.html">
+            <img src="https://images.unsplash.com/photo-1520975922284-9bcd1f62d5d6?auto=format&fit=crop&w=1800&q=85" alt="">
+            <div class="tile-label">Clip Ins</div>
+          </a>
+
+        </div>
+      </section>
+    </div>
+
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    /* iOS Safari: block sideways swipe/pan so it never "slides" */
-    (function () {
-      let startX = 0, startY = 0;
-
-      document.addEventListener("touchstart", function (e) {
-        if (!e.touches || e.touches.length !== 1) return;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      }, { passive: true });
-
-      document.addEventListener("touchmove", function (e) {
-        if (!e.touches || e.touches.length !== 1) return;
-        const dx = Math.abs(e.touches[0].clientX - startX);
-        const dy = Math.abs(e.touches[0].clientY - startY);
-        if (dx > dy + 6) e.preventDefault();
-      }, { passive: false });
-    })();
   </script>
 </body>
 </html>
