@@ -184,25 +184,6 @@
       display:inline-block;
     }
 
-    /* FOOTER */
-    .footer{
-      padding:56px 18px 64px;
-    }
-    .footer-heading{
-      font-weight:700;
-      text-transform:uppercase;
-      margin-bottom:18px;
-    }
-    .footer-links{
-      list-style:none;
-      padding:0;
-      margin:0 0 40px;
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-      text-transform:uppercase;
-    }
-
     /* DRAWER MENU */
     .drawer-overlay{
       position:fixed;
@@ -311,6 +292,49 @@
       text-transform:uppercase;
       opacity:.85;
       padding-left:2px;
+    }
+
+    /* APPROVED GLOBAL FOOTER (mobile vertical, iPad/desktop horizontal) */
+    .site-footer{
+      padding:64px 18px 72px;
+      background:#fff;
+    }
+    .footer-grid{
+      display:flex;
+      flex-direction:column;
+      gap:48px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .footer-col h4{
+      margin:0 0 18px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+    .footer-col ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .footer-col a{
+      font-size:12px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      opacity:.85;
+    }
+    .footer-col a:hover{ opacity:1; }
+
+    @media (min-width:768px){
+      .footer-grid{
+        flex-direction:row;
+        justify-content:space-between;
+        gap:80px;
+      }
     }
 
     @media (max-width:720px){
@@ -533,23 +557,36 @@
       </a>
     </div>
 
-    <footer class="footer">
-      <div class="footer-heading">HOUSE OF NIA BIA</div>
-      <ul class="footer-links">
-        <li>CONTACT AN ADVISOR</li>
-        <li>ABOUT NIA BIA</li>
-        <li>TESTIMONIES</li>
-        <li>HAIR CARE</li>
-        <li>FAQ</li>
-      </ul>
+    <!-- APPROVED GLOBAL FOOTER -->
+    <footer class="site-footer" aria-label="Footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>House of NIA BIA</h4>
+          <ul>
+            <li><a href="contact.html">Contact an Advisor</a></li>
+            <li><a href="#">About NIA BIA</a></li>
+            <li><a href="#">Testimonies</a></li>
+          </ul>
+        </div>
 
-      <div class="footer-heading">LEGAL</div>
-      <ul class="footer-links">
-        <li>REFUND</li>
-        <li>PRIVACY</li>
-        <li>SHIPPING</li>
-        <li>TERMS OF SERVICE</li>
-      </ul>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Refund</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="care.html">Hair Care</a></li>
+            <li><a href="contact.html">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
     </footer>
   </main>
 
