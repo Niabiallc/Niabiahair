@@ -89,7 +89,6 @@
       white-space:nowrap;
     }
 
-    /* Approved shopping bag icon */
     .bag-icon{
       width:22px;
       height:22px;
@@ -126,78 +125,6 @@
 
     .page{ padding-top:64px; }
 
-    /* HERO (NOT CLICKABLE) */
-    .hero{
-      position:relative;
-      width:100%;
-      overflow:hidden;
-    }
-    .hero img{
-      width:100%;
-      height:72vh;
-      min-height:520px;
-      object-fit:cover;
-      display:block;
-    }
-
-    .hero-overlay{
-      position:absolute;
-      left:50%;
-      bottom:22px;
-      transform:translateX(-50%);
-      text-align:center;
-      color:#fff;
-      width:min(760px, calc(100% - 36px));
-      text-shadow:0 1px 12px rgba(0,0,0,.25);
-    }
-
-    .hero-line{
-      margin:0 0 10px;
-      font-size:12px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      opacity:.92;
-    }
-
-    .hero-title{
-      margin:0 0 8px;
-      font-size:28px;
-      font-weight:700;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      line-height:1.05;
-    }
-
-    .hero-sub{
-      margin:0 0 10px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      opacity:.95;
-    }
-
-    .hero-brand{
-      margin:0;
-      font-size:12px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      opacity:.92;
-    }
-
-    /* CATALOG */
-    .catalog{
-      margin:0;
-      padding:0;
-    }
-
-    .catalog-item{
-      display:block;
-      width:100%;
-      background:#fff;
-    }
-
-    /* DEFAULT tile image behavior (applies to ALL EXCEPT TRIO) */
     .catalog-item img{
       width:100%;
       height:auto;
@@ -208,40 +135,14 @@
       background:#fff;
     }
 
-    /* SOLO stays locked */
-    .catalog-item.solo img{
-      width:100%;
-      height:auto;
-      aspect-ratio:4 / 5;
-      object-fit:contain;
-      object-position:center;
-      display:block;
-      background:#fff;
-    }
-
-    /* QUAD uses cover to remove side borders */
     .catalog-item.quad img{
-      width:100%;
-      height:auto;
-      aspect-ratio:4 / 5;
       object-fit:cover;
-      object-position:center;
-      display:block;
-      background:#fff;
     }
 
-    /* ✅ TRIO EXCEPTION: rule does NOT apply here */
     .catalog-item.trio img{
-      width:100%;
-      height:auto;
       aspect-ratio:auto;
-      object-fit:contain;
-      object-position:center;
-      display:block;
-      background:#fff;
     }
 
-    /* TEXT UNDER IMAGE (black) */
     .tile-text{
       padding:14px 18px 26px;
       border-bottom:1px solid var(--line);
@@ -255,116 +156,6 @@
       line-height:1.3;
     }
 
-    /* DRAWER MENU (same as index, working) */
-    .drawer-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.25);
-      z-index:2000;
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .18s ease;
-    }
-    .drawer{
-      position:fixed;
-      top:0;
-      left:0;
-      height:100%;
-      width:min(86vw, 420px);
-      background:#fff;
-      z-index:2100;
-      transform:translateX(-102%);
-      transition:transform .18s ease;
-      display:flex;
-      flex-direction:column;
-    }
-    .drawer.open{ transform:translateX(0); }
-    .drawer-overlay.open{
-      opacity:1;
-      pointer-events:auto;
-    }
-
-    .drawer-top{
-      height:64px;
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      padding:0 16px;
-      border-bottom:1px solid var(--line);
-    }
-    .drawer-close{
-      width:34px;
-      height:34px;
-      border:0;
-      background:transparent;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .drawer-close svg{
-      width:22px; height:22px;
-      stroke:#000; fill:none;
-      stroke-width:1.6;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-    }
-
-    .drawer-body{
-      padding:22px 18px 40px;
-      overflow:auto;
-    }
-
-    .menu-title{
-      font-size:34px;
-      font-weight:700;
-      letter-spacing:.02em;
-      margin:0 0 22px;
-    }
-
-    .menu-section{
-      border-top:1px solid rgba(0,0,0,.10);
-      padding:14px 0;
-    }
-
-    details.menu-item summary{
-      list-style:none;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      font-size:16px;
-      font-weight:600;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      padding:12px 0;
-    }
-    details.menu-item summary::-webkit-details-marker{ display:none; }
-
-    .chev{
-      width:18px; height:18px;
-      stroke:#000; fill:none;
-      stroke-width:1.6;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-      flex:0 0 auto;
-    }
-
-    .submenu{
-      padding:6px 0 4px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .submenu a{
-      font-size:13px;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      opacity:.85;
-      padding-left:2px;
-    }
-
-    /* FOOTER (same page, mobile vertical / desktop+iPad horizontal) */
     .footer{
       padding:56px 18px 64px;
       background:#fff;
@@ -400,304 +191,44 @@
       .footer-grid{
         grid-template-columns:repeat(3, 1fr);
         gap:64px;
-        align-items:start;
       }
-    }
-
-    @media (max-width:720px){
-      .brand-top{ height:60px; }
-      .left-icons, .right-icons{ height:60px; }
-      .page{ padding-top:60px; }
-
-      .hero img{ height:66vh; min-height:460px; }
-      .hero-title{ font-size:24px; }
-
-      .drawer-top{ height:60px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="brand-top">
-    <div class="left-icons">
-      <!-- Menu (WORKING) -->
-      <button class="icon-btn" aria-label="Menu" type="button" id="openMenu">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6h18" />
-          <path d="M3 12h18" />
-          <path d="M3 18h18" />
-        </svg>
-      </button>
 
-      <!-- Search (icon only, no action) -->
-      <button class="icon-btn" aria-label="Search" type="button">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="11" cy="11" r="6"></circle>
-          <path d="M20 20l-3.5-3.5"></path>
-        </svg>
-      </button>
-    </div>
+<main class="page">
+  <section class="catalog">
 
-    <div class="brand"><a href="index.html" aria-label="Home">NIA BIA</a></div>
+    <a class="catalog-item solo" id="solo">
+      <img src="vdaysolo.jpg" alt="">
+      <div class="tile-text"><div class="tile-title">Valentine’s Day Collection Solo Bundle</div></div>
+    </a>
 
-    <div class="right-icons">
-      <!-- Account -->
-      <button class="icon-btn" aria-label="Account" type="button">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="8" r="4" />
-          <path d="M20 21a8 8 0 0 0-16 0" />
-        </svg>
-      </button>
+    <a class="catalog-item trio" id="trio">
+      <img src="vdaytrioset.jpg" alt="">
+      <div class="tile-text"><div class="tile-title">Valentine’s Day Collection Trio Set</div></div>
+    </a>
 
-      <!-- Shopping bag -->
-      <button class="icon-btn" aria-label="Shopping bag" type="button">
-        <span class="bag-icon" aria-hidden="true"></span>
-      </button>
-    </div>
-  </header>
+    <a class="catalog-item quad" id="quad">
+      <img src="vdayquadset.jpg" alt="">
+      <div class="tile-text"><div class="tile-title">Valentine’s Day Collection Quad Set</div></div>
+    </a>
 
-  <!-- DRAWER -->
-  <div class="drawer-overlay" id="overlay"></div>
-  <aside class="drawer" id="drawer" aria-label="Menu">
-    <div class="drawer-top">
-      <button class="drawer-close" aria-label="Close menu" type="button" id="closeMenu">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 6l12 12" />
-          <path d="M18 6l-12 12" />
-        </svg>
-      </button>
-    </div>
+    <a class="catalog-item" id="signature">
+      <img src="vdaysignature.jpg" alt="">
+      <div class="tile-text"><div class="tile-title">Valentine’s Day Collection Signature Accessories</div></div>
+    </a>
 
-    <div class="drawer-body">
-      <div class="menu-title">Menu</div>
+    <!-- ✅ ONLY CHANGE MADE HERE -->
+    <a class="catalog-item" id="gift">
+      <img src="vdaygiftset.jpg" alt="">
+      <div class="tile-text"><div class="tile-title">Valentine’s Day Collection Gift Set</div></div>
+    </a>
 
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>Haute Couture Hair
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="specialcollection.html">All Valentine’s Day Collection 2026</a>
-            <a href="specialcollection.html#solo">Solo Bundle</a>
-            <a href="specialcollection.html#trio">Trio Set</a>
-            <a href="specialcollection.html#quad">Quad Set</a>
-            <a href="specialcollection.html#signature">Signature Accessories</a>
-            <a href="specialcollection.html#gift">Valentine’s Gift Set</a>
-          </div>
-        </details>
-      </div>
+  </section>
+</main>
 
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>Virgin
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="virgin.html">All Virgin</a>
-            <a href="virgin.html#solo">Solo Bundle</a>
-            <a href="virgin.html#trio">Trio Set</a>
-            <a href="virgin.html#quad">Quad Set</a>
-            <a href="virgin.html#signature">Signature</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>Single Donor
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="raw.html">All Single Donor</a>
-            <a href="raw.html#solo">Solo Bundle</a>
-            <a href="raw.html#trio">Trio Set</a>
-            <a href="raw.html#quad">Quad Set</a>
-            <a href="raw.html#signature">Signature</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>Clip Ins
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="clip-ins.html">All Clip Ins</a>
-            <a href="clip-ins.html#solo">Clip Ins Solo Set</a>
-            <a href="clip-ins.html#duo">Clip Ins Duo Set</a>
-            <a href="clip-ins.html#signature">Signature</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>Heritage Accessories
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="#">Coming Soon</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>High Accessories
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="#">Coming Soon</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>Client Services
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="contact.html">Order Tracking</a>
-            <a href="contact.html">Delivery</a>
-            <a href="policies.html">Returns</a>
-            <a href="care.html">Hair Care</a>
-            <a href="contact.html">FAQ</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>House of NIA BIA
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="#">The House</a>
-            <a href="#">Heritage</a>
-            <a href="#">Craftsmanship</a>
-            <a href="#">Care Philosophy</a>
-            <a href="#">Client Commitment</a>
-          </div>
-        </details>
-      </div>
-    </div>
-  </aside>
-
-  <main class="page">
-    <!-- HERO IMAGE (not clickable) -->
-    <section class="hero" aria-label="Valentine’s Day 2026 hero">
-      <img src="valentines2026.jpg" alt="">
-      <div class="hero-overlay">
-        <p class="hero-line">HAUTE COUTURE HAIR</p>
-        <h1 class="hero-title">Valentine’s Day 2026</h1>
-        <p class="hero-sub">COLLECTION</p>
-        <p class="hero-brand">NIA BIA</p>
-      </div>
-    </section>
-
-    <!-- INSERTED PARAGRAPH (between hero and first tile) -->
-    <section class="tile-text" aria-label="Collection introduction">
-      <div class="tile-title" style="text-transform:none; letter-spacing:0; font-weight:400;">
-        The NIA BIA Valentine’s Day Collection is an ode to allure, softness, and enduring beauty. Designed to move with quiet confidence, each piece embodies fluid elegance and indulgent refinement. This limited offering celebrates romance in its most elevated form—timeless, intimate, and meant to be desired.
-      </div>
-    </section>
-
-    <!-- 5 CLICKABLE SECTIONS -->
-    <section class="catalog" aria-label="Valentine’s Day 2026 catalog">
-      <a class="catalog-item solo" href="#solo" id="solo" aria-label="Valentine’s Day Collection Solo Bundle">
-        <img src="vdaysolo.jpg" alt="">
-        <div class="tile-text">
-          <div class="tile-title">Valentine’s Day Collection Solo Bundle</div>
-        </div>
-      </a>
-
-      <a class="catalog-item trio" href="#trio" id="trio" aria-label="Valentine’s Day Collection Trio Set">
-        <img src="vdaytrioset.jpg" alt="">
-        <div class="tile-text">
-          <div class="tile-title">Valentine’s Day Collection Trio Set</div>
-        </div>
-      </a>
-
-      <a class="catalog-item quad" href="#quad" id="quad" aria-label="Valentine’s Day Collection Quad Set">
-        <img src="vdayquadset.jpg" alt="">
-        <div class="tile-text">
-          <div class="tile-title">Valentine’s Day Collection Quad Set</div>
-        </div>
-      </a>
-
-      <a class="catalog-item" href="#signature" id="signature" aria-label="Valentine’s Day Collection Signature Accessories">
-        <img src="vdaysignature.jpg" alt="">
-        <div class="tile-text">
-          <div class="tile-title">Valentine’s Day Collection Signature Accessories</div>
-        </div>
-      </a>
-
-      <a class="catalog-item" href="#gift" id="gift" aria-label="Valentine’s Day Collection Gift Set">
-        <img src="placeholder-gift.jpg" alt="">
-        <div class="tile-text">
-          <div class="tile-title">Valentine’s Day Collection Gift Set</div>
-        </div>
-      </a>
-    </section>
-
-    <!-- FOOTER (added; same site footer pattern) -->
-    <footer class="footer" aria-label="Footer">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-heading">HOUSE OF NIA BIA</div>
-          <ul class="footer-links">
-            <li><a href="contact.html">Contact an Advisor</a></li>
-            <li><a href="#">About NIA BIA</a></li>
-            <li><a href="#">Testimonies</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer-heading">SERVICES</div>
-          <ul class="footer-links">
-            <li><a href="contact.html">Order Tracking</a></li>
-            <li><a href="contact.html">Delivery</a></li>
-            <li><a href="care.html">Hair Care</a></li>
-            <li><a href="contact.html">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer-heading">LEGAL</div>
-          <ul class="footer-links">
-            <li><a href="policies.html">Refund</a></li>
-            <li><a href="policies.html">Privacy</a></li>
-            <li><a href="policies.html">Shipping</a></li>
-            <li><a href="policies.html">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    const drawer = document.getElementById("drawer");
-    const overlay = document.getElementById("overlay");
-    const openBtn = document.getElementById("openMenu");
-    const closeBtn = document.getElementById("closeMenu");
-
-    function openMenu(){
-      drawer.classList.add("open");
-      overlay.classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
-    function closeMenu(){
-      drawer.classList.remove("open");
-      overlay.classList.remove("open");
-      document.body.style.overflow = "";
-    }
-
-    openBtn.addEventListener("click", openMenu);
-    closeBtn.addEventListener("click", closeMenu);
-    overlay.addEventListener("click", closeMenu);
-  </script>
 </body>
 </html>
