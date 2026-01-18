@@ -10,7 +10,7 @@
       --bg:#ffffff;
       --fg:#000000;
       --line:rgba(0,0,0,.08);
-      --muted:rgba(0,0,0,.72);
+      --muted:rgba(0,0,0,.65);
     }
 
     html, body{
@@ -186,33 +186,30 @@
       opacity:.92;
     }
 
-    /* EDITORIAL PARAGRAPH */
+    /* PARAGRAPH BLOCK (white background, black text) */
     .editorial{
-      padding:28px 18px 18px;
+      background:#fff;
+      padding:28px 18px 6px;
       display:flex;
       justify-content:center;
-      background:#fff;
     }
     .editorial p{
       margin:0;
-      width:min(760px, calc(100% - 0px));
+      width:min(760px, 100%);
       font-size:14px;
-      line-height:1.75;
-      color:var(--muted);
-      letter-spacing:.01em;
+      line-height:1.8;
+      color:rgba(0,0,0,.70);
     }
 
-    /* CATALOG (text UNDER images in black) */
+    /* CATALOG (white background) */
     .catalog{
-      margin:0;
-      padding:0 0 18px;
+      padding:18px 0 0;
+      background:#fff;
     }
 
     .catalog-item{
       display:block;
       width:100%;
-      padding:0;
-      margin:0;
       background:#fff;
     }
 
@@ -224,23 +221,34 @@
       display:block;
     }
 
-    .tile-under{
-      padding:14px 18px 22px;
-      text-align:left;
+    /* Quad set fix ONLY: prevent cropping for true 4:5 */
+    #quad img{
+      object-fit:contain;
+      background:#fff;
     }
 
-    .tile-title{
-      margin:0;
-      font-size:14px;
-      font-weight:600;
-      letter-spacing:.14em;
+    .tile-label{
+      padding:14px 18px 26px;
+      background:#fff;
+    }
+
+    .tile-label .t1{
+      font-size:12px;
+      letter-spacing:.26em;
       text-transform:uppercase;
-      line-height:1.3;
+      color:rgba(0,0,0,.65);
+      margin:0 0 6px;
+    }
+
+    .tile-label .t2{
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      margin:0;
+      line-height:1.25;
       color:#000;
     }
-
-    /* remove gaps between sections */
-    .catalog-item + .catalog-item{ margin-top:0; }
 
     /* DRAWER MENU (same as index, working) */
     .drawer-overlay{
@@ -351,47 +359,41 @@
       padding-left:2px;
     }
 
-    /* FOOTER (3 sections: House / Legal / Services) */
+    /* FOOTER (approved: HOUSE OF NIA BIA / LEGAL / SERVICES) */
     .footer{
-      border-top:1px solid var(--line);
-      padding:28px 18px 64px;
       background:#fff;
+      padding:44px 18px 64px;
+      border-top:1px solid var(--line);
     }
-    .footer-wrap{
-      width:min(1120px, calc(100% - 0px));
-      margin:0 auto;
+    .footer-grid{
       display:grid;
-      grid-template-columns:1fr;
+      grid-template-columns:1fr 1fr 1fr;
       gap:28px;
+      max-width:1120px;
+      margin:0 auto;
     }
-    .footer-col h3{
+    .footer h3{
       margin:0 0 14px;
       font-size:12px;
       font-weight:700;
       letter-spacing:.18em;
       text-transform:uppercase;
     }
-    .footer-links{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .footer-links a{
+    .footer a{
+      display:block;
       font-size:12px;
       letter-spacing:.08em;
       text-transform:uppercase;
-      color:rgba(0,0,0,.78);
+      padding:10px 0;
+      color:rgba(0,0,0,.75);
     }
-    .footer-links a:hover{ text-decoration:underline; text-underline-offset:4px; }
+    .footer a:hover{
+      text-decoration:underline;
+      text-underline-offset:4px;
+    }
 
-    @media (min-width: 820px){
-      .footer-wrap{
-        grid-template-columns:repeat(3, 1fr);
-        gap:38px;
-      }
+    @media (max-width:900px){
+      .footer-grid{ grid-template-columns:1fr; }
     }
 
     @media (max-width:720px){
@@ -589,91 +591,86 @@
       </div>
     </section>
 
-    <!-- EDITORIAL PARAGRAPH (inserted correctly) -->
+    <!-- EDITORIAL PARAGRAPH (approved) -->
     <section class="editorial" aria-label="Collection editorial">
       <p>
         The NIA BIA Valentine’s Day Collection is an ode to allure, softness, and enduring beauty. Designed to move with quiet confidence, each piece embodies fluid elegance and indulgent refinement. This limited offering celebrates romance in its most elevated form—timeless, intimate, and meant to be desired.
       </p>
     </section>
 
-    <!-- 5 CLICKABLE SECTIONS (text under images in black) -->
+    <!-- 5 CLICKABLE SECTIONS (labels under image, black) -->
     <section class="catalog" aria-label="Valentine’s Day 2026 catalog">
 
       <a class="catalog-item" href="#solo" id="solo" aria-label="Valentine’s Day Collection Solo Bundle">
         <img src="vdaysolo.jpg" alt="">
-        <div class="tile-under">
-          <p class="tile-title">Valentine’s Day Collection Solo Bundle</p>
+        <div class="tile-label">
+          <p class="t1">Collection</p>
+          <p class="t2">Valentine’s Day Collection Solo Bundle</p>
         </div>
       </a>
 
       <a class="catalog-item" href="#trio" id="trio" aria-label="Valentine’s Day Collection Trio Set">
         <img src="vdaytrioset.jpg" alt="">
-        <div class="tile-under">
-          <p class="tile-title">Valentine’s Day Collection Trio Set</p>
+        <div class="tile-label">
+          <p class="t1">Collection</p>
+          <p class="t2">Valentine’s Day Collection Trio Set</p>
         </div>
       </a>
 
       <a class="catalog-item" href="#quad" id="quad" aria-label="Valentine’s Day Collection Quad Set">
         <img src="vdayquadset.jpg" alt="">
-        <div class="tile-under">
-          <p class="tile-title">Valentine’s Day Collection Quad Set</p>
+        <div class="tile-label">
+          <p class="t1">Collection</p>
+          <p class="t2">Valentine’s Day Collection Quad Set</p>
         </div>
       </a>
 
       <a class="catalog-item" href="#signature" id="signature" aria-label="Valentine’s Day Collection Signature Accessories">
         <img src="vdaysignature.jpg" alt="">
-        <div class="tile-under">
-          <p class="tile-title">Valentine’s Day Collection Signature Accessories</p>
+        <div class="tile-label">
+          <p class="t1">Collection</p>
+          <p class="t2">Valentine’s Day Collection Signature Accessories</p>
         </div>
       </a>
 
       <a class="catalog-item" href="#gift" id="gift" aria-label="Valentine’s Day Collection Gift Set">
         <img src="placeholder-gift.jpg" alt="">
-        <div class="tile-under">
-          <p class="tile-title">Valentine’s Day Collection Gift Set</p>
+        <div class="tile-label">
+          <p class="t1">Collection</p>
+          <p class="t2">Valentine’s Day Collection Gift Set</p>
         </div>
       </a>
 
     </section>
 
-    <!-- FOOTER (same as index: House / Legal / Services) -->
+    <!-- FOOTER (approved) -->
     <footer class="footer" aria-label="Footer">
-      <div class="footer-wrap">
-
-        <div class="footer-col">
+      <div class="footer-grid">
+        <div>
           <h3>House of NIA BIA</h3>
-          <ul class="footer-links">
-            <li><a href="contact.html">Client Care</a></li>
-            <li><a href="#">About NIA BIA</a></li>
-            <li><a href="#">Testimonies</a></li>
-            <li><a href="care.html">Hair Care</a></li>
-            <li><a href="contact.html">FAQ</a></li>
-          </ul>
+          <a href="#">Contact an Advisor</a>
+          <a href="#">About NIA BIA</a>
+          <a href="#">Testimonies</a>
+          <a href="care.html">Hair Care</a>
+          <a href="contact.html">FAQ</a>
         </div>
 
-        <div class="footer-col">
+        <div>
           <h3>Legal</h3>
-          <ul class="footer-links">
-            <li><a href="policies.html">Refund</a></li>
-            <li><a href="policies.html">Privacy &amp; Cookies</a></li>
-            <li><a href="policies.html">Shipping</a></li>
-            <li><a href="policies.html">Terms of Service</a></li>
-            <li><a href="policies.html">Disclaimer</a></li>
-            <li><a href="policies.html">Accessibility Statement</a></li>
-          </ul>
+          <a href="policies.html">Refund</a>
+          <a href="policies.html">Privacy</a>
+          <a href="policies.html">Shipping</a>
+          <a href="policies.html">Terms of Service</a>
         </div>
 
-        <div class="footer-col">
+        <div>
           <h3>Services</h3>
-          <ul class="footer-links">
-            <li><a href="#">Gifting</a></li>
-            <li><a href="#">Tracking</a></li>
-            <li><a href="#">Payment</a></li>
-            <li><a href="#">Account</a></li>
-            <li><a href="#">Order History</a></li>
-          </ul>
+          <a href="contact.html">Gifting</a>
+          <a href="contact.html">Tracking</a>
+          <a href="contact.html">Payment</a>
+          <a href="contact.html">Account</a>
+          <a href="contact.html">Order History</a>
         </div>
-
       </div>
     </footer>
   </main>
