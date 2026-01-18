@@ -24,8 +24,9 @@
     }
 
     a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:4px; }
 
-    /* LOCKED HEADER (matches index) */
+    /* LOCKED HEADER (matches index behavior) */
     .brand-top{
       position:fixed;
       top:0; left:0; right:0;
@@ -186,64 +187,101 @@
       opacity:.92;
     }
 
-    /* NEW: EDITORIAL PARAGRAPH (white background, black text) */
+    /* PARAGRAPH SECTION (white bg, black text) */
     .editorial{
       background:#fff;
-      padding:34px 18px 10px;
+      padding:26px 18px 12px;
     }
     .editorial p{
       margin:0 auto;
-      width:min(760px, calc(100% - 0px));
+      max-width:820px;
+      color:var(--muted);
       font-size:14px;
       line-height:1.75;
-      color:var(--muted);
       letter-spacing:.01em;
     }
 
-    /* CATALOG TILES (center-bottom overlay text) */
+    /* CATALOG GRID (image + black text under) */
     .catalog{
-      margin:0;
-      padding:0;
+      background:#fff;
+      padding:10px 0 0;
     }
 
-    .catalog-item{
-      position:relative;
+    .catalog-grid{
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      gap:18px;
+      padding:18px;
+      max-width:1400px;
+      margin:0 auto;
+    }
+
+    .product{
       display:block;
-      width:100%;
-      overflow:hidden;
     }
 
-    .catalog-item img{
+    .product img{
       width:100%;
-      height:44vh;
-      min-height:360px;
+      aspect-ratio:4/5;
       object-fit:cover;
       display:block;
     }
 
-    .tile-overlay{
-      position:absolute;
-      left:50%;
-      bottom:18px;
-      transform:translateX(-50%);
-      text-align:center;
-      color:#fff;
-      width:calc(100% - 40px);
-      text-shadow:0 1px 12px rgba(0,0,0,.25);
+    .product-meta{
+      padding-top:10px;
+      text-align:left;
     }
 
-    .tile-title{
-      font-size:14px;
+    .product-title{
+      margin:0;
+      font-size:12px;
       font-weight:700;
-      letter-spacing:.14em;
+      letter-spacing:.16em;
       text-transform:uppercase;
-      line-height:1.25;
+      line-height:1.35;
+      color:#000;
     }
 
-    /* remove gaps between sections */
-    .catalog-item + .catalog-item{ margin-top:0; }
+    /* FOOTER (3 headings: House / Legal / Services) */
+    .footer{
+      padding:54px 18px 64px;
+      border-top:1px solid var(--line);
+      background:#fff;
+    }
 
-    /* DRAWER MENU (same as index, working) */
+    .footer-grid{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:34px;
+    }
+
+    .footer-heading{
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin:0 0 16px;
+      font-size:12px;
+    }
+
+    .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .footer-links a{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:rgba(0,0,0,.72);
+    }
+
+    /* DRAWER MENU (same mechanics as index) */
     .drawer-overlay{
       position:fixed;
       inset:0;
@@ -352,6 +390,10 @@
       padding-left:2px;
     }
 
+    /* Responsive */
+    @media (max-width:1100px){
+      .catalog-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width:720px){
       .brand-top{ height:60px; }
       .left-icons, .right-icons{ height:60px; }
@@ -360,11 +402,9 @@
       .hero img{ height:66vh; min-height:460px; }
       .hero-title{ font-size:24px; }
 
-      .catalog-item img{ height:40vh; min-height:320px; }
+      .catalog-grid{ grid-template-columns:1fr; gap:22px; }
+      .footer-grid{ grid-template-columns:1fr; gap:26px; }
       .drawer-top{ height:60px; }
-
-      .editorial{ padding:28px 18px 8px; }
-      .editorial p{ font-size:14px; }
     }
   </style>
 </head>
@@ -373,7 +413,7 @@
   <!-- HEADER -->
   <header class="brand-top">
     <div class="left-icons">
-      <!-- Menu (WORKING) -->
+      <!-- Menu -->
       <button class="icon-btn" aria-label="Menu" type="button" id="openMenu">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3 6h18" />
@@ -483,58 +523,6 @@
           </div>
         </details>
       </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>Heritage Accessories
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="#">Coming Soon</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>High Accessories
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="#">Coming Soon</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>Client Services
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="contact.html">Order Tracking</a>
-            <a href="contact.html">Delivery</a>
-            <a href="policies.html">Returns</a>
-            <a href="care.html">Hair Care</a>
-            <a href="contact.html">FAQ</a>
-          </div>
-        </details>
-      </div>
-
-      <div class="menu-section">
-        <details class="menu-item">
-          <summary>House of NIA BIA
-            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </summary>
-          <div class="submenu">
-            <a href="#">The House</a>
-            <a href="#">Heritage</a>
-            <a href="#">Craftsmanship</a>
-            <a href="#">Care Philosophy</a>
-            <a href="#">Client Commitment</a>
-          </div>
-        </details>
-      </div>
     </div>
   </aside>
 
@@ -550,50 +538,91 @@
       </div>
     </section>
 
-    <!-- INSERTED PARAGRAPH (approved) -->
-    <section class="editorial" aria-label="Collection editorial">
+    <!-- EDITORIAL PARAGRAPH (inserted, white bg, black text) -->
+    <section class="editorial" aria-label="Collection statement">
       <p>
         The NIA BIA Valentine’s Day Collection is an ode to allure, softness, and enduring beauty. Designed to move with quiet confidence, each piece embodies fluid elegance and indulgent refinement. This limited offering celebrates romance in its most elevated form—timeless, intimate, and meant to be desired.
       </p>
     </section>
 
-    <!-- 5 CLICKABLE SECTIONS -->
+    <!-- 5 CLICKABLE SECTIONS (image + black text under) -->
     <section class="catalog" aria-label="Valentine’s Day 2026 catalog">
-      <a class="catalog-item" href="#solo" id="solo" aria-label="Valentine’s Day Collection Solo Bundle">
-        <img src="placeholder-solo.jpg" alt="">
-        <div class="tile-overlay">
-          <div class="tile-title">Valentine’s Day Collection Solo Bundle</div>
-        </div>
-      </a>
+      <div class="catalog-grid">
+        <a class="product" href="#solo" id="solo" aria-label="Valentine’s Day Collection Solo Bundle">
+          <img src="placeholder-solo.jpg" alt="">
+          <div class="product-meta">
+            <p class="product-title">Valentine’s Day Collection Solo Bundle</p>
+          </div>
+        </a>
 
-      <a class="catalog-item" href="#trio" id="trio" aria-label="Valentine’s Day Collection Trio Set">
-        <img src="vdaytrioset.jpg" alt="">
-        <div class="tile-overlay">
-          <div class="tile-title">Valentine’s Day Collection Trio Set</div>
-        </div>
-      </a>
+        <a class="product" href="#trio" id="trio" aria-label="Valentine’s Day Collection Trio Set">
+          <img src="vdaytrioset.jpg" alt="">
+          <div class="product-meta">
+            <p class="product-title">Valentine’s Day Collection Trio Set</p>
+          </div>
+        </a>
 
-      <a class="catalog-item" href="#quad" id="quad" aria-label="Valentine’s Day Collection Quad Set">
-        <img src="vdayquadset.jpg" alt="">
-        <div class="tile-overlay">
-          <div class="tile-title">Valentine’s Day Collection Quad Set</div>
-        </div>
-      </a>
+        <a class="product" href="#quad" id="quad" aria-label="Valentine’s Day Collection Quad Set">
+          <img src="vdayquadset.jpg" alt="">
+          <div class="product-meta">
+            <p class="product-title">Valentine’s Day Collection Quad Set</p>
+          </div>
+        </a>
 
-      <a class="catalog-item" href="#signature" id="signature" aria-label="Valentine’s Day Collection Signature Accessories">
-        <img src="placeholder-signature.jpg" alt="">
-        <div class="tile-overlay">
-          <div class="tile-title">Valentine’s Day Collection Signature Accessories</div>
-        </div>
-      </a>
+        <a class="product" href="#signature" id="signature" aria-label="Valentine’s Day Collection Signature Accessories">
+          <img src="placeholder-signature.jpg" alt="">
+          <div class="product-meta">
+            <p class="product-title">Valentine’s Day Collection Signature Accessories</p>
+          </div>
+        </a>
 
-      <a class="catalog-item" href="#gift" id="gift" aria-label="Valentine’s Day Collection Gift Set">
-        <img src="placeholder-gift.jpg" alt="">
-        <div class="tile-overlay">
-          <div class="tile-title">Valentine’s Day Collection Gift Set</div>
-        </div>
-      </a>
+        <a class="product" href="#gift" id="gift" aria-label="Valentine’s Day Collection Gift Set">
+          <img src="placeholder-gift.jpg" alt="">
+          <div class="product-meta">
+            <p class="product-title">Valentine’s Day Collection Gift Set</p>
+          </div>
+        </a>
+      </div>
     </section>
+
+    <!-- FOOTER (approved 3-section structure) -->
+    <footer class="footer" aria-label="Footer">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-heading">HOUSE OF NIA BIA</p>
+          <ul class="footer-links">
+            <li><a href="contact.html">Client Care</a></li>
+            <li><a href="#">About NIA BIA</a></li>
+            <li><a href="#">Testimonies</a></li>
+            <li><a href="care.html">Hair Care</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">LEGAL</p>
+          <ul class="footer-links">
+            <li><a href="policies.html">Refund</a></li>
+            <li><a href="policies.html">Privacy &amp; Cookies</a></li>
+            <li><a href="policies.html">Shipping</a></li>
+            <li><a href="policies.html">Terms of Service</a></li>
+            <li><a href="policies.html">Disclaimer</a></li>
+            <li><a href="policies.html">Accessibility Statement</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-heading">SERVICES</p>
+          <ul class="footer-links">
+            <li><a href="#">Gifting</a></li>
+            <li><a href="#">Tracking</a></li>
+            <li><a href="#">Payment</a></li>
+            <li><a href="#">Account</a></li>
+            <li><a href="#">Order History</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </main>
 
   <script>
