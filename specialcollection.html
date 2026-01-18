@@ -9,8 +9,8 @@
     :root{
       --bg:#ffffff;
       --fg:#000000;
+      --muted:rgba(0,0,0,.70);
       --line:rgba(0,0,0,.08);
-      --muted:rgba(0,0,0,.65);
     }
 
     html, body{
@@ -127,7 +127,7 @@
 
     .page{ padding-top:64px; }
 
-    /* HERO (NOT CLICKABLE) — unchanged */
+    /* HERO (NOT CLICKABLE) */
     .hero{
       position:relative;
       width:100%;
@@ -186,109 +186,64 @@
       opacity:.92;
     }
 
-    /* EDITORIAL PARAGRAPH (between hero and first tile) */
+    /* NEW: EDITORIAL PARAGRAPH (white background, black text) */
     .editorial{
       background:#fff;
-      padding:34px 18px 30px;
+      padding:34px 18px 10px;
     }
-    .editorial .copy{
-      max-width:760px;
+    .editorial p{
       margin:0 auto;
+      width:min(760px, calc(100% - 0px));
       font-size:14px;
       line-height:1.75;
       color:var(--muted);
       letter-spacing:.01em;
     }
 
-    /* PRODUCT GRID (LV-style: image + black text under) */
+    /* CATALOG TILES (center-bottom overlay text) */
     .catalog{
-      background:#fff;
-      padding:10px 18px 0;
-    }
-
-    .grid{
-      max-width:1120px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:28px 20px;
-      padding:18px 0 0;
-    }
-
-    .product{
-      display:block;
-    }
-
-    .product img{
-      width:100%;
-      display:block;
-      object-fit:cover;
-      aspect-ratio:4/5;
-      background:#fff;
-    }
-
-    .product-meta{
-      padding:14px 2px 0;
-      text-align:left;
-      color:#000;
-    }
-
-    .product-meta .t1{
-      margin:0 0 8px;
-      font-size:13px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-weight:600;
-      line-height:1.35;
-    }
-
-    /* FOOTER (approved: 3 headings + links) */
-    .footer{
-      background:#fff;
-      padding:56px 18px 64px;
-      border-top:1px solid var(--line);
-      margin-top:44px;
-    }
-
-    .footer-inner{
-      max-width:1120px;
-      margin:0 auto;
-      display:flex;
-      flex-direction:column;
-      gap:40px;
-    }
-
-    .footer-col{ min-width:0; }
-
-    .footer-heading{
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      font-size:12px;
-      margin:0 0 16px;
-    }
-
-    .footer-links{
-      list-style:none;
-      padding:0;
       margin:0;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
+      padding:0;
     }
 
-    .footer-links a{
-      font-size:12px;
-      letter-spacing:.10em;
+    .catalog-item{
+      position:relative;
+      display:block;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .catalog-item img{
+      width:100%;
+      height:44vh;
+      min-height:360px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .tile-overlay{
+      position:absolute;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      text-align:center;
+      color:#fff;
+      width:calc(100% - 40px);
+      text-shadow:0 1px 12px rgba(0,0,0,.25);
+    }
+
+    .tile-title{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.14em;
       text-transform:uppercase;
-      color:rgba(0,0,0,.75);
-    }
-    .footer-links a:hover{
-      text-decoration:underline;
-      text-underline-offset:4px;
+      line-height:1.25;
     }
 
-    /* DRAWER MENU (same as index, working) — unchanged */
+    /* remove gaps between sections */
+    .catalog-item + .catalog-item{ margin-top:0; }
+
+    /* DRAWER MENU (same as index, working) */
     .drawer-overlay{
       position:fixed;
       inset:0;
@@ -405,27 +360,11 @@
       .hero img{ height:66vh; min-height:460px; }
       .hero-title{ font-size:24px; }
 
-      .editorial{ padding:30px 18px 26px; }
-
-      .grid{
-        grid-template-columns:1fr;
-        gap:22px;
-      }
-
+      .catalog-item img{ height:40vh; min-height:320px; }
       .drawer-top{ height:60px; }
-    }
 
-    /* iPad + Desktop footer: horizontal 3 columns */
-    @media (min-width:768px){
-      .footer-inner{
-        flex-direction:row;
-        align-items:flex-start;
-        justify-content:space-between;
-        gap:36px;
-      }
-      .footer-col{
-        flex:1 1 0;
-      }
+      .editorial{ padding:28px 18px 8px; }
+      .editorial p{ font-size:14px; }
     }
   </style>
 </head>
@@ -611,86 +550,50 @@
       </div>
     </section>
 
-    <!-- INSERT PARAGRAPH HERE (approved) -->
-
-    <!-- 5 CLICKABLE SECTIONS (must be image + black text UNDER image) -->
-    <section class="catalog" aria-label="Valentine’s Day 2026 catalog">
-      <div class="grid">
-        <a class="product" href="#solo" id="solo" aria-label="Valentine’s Day Collection Solo Bundle">
-          <img src="placeholder-solo.jpg" alt="">
-          <div class="product-meta">
-            <p class="t1">Valentine’s Day Collection Solo Bundle</p>
-          </div>
-        </a>
-
-        <a class="product" href="#trio" id="trio" aria-label="Valentine’s Day Collection Trio Set">
-          <img src="vdaytrioset.jpg" alt="">
-          <div class="product-meta">
-            <p class="t1">Valentine’s Day Collection Trio Set</p>
-          </div>
-        </a>
-
-        <a class="product" href="#quad" id="quad" aria-label="Valentine’s Day Collection Quad Set">
-          <img src="placeholder-quad.jpg" alt="">
-          <div class="product-meta">
-            <p class="t1">Valentine’s Day Collection Quad Set</p>
-          </div>
-        </a>
-
-        <a class="product" href="#signature" id="signature" aria-label="Valentine’s Day Collection Signature Accessories">
-          <img src="placeholder-signature.jpg" alt="">
-          <div class="product-meta">
-            <p class="t1">Valentine’s Day Collection Signature Accessories</p>
-          </div>
-        </a>
-
-        <a class="product" href="#gift" id="gift" aria-label="Valentine’s Day Collection Gift Set">
-          <img src="placeholder-gift.jpg" alt="">
-          <div class="product-meta">
-            <p class="t1">Valentine’s Day Collection Gift Set</p>
-          </div>
-        </a>
-      </div>
+    <!-- INSERTED PARAGRAPH (approved) -->
+    <section class="editorial" aria-label="Collection editorial">
+      <p>
+        The NIA BIA Valentine’s Day Collection is an ode to allure, softness, and enduring beauty. Designed to move with quiet confidence, each piece embodies fluid elegance and indulgent refinement. This limited offering celebrates romance in its most elevated form—timeless, intimate, and meant to be desired.
+      </p>
     </section>
 
-    <!-- FOOTER (approved) -->
-    <footer class="footer" aria-label="Footer">
-      <div class="footer-inner">
-        <div class="footer-col">
-          <h2 class="footer-heading">HOUSE OF NIA BIA</h2>
-          <ul class="footer-links">
-            <li><a href="contact.html">Client Care</a></li>
-            <li><a href="#">About NIA BIA</a></li>
-            <li><a href="#">Testimonies</a></li>
-            <li><a href="care.html">Hair Care</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
+    <!-- 5 CLICKABLE SECTIONS -->
+    <section class="catalog" aria-label="Valentine’s Day 2026 catalog">
+      <a class="catalog-item" href="#solo" id="solo" aria-label="Valentine’s Day Collection Solo Bundle">
+        <img src="placeholder-solo.jpg" alt="">
+        <div class="tile-overlay">
+          <div class="tile-title">Valentine’s Day Collection Solo Bundle</div>
         </div>
+      </a>
 
-        <div class="footer-col">
-          <h2 class="footer-heading">LEGAL</h2>
-          <ul class="footer-links">
-            <li><a href="policies.html">Refund</a></li>
-            <li><a href="policies.html">Privacy &amp; Cookies</a></li>
-            <li><a href="policies.html">Shipping</a></li>
-            <li><a href="policies.html">Terms of Service</a></li>
-            <li><a href="policies.html">Disclaimer</a></li>
-            <li><a href="policies.html">Accessibility Statement</a></li>
-          </ul>
+      <a class="catalog-item" href="#trio" id="trio" aria-label="Valentine’s Day Collection Trio Set">
+        <img src="vdaytrioset.jpg" alt="">
+        <div class="tile-overlay">
+          <div class="tile-title">Valentine’s Day Collection Trio Set</div>
         </div>
+      </a>
 
-        <div class="footer-col">
-          <h2 class="footer-heading">SERVICES</h2>
-          <ul class="footer-links">
-            <li><a href="#">Gifting</a></li>
-            <li><a href="#">Tracking</a></li>
-            <li><a href="#">Payment</a></li>
-            <li><a href="#">Account</a></li>
-            <li><a href="#">Order History</a></li>
-          </ul>
+      <a class="catalog-item" href="#quad" id="quad" aria-label="Valentine’s Day Collection Quad Set">
+        <img src="vdayquadset.jpg" alt="">
+        <div class="tile-overlay">
+          <div class="tile-title">Valentine’s Day Collection Quad Set</div>
         </div>
-      </div>
-    </footer>
+      </a>
+
+      <a class="catalog-item" href="#signature" id="signature" aria-label="Valentine’s Day Collection Signature Accessories">
+        <img src="placeholder-signature.jpg" alt="">
+        <div class="tile-overlay">
+          <div class="tile-title">Valentine’s Day Collection Signature Accessories</div>
+        </div>
+      </a>
+
+      <a class="catalog-item" href="#gift" id="gift" aria-label="Valentine’s Day Collection Gift Set">
+        <img src="placeholder-gift.jpg" alt="">
+        <div class="tile-overlay">
+          <div class="tile-title">Valentine’s Day Collection Gift Set</div>
+        </div>
+      </a>
+    </section>
   </main>
 
   <script>
