@@ -17,7 +17,105 @@
 
     a{ color:inherit; text-decoration:none; }
 
-    .page{ width:100%; }
+    /* LOCKED HEADER (same behavior as index.html) */
+    .brand-top{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:1000;
+      background:#fff;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .brand-top .brand{
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+    }
+
+    .brand-top .right-icons{
+      position:absolute;
+      right:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .icon-btn{
+      width:28px;
+      height:28px;
+      border:0;
+      background:transparent;
+      padding:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .icon{
+      width:22px;
+      height:22px;
+      stroke:#000;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-width:1.6;
+    }
+
+    /* Shopping bag icon (same as index.html) */
+    .bag-icon{
+      width:22px;
+      height:22px;
+      position:relative;
+      display:block;
+
+      background-image:
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000);
+      background-repeat:no-repeat;
+      background-size: 18px 2px, 2px 5px, 2px 5px;
+      background-position: 2px 9px, 6px 9px, 16px 9px;
+    }
+
+    .bag-icon::before{
+      content:"";
+      position:absolute;
+      left:4px;
+      right:4px;
+      top:2px;
+      height:11px;
+      border:2px solid #000;
+      border-bottom:0;
+      border-radius:999px 999px 0 0;
+      box-sizing:border-box;
+    }
+
+    .bag-icon::after{
+      content:"";
+      position:absolute;
+      left:2px;
+      right:2px;
+      top:9px;
+      bottom:2px;
+      border:2px solid #000;
+      border-radius:3px;
+      box-sizing:border-box;
+    }
+
+    /* page content sits below locked header */
+    .page{
+      width:100%;
+      padding-top:64px;
+    }
 
     /* HERO IMAGE */
     .hero-img{
@@ -123,12 +221,36 @@
     }
 
     @media (max-width:720px){
+      .brand-top{ height:60px; }
+      .brand-top .right-icons{ height:60px; }
+      .page{ padding-top:60px; }
       .tile-title{ font-size:16px; }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- HEADER -->
+  <header class="brand-top">
+    <div class="brand">NIA BIA</div>
+
+    <div class="right-icons">
+      <!-- Profile -->
+      <button class="icon-btn" aria-label="Profile" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
+        </svg>
+      </button>
+
+      <!-- Shopping bag -->
+      <button class="icon-btn" aria-label="Shopping bag" type="button">
+        <span class="bag-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
   <main class="page">
 
     <!-- HERO -->
@@ -145,7 +267,7 @@
     <!-- TILES -->
     <section class="sections">
 
-      <a class="tile" href="vday-solo.html">
+      <a class="tile" href="vday-solo.html" aria-label="Solo Bundle">
         <div class="tile-media">
           <div class="tile-text">
             <p class="tile-title">Solo Bundle</p>
@@ -153,7 +275,7 @@
         </div>
       </a>
 
-      <a class="tile" href="vday-trio.html">
+      <a class="tile" href="vday-trio.html" aria-label="Trio Set">
         <div class="tile-media">
           <div class="tile-text">
             <p class="tile-title">Trio Set</p>
@@ -161,7 +283,7 @@
         </div>
       </a>
 
-      <a class="tile" href="vday-quad.html">
+      <a class="tile" href="vday-quad.html" aria-label="Quad Set">
         <div class="tile-media">
           <div class="tile-text">
             <p class="tile-title">Quad Set</p>
@@ -169,7 +291,7 @@
         </div>
       </a>
 
-      <a class="tile" href="vday-accessories.html">
+      <a class="tile" href="vday-accessories.html" aria-label="Signature Accessories">
         <div class="tile-media">
           <div class="tile-text">
             <p class="tile-title">Signature Accessories</p>
@@ -177,7 +299,7 @@
         </div>
       </a>
 
-      <a class="tile" href="vday-giftset.html">
+      <a class="tile" href="vday-giftset.html" aria-label="Gift Set">
         <div class="tile-media">
           <div class="tile-text">
             <p class="tile-title">Gift Set</p>
@@ -187,5 +309,6 @@
 
     </section>
   </main>
+
 </body>
 </html>
