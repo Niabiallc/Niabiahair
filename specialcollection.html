@@ -10,195 +10,177 @@
       margin:0;
       padding:0;
       width:100%;
-      max-width:100%;
       overflow-x:hidden;
       background:#fff;
-      color:#000;
       font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     }
 
-    /* full-width, no side borders */
-    .page{ width:100%; max-width:100%; }
+    a{ color:inherit; text-decoration:none; }
 
-    /* hero image (not clickable) */
+    .page{ width:100%; }
+
+    /* HERO IMAGE */
     .hero-img{
       width:100%;
       height:auto;
       display:block;
     }
 
-    /* text block under hero */
+    /* META TEXT */
     .meta{
-      padding:16px 16px 10px;
+      padding:18px 16px 12px;
       text-align:center;
     }
+
     .meta .house{
-      margin:0 0 10px;
       font-size:12px;
       letter-spacing:.26em;
       text-transform:uppercase;
       font-weight:700;
+      margin:0 0 10px;
     }
+
     .meta .season{
-      margin:0 0 6px;
       font-size:14px;
       letter-spacing:.16em;
       text-transform:uppercase;
       font-weight:700;
+      margin:0 0 6px;
     }
+
     .meta .type{
-      margin:0 0 10px;
       font-size:12px;
       letter-spacing:.22em;
       text-transform:uppercase;
       font-weight:700;
+      margin:0 0 10px;
       opacity:.9;
     }
-    .meta .location{
-      margin:0;
+
+    .meta .brand{
       font-size:11px;
       letter-spacing:.22em;
       text-transform:uppercase;
       font-weight:700;
       opacity:.85;
+      margin:0;
     }
 
-    /* clickable image sections (no borders) */
-    .sections{ padding:10px 0 40px; }
+    /* TILE SECTIONS — NO BORDERS */
+    .sections{
+      margin:0;
+      padding:0;
+    }
 
     .tile{
       display:block;
       width:100%;
-      text-decoration:none;
-      color:inherit;
     }
 
     .tile-media{
       position:relative;
       width:100%;
       aspect-ratio:16/10;
-      overflow:hidden;
       background:#f2f2f2;
+      overflow:hidden;
     }
 
-    /* placeholder pattern + subtle overlay */
+    /* IMAGE PLACEHOLDER */
     .tile-media::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.18)),
+        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.22)),
         repeating-linear-gradient(
           135deg,
-          rgba(0,0,0,.06) 0px,
-          rgba(0,0,0,.06) 18px,
+          rgba(0,0,0,.05) 0px,
+          rgba(0,0,0,.05) 18px,
           rgba(0,0,0,.03) 18px,
           rgba(0,0,0,.03) 36px
         );
     }
 
-    /* overlay text ON image */
+    /* TEXT ON IMAGE */
     .tile-text{
       position:absolute;
       left:50%;
-      bottom:16px;
+      bottom:18px;
       transform:translateX(-50%);
       text-align:center;
       color:#fff;
-      width:min(680px, calc(100% - 28px));
+      width:calc(100% - 32px);
       pointer-events:none;
     }
 
-    .tile-kicker{
-      margin:0 0 8px;
-      font-size:12px;
-      letter-spacing:.24em;
-      text-transform:uppercase;
-      font-weight:700;
-      opacity:.9;
-    }
-
     .tile-title{
-      margin:0;
       font-size:18px;
       letter-spacing:.12em;
       text-transform:uppercase;
       font-weight:700;
       line-height:1.1;
+      margin:0;
     }
 
-    /* spacing only (no borders) */
-    .spacer{ height:16px; }
-
     @media (max-width:720px){
-      .tile-media{ aspect-ratio:16/11; }
       .tile-title{ font-size:16px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="page" aria-label="Valentine’s Day 2026 sandbox">
+  <main class="page">
+
+    <!-- HERO -->
     <img class="hero-img" src="valentines2026.jpg" alt="Valentine’s Day 2026">
 
-    <section class="meta" aria-label="Collection details">
+    <!-- META -->
+    <section class="meta">
       <p class="house">Haute Couture Hair</p>
       <p class="season">Valentine’s Day 2026</p>
       <p class="type">Collection</p>
-      <p class="location">NIA BIA</p>
+      <p class="brand">NIA BIA</p>
     </section>
 
-    <section class="sections" aria-label="Valentine’s Day collection categories">
+    <!-- TILES -->
+    <section class="sections">
 
-      <a class="tile" href="vday-solo.html" aria-label="Valentine’s Day Collection Solo Bundle">
+      <a class="tile" href="vday-solo.html">
         <div class="tile-media">
           <div class="tile-text">
-            <p class="tile-kicker">Collection</p>
-            <p class="tile-title">Valentine’s Day Collection Solo Bundle</p>
+            <p class="tile-title">Solo Bundle</p>
           </div>
         </div>
       </a>
 
-      <div class="spacer" aria-hidden="true"></div>
-
-      <a class="tile" href="vday-trio.html" aria-label="Valentine’s Day Collection Trio Set">
+      <a class="tile" href="vday-trio.html">
         <div class="tile-media">
           <div class="tile-text">
-            <p class="tile-kicker">Collection</p>
-            <p class="tile-title">Valentine’s Day Collection Trio Set</p>
+            <p class="tile-title">Trio Set</p>
           </div>
         </div>
       </a>
 
-      <div class="spacer" aria-hidden="true"></div>
-
-      <a class="tile" href="vday-quad.html" aria-label="Valentine’s Day Collection Quad Set">
+      <a class="tile" href="vday-quad.html">
         <div class="tile-media">
           <div class="tile-text">
-            <p class="tile-kicker">Collection</p>
-            <p class="tile-title">Valentine’s Day Collection Quad Set</p>
+            <p class="tile-title">Quad Set</p>
           </div>
         </div>
       </a>
 
-      <div class="spacer" aria-hidden="true"></div>
-
-      <a class="tile" href="vday-accessories.html" aria-label="Valentine’s Day Collection Signature Accessories">
+      <a class="tile" href="vday-accessories.html">
         <div class="tile-media">
           <div class="tile-text">
-            <p class="tile-kicker">Collection</p>
-            <p class="tile-title">Valentine’s Day Collection Signature Accessories</p>
+            <p class="tile-title">Signature Accessories</p>
           </div>
         </div>
       </a>
 
-      <div class="spacer" aria-hidden="true"></div>
-
-      <a class="tile" href="vday-giftset.html" aria-label="Valentine’s Day Collection Gift Set">
+      <a class="tile" href="vday-giftset.html">
         <div class="tile-media">
           <div class="tile-text">
-            <p class="tile-kicker">Collection</p>
-            <p class="tile-title">Valentine’s Day Collection Gift Set</p>
+            <p class="tile-title">Gift Set</p>
           </div>
         </div>
       </a>
