@@ -7,22 +7,22 @@
 
   <style>
     html, body{
+      width:100%;
       margin:0;
       padding:0;
-      width:100%;
       overflow-x:hidden;
       background:#fff;
       font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      color:#000;
     }
 
     a{ color:inherit; text-decoration:none; }
+    img{ display:block; max-width:100%; height:auto; }
 
-    /* LOCKED HEADER */
+    /* LOCKED HEADER (matches your index aesthetic) */
     .brand-top{
       position:fixed;
-      top:0;
-      left:0;
-      right:0;
+      top:0; left:0; right:0;
       z-index:1000;
       background:#fff;
       height:64px;
@@ -31,12 +31,22 @@
       justify-content:center;
     }
 
-    .brand-top .brand{
+    .left-icons{
+      position:absolute;
+      left:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .brand-top .brand a{
       font-size:18px;
       font-weight:700;
       letter-spacing:.32em;
       text-transform:uppercase;
-      cursor:pointer;
+      display:inline-block;
     }
 
     .brand-top .right-icons{
@@ -71,7 +81,18 @@
       stroke-width:1.6;
     }
 
-    /* SHOPPING BAG ICON */
+    /* Search icon (icon only) */
+    .search-icon{
+      width:22px;
+      height:22px;
+      stroke:#000;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-width:1.6;
+    }
+
+    /* EXACT SHOPPING BAG ICON (your approved bag) */
     .bag-icon{
       width:22px;
       height:22px;
@@ -85,7 +106,6 @@
       background-size: 18px 2px, 2px 5px, 2px 5px;
       background-position: 2px 9px, 6px 9px, 16px 9px;
     }
-
     .bag-icon::before{
       content:"";
       position:absolute;
@@ -98,7 +118,6 @@
       border-radius:999px 999px 0 0;
       box-sizing:border-box;
     }
-
     .bag-icon::after{
       content:"";
       position:absolute;
@@ -111,124 +130,133 @@
       box-sizing:border-box;
     }
 
-    .page{
-      width:100%;
-      padding-top:64px;
-    }
+    .page{ padding-top:64px; }
 
-    /* HERO IMAGE */
-    .hero-img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-    /* META */
-    .meta{
-      padding:18px 16px 12px;
-      text-align:center;
-    }
-
-    .meta .house{
-      font-size:12px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      font-weight:700;
-      margin:0 0 10px;
-    }
-
-    .meta .season{
-      font-size:14px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-weight:700;
-      margin:0 0 6px;
-    }
-
-    .meta .type{
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      font-weight:700;
-      margin:0 0 10px;
-      opacity:.9;
-    }
-
-    .meta .brand{
-      font-size:11px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      font-weight:700;
-      opacity:.85;
-      margin:0;
-    }
-
-    /* TILES */
-    .sections{ margin:0; padding:0; }
-
-    .tile{
-      display:block;
-      width:100%;
-    }
-
-    .tile-media{
+    /* Hero image section */
+    .hero{
       position:relative;
       width:100%;
-      aspect-ratio:16/10;
-      background:#f2f2f2;
-      overflow:hidden;
     }
-
-    .tile-media::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.22)),
-        repeating-linear-gradient(
-          135deg,
-          rgba(0,0,0,.05) 0px,
-          rgba(0,0,0,.05) 18px,
-          rgba(0,0,0,.03) 18px,
-          rgba(0,0,0,.03) 36px
-        );
+    .hero img{
+      width:100%;
+      height:72vh;
+      min-height:520px;
+      object-fit:cover;
     }
-
-    .tile-text{
+    .hero-overlay{
       position:absolute;
       left:50%;
-      bottom:18px;
+      bottom:26px;
       transform:translateX(-50%);
       text-align:center;
       color:#fff;
-      width:calc(100% - 32px);
-      pointer-events:none;
+      width:min(780px, calc(100% - 36px));
+    }
+    .hero-brand{
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      margin:0 0 10px;
+    }
+    .hero-line{
+      font-size:12px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      margin:0 0 10px;
+      opacity:.92;
+    }
+    .hero-title{
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      margin:0 0 6px;
+      line-height:1.05;
+    }
+    .hero-sub{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin:0;
+      opacity:.95;
     }
 
-    .tile-title{
-      font-size:18px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      font-weight:700;
-      margin:0;
+    /* Catalog list like your Chanel reference */
+    .catalog{
+      padding:24px 0 44px;
     }
+
+    .catalog-item{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+    }
+
+    .catalog-item img{
+      width:100%;
+      height:44vh;
+      min-height:360px;
+      object-fit:cover;
+    }
+
+    .catalog-label{
+      position:absolute;
+      left:20px;
+      top:18px;
+      color:#fff;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      text-shadow: 0 1px 10px rgba(0,0,0,.35);
+    }
+
+    /* remove any gaps between sections */
+    .catalog, .catalog-item{ margin:0; }
+    .catalog-item + .catalog-item{ margin-top:0; }
 
     @media (max-width:720px){
       .brand-top{ height:60px; }
-      .brand-top .right-icons{ height:60px; }
+      .left-icons, .brand-top .right-icons{ height:60px; }
       .page{ padding-top:60px; }
-      .tile-title{ font-size:16px; }
+
+      .hero img{ height:66vh; min-height:460px; }
+      .hero-title{ font-size:24px; }
+      .hero-brand{ font-size:16px; }
+
+      .catalog-item img{ height:40vh; min-height:320px; }
     }
   </style>
 </head>
 
 <body>
-
   <!-- HEADER -->
   <header class="brand-top">
-    <a href="index.html" class="brand" aria-label="Return to homepage">NIA BIA</a>
+    <div class="left-icons">
+      <!-- Menu icon (visual only here) -->
+      <button class="icon-btn" aria-label="Menu" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 6h16" />
+          <path d="M4 12h16" />
+          <path d="M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Search icon (icon only) -->
+      <button class="icon-btn" aria-label="Search" type="button">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M20 20l-4.2-4.2"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="brand"><a href="index.html" aria-label="Back to home">NIA BIA</a></div>
 
     <div class="right-icons">
+      <!-- Profile -->
       <button class="icon-btn" aria-label="Profile" type="button">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="8" r="4" />
@@ -236,6 +264,7 @@
         </svg>
       </button>
 
+      <!-- Shopping bag -->
       <button class="icon-btn" aria-label="Shopping bag" type="button">
         <span class="bag-icon" aria-hidden="true"></span>
       </button>
@@ -244,23 +273,51 @@
 
   <main class="page">
 
-    <img class="hero-img" src="valentines2026.jpg" alt="Valentine’s Day 2026">
-
-    <section class="meta">
-      <p class="house">Haute Couture Hair</p>
-      <p class="season">Valentine’s Day 2026</p>
-      <p class="type">Collection</p>
-      <p class="brand">NIA BIA</p>
+    <!-- HERO (not clickable image) -->
+    <section class="hero" aria-label="Valentine’s Day 2026 hero">
+      <img src="valentines2026.jpg" alt="">
+      <div class="hero-overlay">
+        <p class="hero-brand">NIA BIA</p>
+        <p class="hero-line">HAUTE COUTURE HAIR</p>
+        <h1 class="hero-title">Valentine’s Day 2026</h1>
+        <p class="hero-sub">COLLECTION</p>
+      </div>
     </section>
 
-    <section class="sections">
-      <a class="tile" href="vday-solo.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Solo Bundle</p></div></div></a>
-      <a class="tile" href="vday-trio.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Trio Set</p></div></div></a>
-      <a class="tile" href="vday-quad.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Quad Set</p></div></div></a>
-      <a class="tile" href="vday-accessories.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Signature Accessories</p></div></div></a>
-      <a class="tile" href="vday-giftset.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Gift Set</p></div></div></a>
-    </section>
+    <!-- CLICKABLE SECTIONS (each has image + words on image) -->
+    <section class="catalog" aria-label="Valentine’s Day 2026 catalog">
 
+      <!-- 1) Solo Bundle -->
+      <a class="catalog-item" href="#" aria-label="Valentine’s Day Collection Solo Bundle">
+        <img src="placeholder-solo.jpg" alt="">
+        <div class="catalog-label">Valentine’s Day Collection Solo Bundle</div>
+      </a>
+
+      <!-- 2) Trio Set (UPDATED IMAGE as requested: vdaytrioset.jpg) -->
+      <a class="catalog-item" href="#" aria-label="Valentine’s Day Collection Trio Set">
+        <img src="vdaytrioset.jpg" alt="">
+        <div class="catalog-label">Valentine’s Day Collection Trio Set</div>
+      </a>
+
+      <!-- 3) Quad Set -->
+      <a class="catalog-item" href="#" aria-label="Valentine’s Day Collection Quad Set">
+        <img src="placeholder-quad.jpg" alt="">
+        <div class="catalog-label">Valentine’s Day Collection Quad Set</div>
+      </a>
+
+      <!-- 4) Signature Accessories -->
+      <a class="catalog-item" href="#" aria-label="Valentine’s Day Collection Signature Accessories">
+        <img src="placeholder-signature.jpg" alt="">
+        <div class="catalog-label">Valentine’s Day Collection Signature Accessories</div>
+      </a>
+
+      <!-- 5) Gift Set -->
+      <a class="catalog-item" href="#" aria-label="Valentine’s Day Collection Gift Set">
+        <img src="placeholder-gift.jpg" alt="">
+        <div class="catalog-label">Valentine’s Day Collection Gift Set</div>
+      </a>
+
+    </section>
   </main>
 </body>
 </html>
