@@ -17,7 +17,7 @@
 
     a{ color:inherit; text-decoration:none; }
 
-    /* LOCKED HEADER (same behavior as index.html) */
+    /* LOCKED HEADER */
     .brand-top{
       position:fixed;
       top:0;
@@ -36,6 +36,7 @@
       font-weight:700;
       letter-spacing:.32em;
       text-transform:uppercase;
+      cursor:pointer;
     }
 
     .brand-top .right-icons{
@@ -70,13 +71,12 @@
       stroke-width:1.6;
     }
 
-    /* Shopping bag icon (same as index.html) */
+    /* SHOPPING BAG ICON */
     .bag-icon{
       width:22px;
       height:22px;
       position:relative;
       display:block;
-
       background-image:
         linear-gradient(#000,#000),
         linear-gradient(#000,#000),
@@ -111,7 +111,6 @@
       box-sizing:border-box;
     }
 
-    /* page content sits below locked header */
     .page{
       width:100%;
       padding-top:64px;
@@ -124,7 +123,7 @@
       display:block;
     }
 
-    /* META TEXT */
+    /* META */
     .meta{
       padding:18px 16px 12px;
       text-align:center;
@@ -164,11 +163,8 @@
       margin:0;
     }
 
-    /* TILE SECTIONS — NO BORDERS */
-    .sections{
-      margin:0;
-      padding:0;
-    }
+    /* TILES */
+    .sections{ margin:0; padding:0; }
 
     .tile{
       display:block;
@@ -183,7 +179,6 @@
       overflow:hidden;
     }
 
-    /* IMAGE PLACEHOLDER */
     .tile-media::before{
       content:"";
       position:absolute;
@@ -199,7 +194,6 @@
         );
     }
 
-    /* TEXT ON IMAGE */
     .tile-text{
       position:absolute;
       left:50%;
@@ -216,7 +210,6 @@
       letter-spacing:.12em;
       text-transform:uppercase;
       font-weight:700;
-      line-height:1.1;
       margin:0;
     }
 
@@ -233,10 +226,9 @@
 
   <!-- HEADER -->
   <header class="brand-top">
-    <div class="brand">NIA BIA</div>
+    <a href="index.html" class="brand" aria-label="Return to homepage">NIA BIA</a>
 
     <div class="right-icons">
-      <!-- Profile -->
       <button class="icon-btn" aria-label="Profile" type="button">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="8" r="4" />
@@ -244,7 +236,6 @@
         </svg>
       </button>
 
-      <!-- Shopping bag -->
       <button class="icon-btn" aria-label="Shopping bag" type="button">
         <span class="bag-icon" aria-hidden="true"></span>
       </button>
@@ -253,10 +244,8 @@
 
   <main class="page">
 
-    <!-- HERO -->
     <img class="hero-img" src="valentines2026.jpg" alt="Valentine’s Day 2026">
 
-    <!-- META -->
     <section class="meta">
       <p class="house">Haute Couture Hair</p>
       <p class="season">Valentine’s Day 2026</p>
@@ -264,51 +253,14 @@
       <p class="brand">NIA BIA</p>
     </section>
 
-    <!-- TILES -->
     <section class="sections">
-
-      <a class="tile" href="vday-solo.html" aria-label="Solo Bundle">
-        <div class="tile-media">
-          <div class="tile-text">
-            <p class="tile-title">Solo Bundle</p>
-          </div>
-        </div>
-      </a>
-
-      <a class="tile" href="vday-trio.html" aria-label="Trio Set">
-        <div class="tile-media">
-          <div class="tile-text">
-            <p class="tile-title">Trio Set</p>
-          </div>
-        </div>
-      </a>
-
-      <a class="tile" href="vday-quad.html" aria-label="Quad Set">
-        <div class="tile-media">
-          <div class="tile-text">
-            <p class="tile-title">Quad Set</p>
-          </div>
-        </div>
-      </a>
-
-      <a class="tile" href="vday-accessories.html" aria-label="Signature Accessories">
-        <div class="tile-media">
-          <div class="tile-text">
-            <p class="tile-title">Signature Accessories</p>
-          </div>
-        </div>
-      </a>
-
-      <a class="tile" href="vday-giftset.html" aria-label="Gift Set">
-        <div class="tile-media">
-          <div class="tile-text">
-            <p class="tile-title">Gift Set</p>
-          </div>
-        </div>
-      </a>
-
+      <a class="tile" href="vday-solo.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Solo Bundle</p></div></div></a>
+      <a class="tile" href="vday-trio.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Trio Set</p></div></div></a>
+      <a class="tile" href="vday-quad.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Quad Set</p></div></div></a>
+      <a class="tile" href="vday-accessories.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Signature Accessories</p></div></div></a>
+      <a class="tile" href="vday-giftset.html"><div class="tile-media"><div class="tile-text"><p class="tile-title">Gift Set</p></div></div></a>
     </section>
-  </main>
 
+  </main>
 </body>
 </html>
