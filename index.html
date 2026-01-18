@@ -184,6 +184,44 @@
       display:inline-block;
     }
 
+    /* FOOTER (UPDATED ONLY) */
+    .footer{
+      padding:56px 18px 64px;
+      display:grid;
+      grid-template-columns:1fr;       /* mobile default = vertical */
+      gap:48px;
+    }
+    .footer-heading{
+      font-weight:700;
+      text-transform:uppercase;
+      margin:0 0 18px;
+      letter-spacing:.08em;
+    }
+    .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .footer-links a{
+      text-transform:none;             /* match screenshot casing */
+      letter-spacing:.01em;
+      font-size:16px;
+      opacity:.9;
+    }
+
+    /* iPad + Desktop = horizontal 3 columns */
+    @media (min-width: 768px){
+      .footer{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:72px;
+        padding-left:40px;
+        padding-right:40px;
+      }
+    }
+
     /* DRAWER MENU */
     .drawer-overlay{
       position:fixed;
@@ -292,49 +330,6 @@
       text-transform:uppercase;
       opacity:.85;
       padding-left:2px;
-    }
-
-    /* APPROVED GLOBAL FOOTER (mobile vertical, iPad/desktop horizontal) */
-    .site-footer{
-      padding:64px 18px 72px;
-      background:#fff;
-    }
-    .footer-grid{
-      display:flex;
-      flex-direction:column;
-      gap:48px;
-      max-width:1200px;
-      margin:0 auto;
-    }
-    .footer-col h4{
-      margin:0 0 18px;
-      font-size:12px;
-      font-weight:700;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-    }
-    .footer-col ul{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-    .footer-col a{
-      font-size:12px;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      opacity:.85;
-    }
-    .footer-col a:hover{ opacity:1; }
-
-    @media (min-width:768px){
-      .footer-grid{
-        flex-direction:row;
-        justify-content:space-between;
-        gap:80px;
-      }
     }
 
     @media (max-width:720px){
@@ -557,35 +552,40 @@
       </a>
     </div>
 
-    <!-- APPROVED GLOBAL FOOTER -->
-    <footer class="site-footer" aria-label="Footer">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>House of NIA BIA</h4>
-          <ul>
-            <li><a href="contact.html">Contact an Advisor</a></li>
-            <li><a href="#">About NIA BIA</a></li>
-            <li><a href="#">Testimonies</a></li>
-          </ul>
-        </div>
+    <!-- FOOTER (UPDATED TO MATCH YOUR SCREENSHOT) -->
+    <footer class="footer">
+      <div>
+        <div class="footer-heading">HOUSE OF NIA BIA</div>
+        <ul class="footer-links">
+          <li><a href="#">Client Care</a></li>
+          <li><a href="#">About NIA BIA</a></li>
+          <li><a href="#">Testimonies</a></li>
+          <li><a href="#">Hair Care</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
 
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Refund</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Shipping</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
+      <div>
+        <div class="footer-heading">LEGAL</div>
+        <ul class="footer-links">
+          <li><a href="#">Refund</a></li>
+          <li><a href="#">Privacy &amp; Cookies</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Accessibility Statement</a></li>
+        </ul>
+      </div>
 
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="care.html">Hair Care</a></li>
-            <li><a href="contact.html">FAQ</a></li>
-          </ul>
-        </div>
+      <div>
+        <div class="footer-heading">SERVICES</div>
+        <ul class="footer-links">
+          <li><a href="#">Gifting</a></li>
+          <li><a href="#">Tracking</a></li>
+          <li><a href="#">Payment</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Order History</a></li>
+        </ul>
       </div>
     </footer>
   </main>
