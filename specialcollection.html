@@ -197,7 +197,7 @@
       background:#fff;
     }
 
-    /* DEFAULT tile image behavior (unchanged for Trio + others) */
+    /* DEFAULT tile image behavior (applies to ALL EXCEPT TRIO) */
     .catalog-item img{
       width:100%;
       height:auto;
@@ -208,8 +208,7 @@
       background:#fff;
     }
 
-    /* ✅ ONLY CHANGE #1: SOLO image should not be cut off */
-    /* Force exact same 4x5 contain behavior with centered positioning */
+    /* SOLO stays locked */
     .catalog-item.solo img{
       width:100%;
       height:auto;
@@ -220,13 +219,23 @@
       background:#fff;
     }
 
-    /* ✅ ONLY CHANGE #2: QUAD image should not show side borders */
-    /* Use cover to remove side borders while keeping the 4x5 frame */
+    /* QUAD uses cover to remove side borders */
     .catalog-item.quad img{
       width:100%;
       height:auto;
       aspect-ratio:4 / 5;
       object-fit:cover;
+      object-position:center;
+      display:block;
+      background:#fff;
+    }
+
+    /* ✅ TRIO EXCEPTION: rule does NOT apply here */
+    .catalog-item.trio img{
+      width:100%;
+      height:auto;
+      aspect-ratio:auto;
+      object-fit:contain;
       object-position:center;
       display:block;
       background:#fff;
@@ -353,6 +362,46 @@
       text-transform:uppercase;
       opacity:.85;
       padding-left:2px;
+    }
+
+    /* FOOTER (same page, mobile vertical / desktop+iPad horizontal) */
+    .footer{
+      padding:56px 18px 64px;
+      background:#fff;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:44px;
+    }
+
+    .footer-heading{
+      font-weight:700;
+      text-transform:uppercase;
+      margin:0 0 18px;
+      letter-spacing:.06em;
+    }
+
+    .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-size:13px;
+      opacity:.9;
+    }
+
+    @media (min-width:768px){
+      .footer-grid{
+        grid-template-columns:repeat(3, 1fr);
+        gap:64px;
+        align-items:start;
+      }
     }
 
     @media (max-width:720px){
@@ -565,7 +614,7 @@
         </div>
       </a>
 
-      <a class="catalog-item" href="#trio" id="trio" aria-label="Valentine’s Day Collection Trio Set">
+      <a class="catalog-item trio" href="#trio" id="trio" aria-label="Valentine’s Day Collection Trio Set">
         <img src="vdaytrioset.jpg" alt="">
         <div class="tile-text">
           <div class="tile-title">Valentine’s Day Collection Trio Set</div>
@@ -593,6 +642,40 @@
         </div>
       </a>
     </section>
+
+    <!-- FOOTER (added; same site footer pattern) -->
+    <footer class="footer" aria-label="Footer">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-heading">HOUSE OF NIA BIA</div>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact an Advisor</a></li>
+            <li><a href="#">About NIA BIA</a></li>
+            <li><a href="#">Testimonies</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">SERVICES</div>
+          <ul class="footer-links">
+            <li><a href="contact.html">Order Tracking</a></li>
+            <li><a href="contact.html">Delivery</a></li>
+            <li><a href="care.html">Hair Care</a></li>
+            <li><a href="contact.html">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">LEGAL</div>
+          <ul class="footer-links">
+            <li><a href="policies.html">Refund</a></li>
+            <li><a href="policies.html">Privacy</a></li>
+            <li><a href="policies.html">Shipping</a></li>
+            <li><a href="policies.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   </main>
 
   <script>
