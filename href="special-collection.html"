@@ -17,20 +17,17 @@
       font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     }
 
-    /* No side borders / no boxed layout */
-    .page{
-      width:100%;
-      max-width:100%;
-    }
+    /* full-width, no side borders */
+    .page{ width:100%; max-width:100%; }
 
-    /* Top hero image (NOT clickable) */
+    /* hero image (not clickable) */
     .hero-img{
       width:100%;
       height:auto;
       display:block;
     }
 
-    /* Chanel-like text block under hero image */
+    /* text block under hero */
     .meta{
       padding:16px 16px 10px;
       text-align:center;
@@ -66,37 +63,25 @@
       opacity:.85;
     }
 
-    /* Clickable image sections (NO borders) */
-    .sections{
-      padding:10px 0 40px;
-    }
+    /* clickable image sections (no borders) */
+    .sections{ padding:10px 0 40px; }
 
     .tile{
       display:block;
       width:100%;
       text-decoration:none;
       color:inherit;
-      /* No borders, no outlines, no dividers */
     }
 
     .tile-media{
       position:relative;
       width:100%;
-      aspect-ratio: 16 / 10;
+      aspect-ratio:16/10;
       overflow:hidden;
-      background:#f2f2f2; /* placeholder background */
+      background:#f2f2f2;
     }
 
-    /* Placeholder image block */
-    .tile-media img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      opacity:0; /* stays invisible until you swap in real images */
-    }
-
-    /* Visible placeholder "image" look */
+    /* placeholder pattern + subtle overlay */
     .tile-media::before{
       content:"";
       position:absolute;
@@ -112,7 +97,7 @@
         );
     }
 
-    /* Text ON the picture (overlay) */
+    /* overlay text ON image */
     .tile-text{
       position:absolute;
       left:50%;
@@ -120,8 +105,8 @@
       transform:translateX(-50%);
       text-align:center;
       color:#fff;
-      width:min(520px, calc(100% - 28px));
-      pointer-events:none; /* ensures the whole tile is the click target */
+      width:min(680px, calc(100% - 28px));
+      pointer-events:none;
     }
 
     .tile-kicker{
@@ -142,13 +127,11 @@
       line-height:1.1;
     }
 
-    /* Space between sections (no borders) */
-    .spacer{
-      height:16px;
-    }
+    /* spacing only (no borders) */
+    .spacer{ height:16px; }
 
     @media (max-width:720px){
-      .tile-media{ aspect-ratio: 16 / 11; }
+      .tile-media{ aspect-ratio:16/11; }
       .tile-title{ font-size:16px; }
     }
   </style>
@@ -156,11 +139,8 @@
 
 <body>
   <main class="page" aria-label="Valentine’s Day 2026 sandbox">
-
-    <!-- NOT clickable: just the image -->
     <img class="hero-img" src="valentines2026.jpg" alt="Valentine’s Day 2026">
 
-    <!-- Required text block under hero image -->
     <section class="meta" aria-label="Collection details">
       <p class="house">Haute Couture Hair</p>
       <p class="season">Valentine’s Day 2026</p>
@@ -168,12 +148,10 @@
       <p class="location">NIA BIA</p>
     </section>
 
-    <!-- Clickable sections: each has picture placeholder and text ON the image -->
     <section class="sections" aria-label="Valentine’s Day collection categories">
 
       <a class="tile" href="vday-solo.html" aria-label="Valentine’s Day Collection Solo Bundle">
         <div class="tile-media">
-          <img src="" alt="">
           <div class="tile-text">
             <p class="tile-kicker">Collection</p>
             <p class="tile-title">Valentine’s Day Collection Solo Bundle</p>
@@ -185,7 +163,6 @@
 
       <a class="tile" href="vday-trio.html" aria-label="Valentine’s Day Collection Trio Set">
         <div class="tile-media">
-          <img src="" alt="">
           <div class="tile-text">
             <p class="tile-kicker">Collection</p>
             <p class="tile-title">Valentine’s Day Collection Trio Set</p>
@@ -197,7 +174,6 @@
 
       <a class="tile" href="vday-quad.html" aria-label="Valentine’s Day Collection Quad Set">
         <div class="tile-media">
-          <img src="" alt="">
           <div class="tile-text">
             <p class="tile-kicker">Collection</p>
             <p class="tile-title">Valentine’s Day Collection Quad Set</p>
@@ -209,7 +185,6 @@
 
       <a class="tile" href="vday-accessories.html" aria-label="Valentine’s Day Collection Signature Accessories">
         <div class="tile-media">
-          <img src="" alt="">
           <div class="tile-text">
             <p class="tile-kicker">Collection</p>
             <p class="tile-title">Valentine’s Day Collection Signature Accessories</p>
@@ -221,7 +196,6 @@
 
       <a class="tile" href="vday-giftset.html" aria-label="Valentine’s Day Collection Gift Set">
         <div class="tile-media">
-          <img src="" alt="">
           <div class="tile-text">
             <p class="tile-kicker">Collection</p>
             <p class="tile-title">Valentine’s Day Collection Gift Set</p>
