@@ -1,5 +1,3 @@
-Special collection original
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -366,25 +364,20 @@ Special collection original
       padding-left:2px;
     }
 
-    /* FOOTER (same page, mobile vertical / desktop+iPad horizontal) */
+    /* ✅ FOOTER (LOCKED TO MATCH INDEX SCREENSHOT) */
     .footer{
       padding:56px 18px 64px;
+      display:grid;
+      grid-template-columns:1fr;       /* mobile = vertical */
+      gap:48px;
       background:#fff;
     }
-
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:44px;
-    }
-
     .footer-heading{
       font-weight:700;
       text-transform:uppercase;
       margin:0 0 18px;
-      letter-spacing:.06em;
+      letter-spacing:.08em;
     }
-
     .footer-links{
       list-style:none;
       padding:0;
@@ -392,17 +385,21 @@ Special collection original
       display:flex;
       flex-direction:column;
       gap:16px;
-      text-transform:uppercase;
-      letter-spacing:.06em;
-      font-size:13px;
+    }
+    .footer-links a{
+      text-transform:none;             /* match screenshot casing */
+      letter-spacing:.01em;
+      font-size:16px;
       opacity:.9;
     }
 
-    @media (min-width:768px){
-      .footer-grid{
-        grid-template-columns:repeat(3, 1fr);
-        gap:64px;
-        align-items:start;
+    /* iPad + Desktop = horizontal 3 columns */
+    @media (min-width: 768px){
+      .footer{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:72px;
+        padding-left:40px;
+        padding-right:40px;
       }
     }
 
@@ -645,37 +642,40 @@ Special collection original
       </a>
     </section>
 
-    <!-- FOOTER (added; same site footer pattern) -->
+    <!-- ✅ FOOTER (MATCHES INDEX EXACTLY) -->
     <footer class="footer" aria-label="Footer">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-heading">HOUSE OF NIA BIA</div>
-          <ul class="footer-links">
-            <li><a href="contact.html">Contact an Advisor</a></li>
-            <li><a href="#">About NIA BIA</a></li>
-            <li><a href="#">Testimonies</a></li>
-          </ul>
-        </div>
+      <div>
+        <div class="footer-heading">HOUSE OF NIA BIA</div>
+        <ul class="footer-links">
+          <li><a href="#">Client Care</a></li>
+          <li><a href="#">About NIA BIA</a></li>
+          <li><a href="#">Testimonies</a></li>
+          <li><a href="#">Hair Care</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
 
-        <div>
-          <div class="footer-heading">SERVICES</div>
-          <ul class="footer-links">
-            <li><a href="contact.html">Order Tracking</a></li>
-            <li><a href="contact.html">Delivery</a></li>
-            <li><a href="care.html">Hair Care</a></li>
-            <li><a href="contact.html">FAQ</a></li>
-          </ul>
-        </div>
+      <div>
+        <div class="footer-heading">LEGAL</div>
+        <ul class="footer-links">
+          <li><a href="#">Refund</a></li>
+          <li><a href="#">Privacy &amp; Cookies</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Accessibility Statement</a></li>
+        </ul>
+      </div>
 
-        <div>
-          <div class="footer-heading">LEGAL</div>
-          <ul class="footer-links">
-            <li><a href="policies.html">Refund</a></li>
-            <li><a href="policies.html">Privacy</a></li>
-            <li><a href="policies.html">Shipping</a></li>
-            <li><a href="policies.html">Terms of Service</a></li>
-          </ul>
-        </div>
+      <div>
+        <div class="footer-heading">SERVICES</div>
+        <ul class="footer-links">
+          <li><a href="#">Gifting</a></li>
+          <li><a href="#">Tracking</a></li>
+          <li><a href="#">Payment</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Order History</a></li>
+        </ul>
       </div>
     </footer>
   </main>
