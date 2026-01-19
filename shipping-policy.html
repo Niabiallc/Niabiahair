@@ -88,7 +88,7 @@
       text-transform:uppercase;
     }
 
-    /* Shopping bag icon */
+    /* Approved shopping bag icon */
     .bag-icon{
       width:22px;
       height:22px;
@@ -99,8 +99,8 @@
         linear-gradient(#000,#000),
         linear-gradient(#000,#000);
       background-repeat:no-repeat;
-      background-size:18px 2px, 2px 5px, 2px 5px;
-      background-position:2px 9px, 6px 9px, 16px 9px;
+      background-size: 18px 2px, 2px 5px, 2px 5px;
+      background-position: 2px 9px, 6px 9px, 16px 9px;
     }
     .bag-icon::before{
       content:"";
@@ -146,7 +146,7 @@
       letter-spacing:.18em;
       text-transform:uppercase;
       text-align:center;
-      padding:0 18px;
+      padding:0 14px;
     }
 
     /* =========================
@@ -164,21 +164,21 @@
       font-size:15px;
     }
 
-    .content h2{
-      font-size:16px;
-      font-weight:700;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      margin:26px 0 12px;
-    }
-
     .content p{
-      margin:0 0 20px;
+      margin:0 0 18px;
       opacity:.95;
     }
 
+    .content h3{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin:24px 0 10px;
+    }
+
     /* =========================
-       DRAWER MENU (same as your working pages)
+       DRAWER MENU (LOCKED)
        ========================= */
     .drawer-overlay{
       position:fixed;
@@ -289,12 +289,12 @@
     }
 
     /* =========================
-       LOCKED SITE FOOTER (matches your current index)
+       LOCKED SITE FOOTER (MATCHES INDEX)
        ========================= */
     .footer{
       padding:56px 18px 64px;
       display:grid;
-      grid-template-columns:1fr; /* mobile vertical */
+      grid-template-columns:1fr;
       gap:48px;
       background:#fff;
     }
@@ -313,7 +313,7 @@
       gap:16px;
     }
     .footer-links a{
-      text-transform:none; /* match screenshot casing */
+      text-transform:none;
       letter-spacing:.01em;
       font-size:16px;
       opacity:.9;
@@ -338,22 +338,23 @@
 </head>
 
 <body>
-
   <!-- PRIMARY HEADER -->
   <header class="brand-top">
     <div class="left-icons">
-      <button class="icon-btn" aria-label="Menu" id="openMenu" type="button">
+      <!-- Menu -->
+      <button class="icon-btn" aria-label="Menu" type="button" id="openMenu">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 6h18"/>
-          <path d="M3 12h18"/>
-          <path d="M3 18h18"/>
+          <path d="M3 6h18" />
+          <path d="M3 12h18" />
+          <path d="M3 18h18" />
         </svg>
       </button>
 
+      <!-- Search (icon only, no action) -->
       <button class="icon-btn" aria-label="Search" type="button">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="11" cy="11" r="6"/>
-          <path d="M20 20l-3.5-3.5"/>
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
         </svg>
       </button>
     </div>
@@ -361,14 +362,16 @@
     <a href="index.html" class="brand" aria-label="Home">NIA BIA</a>
 
     <div class="right-icons">
+      <!-- Account -->
       <button class="icon-btn" aria-label="Account" type="button">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="8" r="4"/>
-          <path d="M20 21a8 8 0 0 0-16 0"/>
+          <circle cx="12" cy="8" r="4" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
         </svg>
       </button>
 
-      <button class="icon-btn" aria-label="Bag" type="button">
+      <!-- Bag -->
+      <button class="icon-btn" aria-label="Shopping bag" type="button">
         <span class="bag-icon" aria-hidden="true"></span>
       </button>
     </div>
@@ -504,26 +507,45 @@
   </aside>
 
   <!-- SECOND FIXED TITLE BAR -->
-  <div class="page-title-bar">
+  <div class="page-title-bar" role="banner" aria-label="Page title">
     <div class="page-title">NIA BIA Shipping Policy</div>
   </div>
 
   <!-- PAGE CONTENT -->
   <main class="page">
-    <section class="content">
-      <!-- PASTE YOUR SHIPPING POLICY CONTENT BELOW (do not change styling) -->
-      <p>[PASTE YOUR SHIPPING POLICY CONTENT HERE]</p>
+    <section class="content" aria-label="Shipping Policy content">
+      <p>All NIA BIA orders are processed with care and intention to ensure a refined delivery experience.</p>
+
+      <h3>Order Processing</h3>
+      <p>Orders are typically processed within the timeframe stated at checkout. Processing time begins once payment is confirmed and does not include weekends or holidays. During high-volume periods or collection launches, processing times may vary.</p>
+
+      <h3>Shipping Methods</h3>
+      <p>Shipping options and estimated delivery timelines are displayed at checkout. All orders are shipped to the address provided at the time of purchase. Please ensure all shipping details are accurate, as NIA BIA is not responsible for errors resulting from incorrect information.</p>
+
+      <h3>Tracking</h3>
+      <p>Once an order has been dispatched, tracking information will be provided via email. Delivery timelines are estimates provided by the carrier and are not guaranteed.</p>
+
+      <h3>Carrier Responsibility</h3>
+      <p>After an order has been transferred to the carrier, NIA BIA is not responsible for delays, lost packages, or delivery issues caused by the shipping provider. Clients are encouraged to contact the carrier directly for delivery updates once tracking is issued.</p>
+
+      <h3>Delivery Confirmation</h3>
+      <p>Orders marked as delivered by the carrier are considered fulfilled. NIA BIA is not responsible for packages that are lost or stolen after delivery confirmation.</p>
+
+      <h3>Address Accuracy</h3>
+      <p>It is the client’s responsibility to provide a complete and correct shipping address. Orders returned due to incorrect or incomplete addresses may require additional fees to reship.</p>
+
+      <p>NIA BIA reserves the right to update this Shipping Policy at any time. By placing an order, clients acknowledge and agree to this policy.</p>
     </section>
 
-    <!-- LOCKED FOOTER -->
-    <footer class="footer">
+    <!-- FOOTER (LOCKED TO INDEX) -->
+    <footer class="footer" aria-label="Footer">
       <div>
         <div class="footer-heading">HOUSE OF NIA BIA</div>
         <ul class="footer-links">
           <li><a href="client-care.html">Client Care</a></li>
           <li><a href="#">About NIA BIA</a></li>
           <li><a href="#">Testimonies</a></li>
-          <li><a href="#">Hair Care</a></li>
+          <li><a href="care.html">Hair Care</a></li>
           <li><a href="#">FAQ</a></li>
         </ul>
       </div>
