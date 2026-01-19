@@ -1,43 +1,595 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Policies — NIA BIA</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disclaimer — NIA BIA</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#000000;
+      --line:rgba(0,0,0,.08);
+    }
+
+    html, body{
+      width:100%;
+      margin:0;
+      padding:0;
+      overflow-x:hidden;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    /* =========================
+       PRIMARY FIXED HEADER (LOCKED)
+       ========================= */
+    .brand-top{
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:1000;
+      background:#fff;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-bottom:1px solid var(--line);
+    }
+
+    .left-icons{
+      position:absolute;
+      left:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .right-icons{
+      position:absolute;
+      right:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .icon-btn{
+      width:28px;
+      height:28px;
+      border:0;
+      background:transparent;
+      padding:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .icon{
+      width:24px;
+      height:24px;
+      stroke:#000;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-width:1.6;
+    }
+
+    .brand{
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+    }
+
+    /* Approved shopping bag icon */
+    .bag-icon{
+      width:22px;
+      height:22px;
+      position:relative;
+      display:block;
+      background-image:
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000);
+      background-repeat:no-repeat;
+      background-size: 18px 2px, 2px 5px, 2px 5px;
+      background-position: 2px 9px, 6px 9px, 16px 9px;
+    }
+    .bag-icon::before{
+      content:"";
+      position:absolute;
+      left:4px; right:4px;
+      top:2px;
+      height:11px;
+      border:2px solid #000;
+      border-bottom:0;
+      border-radius:999px 999px 0 0;
+      box-sizing:border-box;
+    }
+    .bag-icon::after{
+      content:"";
+      position:absolute;
+      left:2px; right:2px;
+      top:9px; bottom:2px;
+      border:2px solid #000;
+      border-radius:3px;
+      box-sizing:border-box;
+    }
+
+    /* =========================
+       SECOND FIXED TITLE BAR (LOCKED)
+       ========================= */
+    .page-title-bar{
+      position:fixed;
+      top:64px;
+      left:0;
+      right:0;
+      z-index:900;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .page-title{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-align:center;
+      padding:0 18px;
+    }
+
+    /* =========================
+       DRAWER MENU (LOCKED, WORKING)
+       ========================= */
+    .drawer-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.25);
+      z-index:2000;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease;
+    }
+    .drawer{
+      position:fixed;
+      top:0;
+      left:0;
+      height:100%;
+      width:min(86vw, 420px);
+      background:#fff;
+      z-index:2100;
+      transform:translateX(-102%);
+      transition:transform .18s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .drawer.open{ transform:translateX(0); }
+    .drawer-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .drawer-top{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding:0 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .drawer-close{
+      width:34px;
+      height:34px;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .drawer-close svg{
+      width:22px; height:22px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .drawer-body{
+      padding:22px 18px 40px;
+      overflow:auto;
+    }
+
+    .menu-title{
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:.02em;
+      margin:0 0 22px;
+    }
+
+    .menu-section{
+      border-top:1px solid rgba(0,0,0,.10);
+      padding:14px 0;
+    }
+
+    details.menu-item summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding:12px 0;
+    }
+    details.menu-item summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      width:18px; height:18px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      flex:0 0 auto;
+    }
+
+    .submenu{
+      padding:6px 0 4px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .submenu a{
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      opacity:.85;
+      padding-left:2px;
+    }
+
+    /* =========================
+       PAGE CONTENT
+       ========================= */
+    .page{
+      padding-top:120px; /* header + title bar */
+    }
+
+    .content{
+      max-width:860px;
+      margin:0 auto;
+      padding:36px 18px 72px;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .content p{
+      margin:0 0 20px;
+      opacity:.95;
+    }
+
+    /* =========================
+       FOOTER (LOCKED SITE FOOTER)
+       Mobile vertical, iPad/desktop horizontal
+       ========================= */
+    .footer{
+      padding:56px 18px 64px;
+      display:grid;
+      grid-template-columns:1fr; /* mobile = vertical */
+      gap:48px;
+      background:#fff;
+    }
+
+    .footer-heading{
+      font-weight:700;
+      text-transform:uppercase;
+      margin:0 0 18px;
+      letter-spacing:.08em;
+    }
+
+    .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .footer-links a{
+      text-transform:none;
+      letter-spacing:.01em;
+      font-size:16px;
+      opacity:.9;
+    }
+
+    @media (min-width:768px){
+      .footer{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:72px;
+        padding-left:40px;
+        padding-right:40px;
+      }
+    }
+
+    @media (max-width:720px){
+      .brand-top{ height:60px; }
+      .left-icons, .right-icons{ height:60px; }
+      .page-title-bar{ top:60px; height:56px; }
+      .page{ padding-top:116px; }
+      .drawer-top{ height:60px; }
+    }
+  </style>
 </head>
 
 <body>
-  <div class="wrapper">
-    <header class="header">
-      <div class="brand"><a href="index.html">NIA BIA</a></div>
-      <nav class="nav">
-        <a href="collections.html">Collections</a>
-        <a href="care.html">Care</a>
-        <a href="policies.html">Policies</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
+  <!-- PRIMARY HEADER -->
+  <header class="brand-top">
+    <div class="left-icons">
+      <button class="icon-btn" aria-label="Menu" type="button" id="openMenu">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18" />
+          <path d="M3 12h18" />
+          <path d="M3 18h18" />
+        </svg>
+      </button>
 
-    <main>
-      <section class="hero">
-        <h1 class="h1">Policies</h1>
-        <p class="p">
-          This page will contain shipping, returns, and store policies in a restrained format.
-        </p>
-      </section>
-    </main>
+      <button class="icon-btn" aria-label="Search" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+      </button>
+    </div>
 
-    <div class="hr"></div>
+    <a href="index.html" class="brand" aria-label="Home">NIA BIA</a>
 
-    <footer class="footer">
-      <div>© <span id="y"></span> Nia Bia LLC</div>
-      <div>House policies.</div>
-    </footer>
+    <div class="right-icons">
+      <button class="icon-btn" aria-label="Account" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
+        </svg>
+      </button>
+
+      <button class="icon-btn" aria-label="Shopping bag" type="button">
+        <span class="bag-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SECOND FIXED TITLE BAR -->
+  <div class="page-title-bar" aria-label="Page title">
+    <div class="page-title">NIA BIA Disclaimer</div>
   </div>
 
+  <!-- DRAWER -->
+  <div class="drawer-overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" aria-label="Menu">
+    <div class="drawer-top">
+      <button class="drawer-close" aria-label="Close menu" type="button" id="closeMenu">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12" />
+          <path d="M18 6l-12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="menu-title">Menu</div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Haute Couture Hair
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="specialcollection.html">All Valentine’s Day Collection 2026</a>
+            <a href="specialcollection.html#solo">Solo Bundle</a>
+            <a href="specialcollection.html#trio">Trio Set</a>
+            <a href="specialcollection.html#quad">Quad Set</a>
+            <a href="specialcollection.html#signature">Signature Accessories</a>
+            <a href="specialcollection.html#gift">Valentine’s Gift Set</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Virgin
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="virgin.html">All Virgin</a>
+            <a href="virgin.html#solo">Solo Bundle</a>
+            <a href="virgin.html#trio">Trio Set</a>
+            <a href="virgin.html#quad">Quad Set</a>
+            <a href="virgin.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Single Donor
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="raw.html">All Single Donor</a>
+            <a href="raw.html#solo">Solo Bundle</a>
+            <a href="raw.html#trio">Trio Set</a>
+            <a href="raw.html#quad">Quad Set</a>
+            <a href="raw.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Clip Ins
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="clip-ins.html">All Clip Ins</a>
+            <a href="clip-ins.html#solo">Clip Ins Solo Set</a>
+            <a href="clip-ins.html#duo">Clip Ins Duo Set</a>
+            <a href="clip-ins.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Heritage Accessories
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">Coming Soon</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>High Accessories
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">Coming Soon</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Client Services
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="contact.html">Order Tracking</a>
+            <a href="contact.html">Delivery</a>
+            <a href="policies.html">Returns</a>
+            <a href="care.html">Hair Care</a>
+            <a href="contact.html">FAQ</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>House of NIA BIA
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">The House</a>
+            <a href="#">Heritage</a>
+            <a href="#">Craftsmanship</a>
+            <a href="#">Care Philosophy</a>
+            <a href="#">Client Commitment</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </aside>
+
+  <!-- PAGE CONTENT -->
+  <main class="page">
+    <section class="content" aria-label="Disclaimer content">
+      <p>
+        The information provided on the NIA BIA website is for general informational purposes only. While we make every effort to ensure accuracy, NIA BIA makes no representations or warranties of any kind regarding the completeness, reliability, or suitability of the information, products, or services offered on this site.
+      </p>
+
+      <p>
+        All products sold by NIA BIA are intended for cosmetic and personal use only. Individual results may vary based on factors including personal care, installation, maintenance, and usage. NIA BIA is not responsible for outcomes resulting from improper handling, installation, or care of products.
+      </p>
+
+      <p>
+        Images, videos, and descriptions on this website are provided for illustrative purposes. Due to the natural characteristics of premium hair, variations in texture, pattern, color tone, and appearance may occur and do not constitute defects.
+      </p>
+
+      <p>
+        NIA BIA does not provide professional, medical, or cosmetic advice. Any information shared should not be relied upon as a substitute for professional guidance.
+      </p>
+
+      <p>
+        By using this website and purchasing from NIA BIA, you acknowledge and agree that NIA BIA shall not be held liable for any direct or indirect damages arising from the use or misuse of our products or website.
+      </p>
+
+      <p>
+        NIA BIA reserves the right to update this Disclaimer at any time without prior notice.
+      </p>
+    </section>
+
+    <!-- FOOTER (LOCKED) -->
+    <footer class="footer" aria-label="Footer">
+      <div>
+        <div class="footer-heading">HOUSE OF NIA BIA</div>
+        <ul class="footer-links">
+          <li><a href="client-care.html">Client Care</a></li>
+          <li><a href="about-house.html">About NIA BIA</a></li>
+          <li><a href="testimonies.html">Testimonies</a></li>
+          <li><a href="haircare.html">Hair Care</a></li>
+          <li><a href="faqs.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">LEGAL</div>
+        <ul class="footer-links">
+          <li><a href="refund-policy.html">Refund</a></li>
+          <li><a href="privacy-cookies.html">Privacy &amp; Cookies</a></li>
+          <li><a href="shipping-policy.html">Shipping</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="accessibility.html">Accessibility Statement</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">SERVICES</div>
+        <ul class="footer-links">
+          <li><a href="gifting-service.html">Gifting</a></li>
+          <li><a href="tracking-service.html">Tracking</a></li>
+          <li><a href="payment-service.html">Payment</a></li>
+          <li><a href="account-service.html">Account</a></li>
+          <li><a href="history-service.html">Order History</a></li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("overlay");
+    const openBtn = document.getElementById("openMenu");
+    const closeBtn = document.getElementById("closeMenu");
+
+    function openMenu(){
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeMenu(){
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    openBtn.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
   </script>
 </body>
 </html>
