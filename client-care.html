@@ -3,21 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NIA BIA Client Care</title>
+  <title>Client Care — NIA BIA</title>
 
   <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#000000;
+      --line:rgba(0,0,0,.08);
+    }
+
     html, body{
       width:100%;
       margin:0;
       padding:0;
       overflow-x:hidden;
-      background:#fff;
-      color:#000;
+      background:var(--bg);
+      color:var(--fg);
       font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     }
+
     a{ color:inherit; text-decoration:none; }
 
-    /* LOCKED HEADER */
+    /* LOCKED HEADER (matches index) */
     .brand-top{
       position:fixed;
       top:0; left:0; right:0;
@@ -27,12 +34,13 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      border-bottom:1px solid rgba(0,0,0,.08);
+      border-bottom:1px solid var(--line);
     }
 
     .left-icons{
       position:absolute;
       left:16px;
+      top:0;
       height:64px;
       display:flex;
       align-items:center;
@@ -42,6 +50,7 @@
     .right-icons{
       position:absolute;
       right:16px;
+      top:0;
       height:64px;
       display:flex;
       align-items:center;
@@ -53,8 +62,9 @@
       height:28px;
       border:0;
       background:transparent;
+      padding:0;
       cursor:pointer;
-      display:flex;
+      display:inline-flex;
       align-items:center;
       justify-content:center;
     }
@@ -64,79 +74,104 @@
       height:24px;
       stroke:#000;
       fill:none;
-      stroke-width:1.6;
       stroke-linecap:round;
       stroke-linejoin:round;
+      stroke-width:1.6;
     }
 
-    .brand{
+    .brand a{
       font-size:18px;
       font-weight:700;
       letter-spacing:.32em;
       text-transform:uppercase;
+      display:inline-block;
+      line-height:1;
+      white-space:nowrap;
     }
 
+    /* Approved shopping bag icon */
     .bag-icon{
       width:22px;
       height:22px;
       position:relative;
       display:block;
+      background-image:
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000);
+      background-repeat:no-repeat;
+      background-size: 18px 2px, 2px 5px, 2px 5px;
+      background-position: 2px 9px, 6px 9px, 16px 9px;
     }
     .bag-icon::before{
       content:"";
       position:absolute;
-      inset:0;
+      left:4px; right:4px;
+      top:2px;
+      height:11px;
+      border:2px solid #000;
+      border-bottom:0;
+      border-radius:999px 999px 0 0;
+      box-sizing:border-box;
+    }
+    .bag-icon::after{
+      content:"";
+      position:absolute;
+      left:2px; right:2px;
+      top:9px; bottom:2px;
       border:2px solid #000;
       border-radius:3px;
+      box-sizing:border-box;
     }
 
-    .page{
-      padding-top:64px;
-    }
+    .page{ padding-top:64px; }
 
-    /* STICKY PAGE TITLE */
-    .page-title{
+    /* STICKY TITLE BAR (locks under header) */
+    .subhead{
       position:sticky;
       top:64px;
       z-index:900;
       background:#fff;
-      padding:26px 18px;
+      border-bottom:1px solid var(--line);
+      padding:16px 18px;
       text-align:center;
-      border-bottom:1px solid rgba(0,0,0,.08);
     }
-
-    .page-title h1{
+    .subhead h1{
       margin:0;
-      font-size:22px;
+      font-size:18px;
       font-weight:700;
-      letter-spacing:.18em;
+      letter-spacing:.12em;
       text-transform:uppercase;
+      line-height:1.2;
     }
 
     /* CONTENT */
     .content{
-      max-width:760px;
+      max-width:860px;
       margin:0 auto;
-      padding:40px 18px 64px;
+      padding:22px 18px 56px;
+    }
+    .content p{
+      margin:0 0 16px;
+      font-size:16px;
       line-height:1.75;
-      font-size:15px;
+      letter-spacing:.01em;
     }
 
-    /* FOOTER (LOCKED VERSION) */
+    /* FOOTER (LOCKED TO INDEX STYLE) */
     .footer{
       padding:56px 18px 64px;
       display:grid;
-      grid-template-columns:1fr;
+      grid-template-columns:1fr;       /* mobile default = vertical */
       gap:48px;
+      background:#fff;
     }
-
     .footer-heading{
       font-weight:700;
       text-transform:uppercase;
-      margin-bottom:18px;
+      margin:0 0 18px;
       letter-spacing:.08em;
     }
-
     .footer-links{
       list-style:none;
       padding:0;
@@ -145,105 +180,388 @@
       flex-direction:column;
       gap:16px;
     }
-
     .footer-links a{
+      text-transform:none;             /* match screenshot casing */
+      letter-spacing:.01em;
       font-size:16px;
       opacity:.9;
     }
 
-    @media (min-width:768px){
+    @media (min-width: 768px){
       .footer{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:repeat(3, minmax(0, 1fr));
         gap:72px;
         padding-left:40px;
         padding-right:40px;
       }
     }
+
+    /* DRAWER MENU (same as index, working) */
+    .drawer-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.25);
+      z-index:2000;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease;
+    }
+    .drawer{
+      position:fixed;
+      top:0;
+      left:0;
+      height:100%;
+      width:min(86vw, 420px);
+      background:#fff;
+      z-index:2100;
+      transform:translateX(-102%);
+      transition:transform .18s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .drawer.open{ transform:translateX(0); }
+    .drawer-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .drawer-top{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding:0 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .drawer-close{
+      width:34px;
+      height:34px;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .drawer-close svg{
+      width:22px; height:22px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .drawer-body{
+      padding:22px 18px 40px;
+      overflow:auto;
+    }
+
+    .menu-title{
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:.02em;
+      margin:0 0 22px;
+    }
+
+    .menu-section{
+      border-top:1px solid rgba(0,0,0,.10);
+      padding:14px 0;
+    }
+
+    details.menu-item summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding:12px 0;
+    }
+    details.menu-item summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      width:18px; height:18px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      flex:0 0 auto;
+    }
+
+    .submenu{
+      padding:6px 0 4px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .submenu a{
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      opacity:.85;
+      padding-left:2px;
+    }
+
+    @media (max-width:720px){
+      .brand-top{ height:60px; }
+      .left-icons, .right-icons{ height:60px; }
+      .page{ padding-top:60px; }
+
+      .subhead{ top:60px; }
+      .drawer-top{ height:60px; }
+    }
   </style>
 </head>
 
 <body>
+  <!-- HEADER -->
+  <header class="brand-top">
+    <div class="left-icons">
+      <!-- Menu (WORKING) -->
+      <button class="icon-btn" aria-label="Menu" type="button" id="openMenu">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18" />
+          <path d="M3 12h18" />
+          <path d="M3 18h18" />
+        </svg>
+      </button>
 
-<header class="brand-top">
-  <div class="left-icons">
-    <button class="icon-btn" id="openMenu">
-      <svg class="icon" viewBox="0 0 24 24">
-        <path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/>
-      </svg>
-    </button>
-    <button class="icon-btn">
-      <svg class="icon" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/>
-      </svg>
-    </button>
-  </div>
-
-  <a class="brand" href="index.html">NIA BIA</a>
-
-  <div class="right-icons">
-    <button class="icon-btn">
-      <svg class="icon" viewBox="0 0 24 24">
-        <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/>
-      </svg>
-    </button>
-    <button class="icon-btn"><span class="bag-icon"></span></button>
-  </div>
-</header>
-
-<main class="page">
-
-  <section class="page-title">
-    <h1>NIA BIA Client Care</h1>
-  </section>
-
-  <section class="content">
-    <p>At NIA BIA, client care reflects our commitment to discretion, quality, and an elevated client experience. We believe luxury is defined not only by the product itself, but by the care and intention surrounding every order.</p>
-
-    <p>Our Client Care team is available to assist with general inquiries related to orders, account support, and the overall purchasing experience. For efficient service, we kindly ask that clients include their order number when reaching out.</p>
-
-    <p>All orders are handled with care once placed. Please review all product details and policies prior to completing your purchase, as orders cannot be modified after processing begins.</p>
-
-    <p>Each NIA BIA order is prepared with attention to detail and reviewed prior to shipment. Natural variations in texture and appearance are inherent to premium hair and are part of its authenticity.</p>
-
-    <p>We aim to respond to all inquiries within a reasonable timeframe and appreciate your patience during high-volume periods. NIA BIA reserves the right to update client care practices as our brand evolves.</p>
-  </section>
-
-  <footer class="footer">
-    <div>
-      <div class="footer-heading">HOUSE OF NIA BIA</div>
-      <ul class="footer-links">
-        <li><a href="client-care.html">Client Care</a></li>
-        <li><a href="#">About NIA BIA</a></li>
-        <li><a href="#">Testimonies</a></li>
-        <li><a href="care.html">Hair Care</a></li>
-        <li><a href="#">FAQ</a></li>
-      </ul>
+      <!-- Search (icon only, no action) -->
+      <button class="icon-btn" aria-label="Search" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+      </button>
     </div>
 
-    <div>
-      <div class="footer-heading">LEGAL</div>
-      <ul class="footer-links">
-        <li><a href="policies.html">Refund</a></li>
-        <li><a href="policies.html">Privacy & Cookies</a></li>
-        <li><a href="policies.html">Shipping</a></li>
-        <li><a href="policies.html">Terms of Service</a></li>
-        <li><a href="#">Disclaimer</a></li>
-        <li><a href="#">Accessibility Statement</a></li>
-      </ul>
+    <div class="brand"><a href="index.html" aria-label="Home">NIA BIA</a></div>
+
+    <div class="right-icons">
+      <!-- Account -->
+      <button class="icon-btn" aria-label="Account" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
+        </svg>
+      </button>
+
+      <!-- Shopping bag -->
+      <button class="icon-btn" aria-label="Shopping bag" type="button">
+        <span class="bag-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- DRAWER -->
+  <div class="drawer-overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Menu">
+    <div class="drawer-top">
+      <button class="drawer-close" aria-label="Close menu" type="button" id="closeMenu">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12" />
+          <path d="M18 6l-12 12" />
+        </svg>
+      </button>
     </div>
 
-    <div>
-      <div class="footer-heading">SERVICES</div>
-      <ul class="footer-links">
-        <li><a href="#">Gifting</a></li>
-        <li><a href="#">Tracking</a></li>
-        <li><a href="#">Payment</a></li>
-        <li><a href="#">Account</a></li>
-        <li><a href="#">Order History</a></li>
-      </ul>
-    </div>
-  </footer>
+    <div class="drawer-body">
+      <div class="menu-title">Menu</div>
 
-</main>
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Haute Couture Hair
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="specialcollection.html">All Valentine’s Day Collection 2026</a>
+            <a href="specialcollection.html#solo">Solo Bundle</a>
+            <a href="specialcollection.html#trio">Trio Set</a>
+            <a href="specialcollection.html#quad">Quad Set</a>
+            <a href="specialcollection.html#signature">Signature Accessories</a>
+            <a href="specialcollection.html#gift">Valentine’s Gift Set</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Virgin
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="virgin.html">All Virgin</a>
+            <a href="virgin.html#solo">Solo Bundle</a>
+            <a href="virgin.html#trio">Trio Set</a>
+            <a href="virgin.html#quad">Quad Set</a>
+            <a href="virgin.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Single Donor
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="raw.html">All Single Donor</a>
+            <a href="raw.html#solo">Solo Bundle</a>
+            <a href="raw.html#trio">Trio Set</a>
+            <a href="raw.html#quad">Quad Set</a>
+            <a href="raw.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Clip Ins
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="clip-ins.html">All Clip Ins</a>
+            <a href="clip-ins.html#solo">Clip Ins Solo Set</a>
+            <a href="clip-ins.html#duo">Clip Ins Duo Set</a>
+            <a href="clip-ins.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Heritage Accessories
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">Coming Soon</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>High Accessories
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">Coming Soon</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Client Services
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="contact.html">Order Tracking</a>
+            <a href="contact.html">Delivery</a>
+            <a href="policies.html">Returns</a>
+            <a href="care.html">Hair Care</a>
+            <a href="contact.html">FAQ</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>House of NIA BIA
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="client-care.html">Client Care</a>
+            <a href="#">About NIA BIA</a>
+            <a href="#">Testimonies</a>
+            <a href="#">Hair Care</a>
+            <a href="#">FAQ</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </aside>
+
+  <main class="page">
+    <!-- STICKY TITLE -->
+    <section class="subhead" aria-label="Page title">
+      <h1>NIA BIA Client Care</h1>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content" aria-label="Client care content">
+      <p>At NIA BIA, client care reflects our commitment to discretion, quality, and an elevated client experience. We believe luxury is defined not only by the product itself, but by the care and intention surrounding every order.</p>
+
+      <p>Our Client Care team is available to assist with general inquiries related to orders, account support, and the overall purchasing experience. For efficient service, we kindly ask that clients include their order number when reaching out.</p>
+
+      <p>All orders are handled with care once placed. Please review all product details and policies prior to completing your purchase, as orders cannot be modified after processing begins.</p>
+
+      <p>Each NIA BIA order is prepared with attention to detail and reviewed prior to shipment. Natural variations in texture and appearance are inherent to premium hair and are part of its authenticity.</p>
+
+      <p>We aim to respond to all inquiries within a reasonable timeframe and appreciate your patience during high-volume periods. NIA BIA reserves the right to update client care practices as our brand evolves.</p>
+    </section>
+
+    <!-- FOOTER (LOCKED TO INDEX) -->
+    <footer class="footer" aria-label="Footer">
+      <div>
+        <div class="footer-heading">HOUSE OF NIA BIA</div>
+        <ul class="footer-links">
+          <li><a href="client-care.html">Client Care</a></li>
+          <li><a href="#">About NIA BIA</a></li>
+          <li><a href="#">Testimonies</a></li>
+          <li><a href="#">Hair Care</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">LEGAL</div>
+        <ul class="footer-links">
+          <li><a href="policies.html">Refund</a></li>
+          <li><a href="policies.html">Privacy &amp; Cookies</a></li>
+          <li><a href="policies.html">Shipping</a></li>
+          <li><a href="policies.html">Terms of Service</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Accessibility Statement</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">SERVICES</div>
+        <ul class="footer-links">
+          <li><a href="#">Gifting</a></li>
+          <li><a href="#">Tracking</a></li>
+          <li><a href="#">Payment</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Order History</a></li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("overlay");
+    const openBtn = document.getElementById("openMenu");
+    const closeBtn = document.getElementById("closeMenu");
+
+    function openMenu(){
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeMenu(){
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    openBtn.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+  </script>
 </body>
 </html>
