@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service — NIA BIA</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#000000;
+      --line:rgba(0,0,0,.08);
+    }
+
+    html, body{
+      width:100%;
+      margin:0;
+      padding:0;
+      overflow-x:hidden;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    /* PRIMARY FIXED HEADER */
+    .brand-top{
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:1000;
+      background:#fff;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-bottom:1px solid var(--line);
+    }
+
+    .left-icons{
+      position:absolute;
+      left:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .right-icons{
+      position:absolute;
+      right:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .icon-btn{
+      width:28px;
+      height:28px;
+      border:0;
+      background:transparent;
+      padding:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .icon{
+      width:24px;
+      height:24px;
+      stroke:#000;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-width:1.6;
+    }
+
+    .brand{
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+    }
+
+    /* BAG ICON */
+    .bag-icon{
+      width:22px;
+      height:22px;
+      position:relative;
+      display:block;
+      background-image:
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000);
+      background-repeat:no-repeat;
+      background-size:18px 2px, 2px 5px, 2px 5px;
+      background-position:2px 9px, 6px 9px, 16px 9px;
+    }
+    .bag-icon::before{
+      content:"";
+      position:absolute;
+      left:4px; right:4px;
+      top:2px;
+      height:11px;
+      border:2px solid #000;
+      border-bottom:0;
+      border-radius:999px 999px 0 0;
+      box-sizing:border-box;
+    }
+    .bag-icon::after{
+      content:"";
+      position:absolute;
+      left:2px; right:2px;
+      top:9px; bottom:2px;
+      border:2px solid #000;
+      border-radius:3px;
+      box-sizing:border-box;
+    }
+
+    /* SECOND FIXED TITLE BAR */
+    .page-title-bar{
+      position:fixed;
+      top:64px;
+      left:0;
+      right:0;
+      z-index:900;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .page-title{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-align:center;
+    }
+
+    .page{
+      padding-top:120px;
+    }
+
+    .content{
+      max-width:860px;
+      margin:0 auto;
+      padding:36px 18px 72px;
+      line-height:1.7;
+      font-size:15px;
+    }
+
+    .content h2{
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin:36px 0 18px;
+    }
+
+    .content p{
+      margin:0 0 20px;
+      opacity:.95;
+    }
+
+    /* FOOTER (LOCKED) */
+    .footer{
+      padding:56px 18px 64px;
+      background:#fff;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:48px;
+    }
+
+    .footer-heading{
+      font-weight:700;
+      text-transform:uppercase;
+      margin:0 0 18px;
+      letter-spacing:.08em;
+    }
+
+    .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      font-size:16px;
+      opacity:.9;
+    }
+
+    @media (min-width:768px){
+      .footer-grid{
+        grid-template-columns:repeat(3, 1fr);
+        gap:72px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="brand-top">
+  <div class="left-icons">
+    <button class="icon-btn" id="openMenu" aria-label="Menu">
+      <svg class="icon" viewBox="0 0 24 24">
+        <path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/>
+      </svg>
+    </button>
+    <button class="icon-btn" aria-label="Search">
+      <svg class="icon" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/>
+      </svg>
+    </button>
+  </div>
+
+  <a href="index.html" class="brand">NIA BIA</a>
+
+  <div class="right-icons">
+    <button class="icon-btn" aria-label="Account">
+      <svg class="icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/>
+      </svg>
+    </button>
+    <button class="icon-btn" aria-label="Bag"><span class="bag-icon"></span></button>
+  </div>
+</header>
+
+<div class="page-title-bar">
+  <div class="page-title">NIA BIA Terms of Service</div>
+</div>
+
+<main class="page">
+  <section class="content">
+    <p>These Terms of Service govern your use of the NIA BIA website and the purchase of products from NIA BIA. By accessing our site or completing a purchase, you agree to be bound by these terms.</p>
+
+    <h2>Use of Website</h2>
+    <p>By using this website, you confirm that you are at least the age of majority in your state or jurisdiction and that you will use our site for lawful purposes only.</p>
+
+    <h2>Product Information</h2>
+    <p>All products are described as accurately as possible. Natural variations are inherent to premium hair and are not considered defects.</p>
+
+    <h2>Orders & Payment</h2>
+    <p>All prices are listed in U.S. dollars. NIA BIA reserves the right to refuse or cancel any order at our discretion.</p>
+
+    <h2>Intellectual Property</h2>
+    <p>All content on this website is the exclusive property of NIA BIA.</p>
+
+    <h2>Limitation of Liability</h2>
+    <p>NIA BIA shall not be liable for indirect or consequential damages.</p>
+
+    <h2>Governing Law</h2>
+    <p>These Terms are governed by the laws of the State of Florida.</p>
+
+    <h2>Modifications</h2>
+    <p>NIA BIA reserves the right to update these Terms at any time.</p>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-heading">HOUSE OF NIA BIA</div>
+        <ul class="footer-links">
+          <li><a href="client-care.html">Client Care</a></li>
+          <li><a href="#">About NIA BIA</a></li>
+          <li><a href="#">Testimonies</a></li>
+          <li><a href="care.html">Hair Care</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">LEGAL</div>
+        <ul class="footer-links">
+          <li><a href="refund-policy.html">Refund</a></li>
+          <li><a href="privacy-cookies.html">Privacy & Cookies</a></li>
+          <li><a href="shipping-policy.html">Shipping</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Accessibility Statement</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">SERVICES</div>
+        <ul class="footer-links">
+          <li><a href="#">Gifting</a></li>
+          <li><a href="#">Tracking</a></li>
+          <li><a href="#">Payment</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Order History</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</main>
+
+</body>
+</html>
