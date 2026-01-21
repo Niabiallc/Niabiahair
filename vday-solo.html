@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Valentine’s Day 2026 Solo — NIA BIA</title>
+  <title>Valentine’s Day Solo Bundle — NIA BIA</title>
 
   <style>
     :root{
       --bg:#ffffff;
       --fg:#000000;
       --line:rgba(0,0,0,.08);
-      --muted:rgba(0,0,0,.55);
     }
 
     html, body{
@@ -26,7 +25,7 @@
     a{ color:inherit; text-decoration:none; }
 
     /* =========================
-       PRIMARY FIXED HEADER (LOCKED)
+       LOCKED HEADER (SITE STANDARD)
        ========================= */
     .brand-top{
       position:fixed;
@@ -82,7 +81,7 @@
       stroke-width:1.6;
     }
 
-    .brand{
+    .brand a{
       font-size:18px;
       font-weight:700;
       letter-spacing:.32em;
@@ -128,182 +127,155 @@
     }
 
     /* =========================
-       SECOND FIXED TITLE BAR (ALWAYS VISIBLE)
-       ========================= */
-    .page-title-bar{
-      position:fixed;
-      top:64px;
-      left:0;
-      right:0;
-      z-index:900;
-      background:#fff;
-      border-bottom:1px solid var(--line);
-      height:56px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:0 14px;
-      box-sizing:border-box;
-    }
-
-    .page-title{
-      font-size:14px;
-      font-weight:700;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      text-align:center;
-      line-height:1.2;
-    }
-
-    /* =========================
-       PAGE WRAP
+       PAGE LAYOUT
        ========================= */
     .page{
-      padding-top:120px; /* header + title bar */
+      padding-top:64px;
+      background:#fff;
     }
 
-    /* =========================
-       HERO TOP IMAGE + TEXT (LV-like)
-       ========================= */
+    /* HERO (NOT CLICKABLE) */
     .hero{
+      position:relative;
       width:100%;
-      background:#fff;
-      border-bottom:1px solid var(--line);
-    }
-
-    .hero-media{
-      width:100%;
-      aspect-ratio:16/9;
-      min-height:360px;
-      background:#fff;
       overflow:hidden;
+      background:#fff;
     }
-
-    .hero-media img{
+    .hero img{
       width:100%;
-      height:100%;
-      object-fit:cover;
+      height:72vh;
+      min-height:520px;
+      object-fit:contain; /* requested */
+      object-position:center;
       display:block;
       background:#fff;
     }
 
-    .hero-text{
-      max-width:980px;
-      margin:0 auto;
+    /* Intro block under hero */
+    .intro{
       padding:22px 18px 26px;
-      box-sizing:border-box;
+      border-bottom:1px solid var(--line);
+      text-align:center;
+      background:#fff;
     }
 
-    .hero-kicker{
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
+    .intro-kicker{
       margin:0 0 10px;
-      opacity:.75;
-    }
-
-    .hero-title{
-      margin:0 0 12px;
-      font-size:28px;
-      font-weight:700;
-      letter-spacing:.04em;
+      font-size:12px;
+      letter-spacing:.26em;
       text-transform:uppercase;
-      line-height:1.05;
+      opacity:.55;
     }
 
-    .hero-desc{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.7;
+    .intro-title{
+      margin:0 0 14px;
+      font-size:26px;
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      line-height:1.1;
+    }
+
+    .intro-desc{
+      margin:0 auto;
       max-width:860px;
+      font-size:14px;
+      line-height:1.75;
+      opacity:.65; /* faded like your reference */
     }
 
     /* =========================
-       PRODUCT TILES (NOT LINKS)
+       PRODUCT GRID (11 TILES, 2 COLS)
        ========================= */
-    .section{
-      max-width:980px;
-      margin:0 auto;
-      padding:0 18px 72px;
-      box-sizing:border-box;
+    .grid-wrap{
+      background:#fff;
+      padding:0;
     }
 
-    .grid{
+    .product-grid{
       display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr)); /* ✅ 2 columns */
+      grid-template-columns:repeat(2, 1fr);
       gap:0;
-      border-left:1px solid var(--line);
-      border-top:1px solid var(--line);
       background:#fff;
     }
 
     .tile{
-      border-right:1px solid var(--line);
-      border-bottom:1px solid var(--line);
       background:#fff;
-      padding:18px 16px 16px;
+      border-bottom:1px solid var(--line);
       display:flex;
       flex-direction:column;
-      gap:12px;
-      min-height:152px;
-      box-sizing:border-box;
     }
 
-    .tile-top{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
+    .tile-media{
+      width:100%;
+      aspect-ratio:4/5;
+      background:#fff;
+      overflow:hidden;
+    }
+    .tile-media img{
+      width:100%;
+      height:100%;
+      object-fit:contain; /* requested */
+      object-position:center;
+      display:block;
+      background:#fff;
+    }
+
+    .tile-text{
+      padding:14px 16px 18px;
+      background:#fff;
     }
 
     .tile-new{
       font-size:11px;
       letter-spacing:.26em;
       text-transform:uppercase;
-      color:rgba(0,0,0,.45);
+      opacity:.55;
+      margin:0 0 8px;
     }
 
-    .tile-name{
+    .tile-title{
       font-size:14px;
       font-weight:700;
       letter-spacing:.10em;
       text-transform:uppercase;
-      margin:0;
       line-height:1.25;
+      margin:0 0 10px;
     }
 
     .tile-price{
       font-size:13px;
       letter-spacing:.10em;
       text-transform:uppercase;
-      color:rgba(0,0,0,.65);
-      margin:0;
+      margin:0 0 14px;
+      opacity:.9;
     }
 
     .tile-actions{
+      padding:0 16px 18px;
+      background:#fff;
       margin-top:auto;
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
     }
 
-    /* ✅ Always visible "Add to cart" option */
-    .add-btn{
-      width:auto;
+    .bag-btn{
+      width:100%;
       border:1px solid #000;
       background:#fff;
       color:#000;
-      padding:10px 14px;
+      padding:12px 14px;
       font-size:11px;
       font-weight:700;
       letter-spacing:.22em;
       text-transform:uppercase;
       cursor:pointer;
     }
-    .add-btn:active{ transform:translateY(1px); }
+    .bag-btn.is-active{
+      background:#000;
+      color:#fff;
+    }
 
     /* =========================
-       DRAWER MENU (LOCKED, WORKING)
+       DRAWER MENU (LOCKED)
        ========================= */
     .drawer-overlay{
       position:fixed;
@@ -414,20 +386,23 @@
     }
 
     /* =========================
-       LOCKED SITE FOOTER (MATCHES INDEX)
+       LOCKED FOOTER (SITE STANDARD)
        ========================= */
     .footer{
       padding:56px 18px 64px;
       display:grid;
-      grid-template-columns:1fr; /* mobile default */
+      grid-template-columns:1fr;
       gap:48px;
+      background:#fff;
     }
+
     .footer-heading{
       font-weight:700;
       text-transform:uppercase;
       margin:0 0 18px;
       letter-spacing:.08em;
     }
+
     .footer-links{
       list-style:none;
       padding:0;
@@ -436,14 +411,15 @@
       flex-direction:column;
       gap:16px;
     }
+
     .footer-links a{
-      text-transform:none; /* match screenshot casing */
+      text-transform:none;
       letter-spacing:.01em;
       font-size:16px;
       opacity:.9;
     }
 
-    @media (min-width:768px){
+    @media (min-width: 768px){
       .footer{
         grid-template-columns:repeat(3, minmax(0, 1fr));
         gap:72px;
@@ -455,18 +431,17 @@
     @media (max-width:720px){
       .brand-top{ height:60px; }
       .left-icons, .right-icons{ height:60px; }
-      .page-title-bar{ top:60px; }
-      .page{ padding-top:116px; } /* 60 + 56 */
       .drawer-top{ height:60px; }
 
-      .hero-media{ min-height:300px; }
-      .hero-title{ font-size:24px; }
+      .page{ padding-top:60px; }
+      .hero img{ height:66vh; min-height:460px; }
+      .intro-title{ font-size:22px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- PRIMARY HEADER -->
+  <!-- HEADER -->
   <header class="brand-top">
     <div class="left-icons">
       <!-- Menu -->
@@ -487,7 +462,7 @@
       </button>
     </div>
 
-    <a class="brand" href="index.html" aria-label="Home">NIA BIA</a>
+    <div class="brand"><a href="index.html" aria-label="Home">NIA BIA</a></div>
 
     <div class="right-icons">
       <!-- Account -->
@@ -498,17 +473,12 @@
         </svg>
       </button>
 
-      <!-- Bag -->
+      <!-- Shopping bag -->
       <button class="icon-btn" aria-label="Shopping bag" type="button">
         <span class="bag-icon" aria-hidden="true"></span>
       </button>
     </div>
   </header>
-
-  <!-- SECOND FIXED TITLE BAR -->
-  <div class="page-title-bar" aria-label="Page title">
-    <div class="page-title">Valentine’s Day 2026 Solo</div>
-  </div>
 
   <!-- DRAWER -->
   <div class="drawer-overlay" id="overlay"></div>
@@ -640,148 +610,160 @@
   </aside>
 
   <main class="page">
-    <!-- TOP IMAGE + TEXT -->
+    <!-- HERO -->
     <section class="hero" aria-label="Valentine’s Day Solo hero">
-      <div class="hero-media">
-        <img src="vdaysolo.jpg" alt="">
-      </div>
-
-      <div class="hero-text">
-        <p class="hero-kicker">Collection</p>
-        <h1 class="hero-title">Solo</h1>
-        <p class="hero-desc">
-          Our Valentine’s Day 2026 Curl is thoughtfully selected for fullness, softness, and an effortlessly romantic finish. The solo bundle is ideal for simple styles such as ponytails or subtle volume, while our curated sets offer a fuller, more elevated look.
-        </p>
-      </div>
+      <img src="vdaysolo.jpg" alt="">
     </section>
 
-    <!-- PRODUCT GRID (11 tiles, add to cart, no page links) -->
-    <section class="section" aria-label="Solo bundle length options">
-      <div class="grid">
-        <div class="tile" data-sku="VDSOLO-20" data-name="Solo Bundle 20”" data-price="195">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 20”</p>
+    <!-- CENTERED INTRO -->
+    <section class="intro" aria-label="Collection Solo introduction">
+      <p class="intro-kicker">Collection</p>
+      <h1 class="intro-title">Solo</h1>
+      <p class="intro-desc">
+        Our Valentine’s Day 2026 Curl is thoughtfully selected for fullness, softness, and an effortlessly romantic finish. The solo bundle is ideal for simple styles such as ponytails or subtle volume, while our curated sets offer a fuller, more elevated look.
+      </p>
+    </section>
+
+    <!-- 11 TILES, 2 COLUMNS -->
+    <section class="grid-wrap" aria-label="Solo bundle lengths">
+      <div class="product-grid">
+
+        <div class="tile" aria-label="Solo Bundle 20 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 20”</p>
             <p class="tile-price">$195</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-22" data-name="Solo Bundle 22”" data-price="215">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 22”</p>
+        <div class="tile" aria-label="Solo Bundle 22 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 22”</p>
             <p class="tile-price">$215</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-24" data-name="Solo Bundle 24”" data-price="225">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 24”</p>
+        <div class="tile" aria-label="Solo Bundle 24 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 24”</p>
             <p class="tile-price">$225</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-26" data-name="Solo Bundle 26”" data-price="235">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 26”</p>
+        <div class="tile" aria-label="Solo Bundle 26 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 26”</p>
             <p class="tile-price">$235</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-28" data-name="Solo Bundle 28”" data-price="245">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 28”</p>
+        <div class="tile" aria-label="Solo Bundle 28 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 28”</p>
             <p class="tile-price">$245</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-30" data-name="Solo Bundle 30”" data-price="255">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 30”</p>
+        <div class="tile" aria-label="Solo Bundle 30 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 30”</p>
             <p class="tile-price">$255</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-32" data-name="Solo Bundle 32”" data-price="265">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 32”</p>
+        <div class="tile" aria-label="Solo Bundle 32 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 32”</p>
             <p class="tile-price">$265</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-34" data-name="Solo Bundle 34”" data-price="285">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 34”</p>
+        <div class="tile" aria-label="Solo Bundle 34 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 34”</p>
             <p class="tile-price">$285</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-36" data-name="Solo Bundle 36”" data-price="305">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 36”</p>
+        <div class="tile" aria-label="Solo Bundle 36 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 36”</p>
             <p class="tile-price">$305</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-38" data-name="Solo Bundle 38”" data-price="325">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 38”</p>
+        <div class="tile" aria-label="Solo Bundle 38 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 38”</p>
             <p class="tile-price">$325</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
 
-        <div class="tile" data-sku="VDSOLO-40" data-name="Solo Bundle 40”" data-price="345">
-          <div class="tile-top">
-            <div class="tile-new">NEW</div>
-            <p class="tile-name">Solo Bundle 40”</p>
+        <div class="tile" aria-label="Solo Bundle 40 inches">
+          <div class="tile-media"><img src="vdaysolo.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Solo Bundle 40”</p>
             <p class="tile-price">$345</p>
           </div>
           <div class="tile-actions">
-            <button class="add-btn" type="button">Add to cart</button>
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- LOCKED FOOTER -->
+    <!-- FOOTER (LOCKED) -->
     <footer class="footer" aria-label="Footer">
       <div>
         <div class="footer-heading">HOUSE OF NIA BIA</div>
@@ -820,7 +802,6 @@
   </main>
 
   <script>
-    // Drawer menu (locked behavior)
     const drawer = document.getElementById("drawer");
     const overlay = document.getElementById("overlay");
     const openBtn = document.getElementById("openMenu");
@@ -837,44 +818,17 @@
       document.body.style.overflow = "";
     }
 
-    openBtn.addEventListener("click", openMenu);
-    closeBtn.addEventListener("click", closeMenu);
-    overlay.addEventListener("click", closeMenu);
-
-    // Minimal cart placeholder (does not navigate)
-    function getCart(){
-      try{
-        return JSON.parse(localStorage.getItem("niaBiaCart") || "[]");
-      }catch(e){
-        return [];
-      }
-    }
-    function setCart(cart){
-      localStorage.setItem("niaBiaCart", JSON.stringify(cart));
+    if(openBtn && closeBtn && overlay){
+      openBtn.addEventListener("click", openMenu);
+      closeBtn.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", closeMenu);
     }
 
-    document.querySelectorAll(".tile .add-btn").forEach(btn=>{
-      btn.addEventListener("click", (e)=>{
-        const tile = e.currentTarget.closest(".tile");
-        const item = {
-          sku: tile.getAttribute("data-sku"),
-          name: tile.getAttribute("data-name"),
-          price: Number(tile.getAttribute("data-price") || 0),
-          qty: 1
-        };
-
-        const cart = getCart();
-        const existing = cart.find(x => x.sku === item.sku);
-        if(existing){
-          existing.qty += 1;
-        }else{
-          cart.push(item);
-        }
-        setCart(cart);
-
-        // Lightweight feedback (no page change)
-        e.currentTarget.textContent = "Added";
-        setTimeout(()=>{ e.currentTarget.textContent = "Add to cart"; }, 900);
+    // Place in bag -> Undo toggle
+    document.querySelectorAll("[data-bag-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const isActive = btn.classList.toggle("is-active");
+        btn.textContent = isActive ? "Undo" : "Place in bag";
       });
     });
   </script>
