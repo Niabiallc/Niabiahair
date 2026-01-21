@@ -127,10 +127,35 @@
     }
 
     /* =========================
+       SECOND FIXED TITLE BAR
+       ========================= */
+    .page-title-bar{
+      position:fixed;
+      top:64px;
+      left:0;
+      right:0;
+      z-index:900;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .page-title{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-align:center;
+    }
+
+    /* =========================
        PAGE LAYOUT
        ========================= */
     .page{
-      padding-top:64px;
+      padding-top:120px; /* header + title bar */
       background:#fff;
     }
 
@@ -433,7 +458,8 @@
       .left-icons, .right-icons{ height:60px; }
       .drawer-top{ height:60px; }
 
-      .page{ padding-top:60px; }
+      .page{ padding-top:116px; }
+      .page-title-bar{ top:60px; }
       .hero img{ height:66vh; min-height:460px; }
       .intro-title{ font-size:22px; }
     }
@@ -479,6 +505,11 @@
       </button>
     </div>
   </header>
+
+  <!-- SECOND FIXED TITLE BAR -->
+  <div class="page-title-bar">
+    <div class="page-title">Valentine’s Day Collection 2026</div>
+  </div>
 
   <!-- DRAWER -->
   <div class="drawer-overlay" id="overlay"></div>
