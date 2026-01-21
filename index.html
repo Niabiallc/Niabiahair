@@ -62,6 +62,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      position:relative;
     }
 
     .icon{
@@ -114,6 +115,35 @@
       border:2px solid #000;
       border-radius:3px;
       box-sizing:border-box;
+    }
+
+    /* CART BADGE */
+    .cart-badge{
+      position:absolute;
+      top:-6px;
+      right:-8px;
+      min-width:16px;
+      height:16px;
+      padding:0 4px;
+      border-radius:999px;
+      background:#000;
+      color:#fff;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.02em;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      line-height:1;
+      box-sizing:border-box;
+      pointer-events:none;
+      opacity:0;
+      transform:scale(.95);
+      transition:opacity .12s ease, transform .12s ease;
+    }
+    .cart-badge.show{
+      opacity:1;
+      transform:scale(1);
     }
 
     .page{ padding-top:64px; }
@@ -332,12 +362,131 @@
       padding-left:2px;
     }
 
+    /* CART DRAWER (RIGHT) */
+    .cart-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.25);
+      z-index:2200;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease;
+    }
+    .cart-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .cart-drawer{
+      position:fixed;
+      top:0;
+      right:0;
+      height:100%;
+      width:min(86vw, 420px);
+      background:#fff;
+      z-index:2300;
+      transform:translateX(102%);
+      transition:transform .18s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .cart-drawer.open{ transform:translateX(0); }
+
+    .cart-top{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 16px;
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .cart-title{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+    .cart-close{
+      width:34px;
+      height:34px;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .cart-close svg{
+      width:22px; height:22px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .cart-body{
+      padding:18px 16px;
+      overflow:auto;
+      flex:1 1 auto;
+    }
+
+    .cart-empty{
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      opacity:.7;
+      padding:22px 0;
+    }
+
+    .cart-footer{
+      padding:14px 16px 18px;
+      border-top:1px solid rgba(0,0,0,.08);
+    }
+    .cart-subtotal-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:8px 0 12px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      opacity:.9;
+    }
+
+    .cart-actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .cart-primary,
+    .cart-secondary{
+      width:100%;
+      padding:12px 14px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      cursor:pointer;
+      border-radius:0;
+    }
+    .cart-primary{
+      background:#000;
+      color:#fff;
+      border:1px solid #000;
+    }
+    .cart-secondary{
+      background:transparent;
+      color:#000;
+      border:1px solid rgba(0,0,0,.35);
+    }
+
     @media (max-width:720px){
       .grid{ grid-template-columns:1fr; }
       .brand-top{ height:60px; }
       .left-icons, .right-icons{ height:60px; }
       .page{ padding-top:60px; }
       .drawer-top{ height:60px; }
+      .cart-top{ height:60px; }
     }
   </style>
 </head>
@@ -377,8 +526,9 @@
         </svg>
       </button>
 
-      <button class="icon-btn" aria-label="Shopping bag" type="button">
+      <button class="icon-btn" aria-label="Shopping bag" type="button" id="cartBtn">
         <span class="bag-icon" aria-hidden="true"></span>
+        <span class="cart-badge" id="cartCountBadge" aria-label="Items in bag">0</span>
       </button>
     </div>
   </header>
@@ -404,13 +554,13 @@
             <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
           </summary>
           <div class="submenu">
-  <a href="specialcollection.html">All Valentine’s Day Collection 2026</a>
-  <a href="vday-solo.html">Solo Bundle</a>
-  <a href="vday-trio.html">Trio Set</a>
-  <a href="vday-quad.html">Quad Set</a>
-  <a href="vday-signature.html">Signature Accessories</a>
-  <a href="vday-gift.html">Valentine’s Gift Set</a>
-</div>
+            <a href="specialcollection.html">All Valentine’s Day Collection 2026</a>
+            <a href="vday-solo.html">Solo Bundle</a>
+            <a href="vday-trio.html">Trio Set</a>
+            <a href="vday-quad.html">Quad Set</a>
+            <a href="vday-signature.html">Signature Accessories</a>
+            <a href="vday-gift.html">Valentine’s Gift Set</a>
+          </div>
         </details>
       </div>
 
@@ -590,6 +740,40 @@
     </footer>
   </main>
 
+  <!-- CART DRAWER (RIGHT) -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag" aria-hidden="true">
+    <div class="cart-top">
+      <div class="cart-title">Shopping Bag</div>
+      <button class="cart-close" type="button" id="closeCart" aria-label="Close Shopping Bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12" />
+          <path d="M18 6l-12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-body">
+      <div id="cartItems">
+        <div class="cart-empty">Your Bag Is Empty</div>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="cart-actions">
+        <button class="cart-primary" type="button" id="viewBagBtn">View Bag</button>
+        <button class="cart-secondary" type="button" id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="assets/js/cart.js"></script>
+
   <script>
     const drawer = document.getElementById("drawer");
     const overlay = document.getElementById("overlay");
@@ -609,6 +793,82 @@
     openBtn.addEventListener("click", openMenu);
     closeBtn.addEventListener("click", closeMenu);
     overlay.addEventListener("click", closeMenu);
+
+    /* CART DRAWER WIRING (separate from menu drawer) */
+    const cartBtn = document.getElementById("cartBtn");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartDrawer = document.getElementById("cartDrawer");
+    const closeCartBtn = document.getElementById("closeCart");
+    const cartCountBadge = document.getElementById("cartCountBadge");
+
+    function safeParseCart(raw){
+      try{
+        const parsed = JSON.parse(raw || "");
+        if(parsed && typeof parsed === "object") return parsed;
+      }catch(e){}
+      return { items: [] };
+    }
+
+    function getCartCount(cart){
+      const items = Array.isArray(cart.items) ? cart.items : [];
+      return items.reduce((sum, it) => {
+        const qty = Number(it && it.qty != null ? it.qty : 1);
+        return sum + (Number.isFinite(qty) && qty > 0 ? qty : 0);
+      }, 0);
+    }
+
+    function updateCartBadge(){
+      const cart = safeParseCart(localStorage.getItem("niaCart"));
+      const count = getCartCount(cart);
+
+      cartCountBadge.textContent = String(count);
+
+      if(count > 0){
+        cartCountBadge.classList.add("show");
+      }else{
+        cartCountBadge.classList.remove("show");
+      }
+    }
+
+    function openCart(){
+      cartDrawer.classList.add("open");
+      cartOverlay.classList.add("open");
+      cartDrawer.setAttribute("aria-hidden", "false");
+      cartOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      if(typeof window.NIABIA_CART_RENDER === "function"){
+        window.NIABIA_CART_RENDER();
+      }else{
+        updateCartBadge();
+      }
+    }
+
+    function closeCart(){
+      cartDrawer.classList.remove("open");
+      cartOverlay.classList.remove("open");
+      cartDrawer.setAttribute("aria-hidden", "true");
+      cartOverlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    cartBtn.addEventListener("click", openCart);
+    closeCartBtn.addEventListener("click", closeCart);
+    cartOverlay.addEventListener("click", closeCart);
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape"){
+        if(cartDrawer.classList.contains("open")) closeCart();
+        if(drawer.classList.contains("open")) closeMenu();
+      }
+    });
+
+    document.addEventListener("cart:updated", updateCartBadge);
+    window.addEventListener("storage", (e) => {
+      if(e.key === "niaCart") updateCartBadge();
+    });
+
+    updateCartBadge();
   </script>
 </body>
 </html>
