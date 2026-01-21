@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valentine’s Day 2026 Solo — NIA BIA</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#000000;
+      --line:rgba(0,0,0,.08);
+      --muted:rgba(0,0,0,.55);
+    }
+
+    html, body{
+      width:100%;
+      margin:0;
+      padding:0;
+      overflow-x:hidden;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    /* =========================
+       PRIMARY FIXED HEADER (LOCKED)
+       ========================= */
+    .brand-top{
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:1000;
+      background:#fff;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-bottom:1px solid var(--line);
+    }
+
+    .left-icons{
+      position:absolute;
+      left:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .right-icons{
+      position:absolute;
+      right:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .icon-btn{
+      width:28px;
+      height:28px;
+      border:0;
+      background:transparent;
+      padding:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .icon{
+      width:24px;
+      height:24px;
+      stroke:#000;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-width:1.6;
+    }
+
+    .brand{
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      display:inline-block;
+      line-height:1;
+      white-space:nowrap;
+    }
+
+    /* Approved shopping bag icon */
+    .bag-icon{
+      width:22px;
+      height:22px;
+      position:relative;
+      display:block;
+      background-image:
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000);
+      background-repeat:no-repeat;
+      background-size: 18px 2px, 2px 5px, 2px 5px;
+      background-position: 2px 9px, 6px 9px, 16px 9px;
+    }
+    .bag-icon::before{
+      content:"";
+      position:absolute;
+      left:4px; right:4px;
+      top:2px;
+      height:11px;
+      border:2px solid #000;
+      border-bottom:0;
+      border-radius:999px 999px 0 0;
+      box-sizing:border-box;
+    }
+    .bag-icon::after{
+      content:"";
+      position:absolute;
+      left:2px; right:2px;
+      top:9px; bottom:2px;
+      border:2px solid #000;
+      border-radius:3px;
+      box-sizing:border-box;
+    }
+
+    /* =========================
+       SECOND FIXED TITLE BAR (ALWAYS VISIBLE)
+       ========================= */
+    .page-title-bar{
+      position:fixed;
+      top:64px;
+      left:0;
+      right:0;
+      z-index:900;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 14px;
+      box-sizing:border-box;
+    }
+
+    .page-title{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-align:center;
+      line-height:1.2;
+    }
+
+    /* =========================
+       PAGE WRAP
+       ========================= */
+    .page{
+      padding-top:120px; /* header + title bar */
+    }
+
+    /* =========================
+       HERO TOP IMAGE + TEXT (LV-like)
+       ========================= */
+    .hero{
+      width:100%;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero-media{
+      width:100%;
+      aspect-ratio:16/9;
+      min-height:360px;
+      background:#fff;
+      overflow:hidden;
+    }
+
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      background:#fff;
+    }
+
+    .hero-text{
+      max-width:980px;
+      margin:0 auto;
+      padding:22px 18px 26px;
+      box-sizing:border-box;
+    }
+
+    .hero-kicker{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      margin:0 0 10px;
+      opacity:.75;
+    }
+
+    .hero-title{
+      margin:0 0 12px;
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      line-height:1.05;
+    }
+
+    .hero-desc{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+      max-width:860px;
+    }
+
+    /* =========================
+       PRODUCT TILES (NOT LINKS)
+       ========================= */
+    .section{
+      max-width:980px;
+      margin:0 auto;
+      padding:0 18px 72px;
+      box-sizing:border-box;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr)); /* ✅ 2 columns */
+      gap:0;
+      border-left:1px solid var(--line);
+      border-top:1px solid var(--line);
+      background:#fff;
+    }
+
+    .tile{
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#fff;
+      padding:18px 16px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      min-height:152px;
+      box-sizing:border-box;
+    }
+
+    .tile-top{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .tile-new{
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:rgba(0,0,0,.45);
+    }
+
+    .tile-name{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      margin:0;
+      line-height:1.25;
+    }
+
+    .tile-price{
+      font-size:13px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:rgba(0,0,0,.65);
+      margin:0;
+    }
+
+    .tile-actions{
+      margin-top:auto;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+    }
+
+    /* ✅ Always visible "Add to cart" option */
+    .add-btn{
+      width:auto;
+      border:1px solid #000;
+      background:#fff;
+      color:#000;
+      padding:10px 14px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+    .add-btn:active{ transform:translateY(1px); }
+
+    /* =========================
+       DRAWER MENU (LOCKED, WORKING)
+       ========================= */
+    .drawer-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.25);
+      z-index:2000;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease;
+    }
+    .drawer{
+      position:fixed;
+      top:0;
+      left:0;
+      height:100%;
+      width:min(86vw, 420px);
+      background:#fff;
+      z-index:2100;
+      transform:translateX(-102%);
+      transition:transform .18s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .drawer.open{ transform:translateX(0); }
+    .drawer-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .drawer-top{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding:0 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .drawer-close{
+      width:34px;
+      height:34px;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .drawer-close svg{
+      width:22px; height:22px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .drawer-body{
+      padding:22px 18px 40px;
+      overflow:auto;
+    }
+
+    .menu-title{
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:.02em;
+      margin:0 0 22px;
+    }
+
+    .menu-section{
+      border-top:1px solid rgba(0,0,0,.10);
+      padding:14px 0;
+    }
+
+    details.menu-item summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding:12px 0;
+    }
+    details.menu-item summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      width:18px; height:18px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      flex:0 0 auto;
+    }
+
+    .submenu{
+      padding:6px 0 4px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .submenu a{
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      opacity:.85;
+      padding-left:2px;
+    }
+
+    /* =========================
+       LOCKED SITE FOOTER (MATCHES INDEX)
+       ========================= */
+    .footer{
+      padding:56px 18px 64px;
+      display:grid;
+      grid-template-columns:1fr; /* mobile default */
+      gap:48px;
+    }
+    .footer-heading{
+      font-weight:700;
+      text-transform:uppercase;
+      margin:0 0 18px;
+      letter-spacing:.08em;
+    }
+    .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .footer-links a{
+      text-transform:none; /* match screenshot casing */
+      letter-spacing:.01em;
+      font-size:16px;
+      opacity:.9;
+    }
+
+    @media (min-width:768px){
+      .footer{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:72px;
+        padding-left:40px;
+        padding-right:40px;
+      }
+    }
+
+    @media (max-width:720px){
+      .brand-top{ height:60px; }
+      .left-icons, .right-icons{ height:60px; }
+      .page-title-bar{ top:60px; }
+      .page{ padding-top:116px; } /* 60 + 56 */
+      .drawer-top{ height:60px; }
+
+      .hero-media{ min-height:300px; }
+      .hero-title{ font-size:24px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- PRIMARY HEADER -->
+  <header class="brand-top">
+    <div class="left-icons">
+      <!-- Menu -->
+      <button class="icon-btn" aria-label="Menu" type="button" id="openMenu">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18" />
+          <path d="M3 12h18" />
+          <path d="M3 18h18" />
+        </svg>
+      </button>
+
+      <!-- Search (icon only, no action) -->
+      <button class="icon-btn" aria-label="Search" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+      </button>
+    </div>
+
+    <a class="brand" href="index.html" aria-label="Home">NIA BIA</a>
+
+    <div class="right-icons">
+      <!-- Account -->
+      <button class="icon-btn" aria-label="Account" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
+        </svg>
+      </button>
+
+      <!-- Bag -->
+      <button class="icon-btn" aria-label="Shopping bag" type="button">
+        <span class="bag-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SECOND FIXED TITLE BAR -->
+  <div class="page-title-bar" aria-label="Page title">
+    <div class="page-title">Valentine’s Day 2026 Solo</div>
+  </div>
+
+  <!-- DRAWER -->
+  <div class="drawer-overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Menu">
+    <div class="drawer-top">
+      <button class="drawer-close" aria-label="Close menu" type="button" id="closeMenu">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12" />
+          <path d="M18 6l-12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="menu-title">Menu</div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Haute Couture Hair
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="specialcollection.html">All Valentine’s Day Collection 2026</a>
+            <a href="specialcollection.html#solo">Solo Bundle</a>
+            <a href="specialcollection.html#trio">Trio Set</a>
+            <a href="specialcollection.html#quad">Quad Set</a>
+            <a href="specialcollection.html#signature">Signature Accessories</a>
+            <a href="specialcollection.html#gift">Valentine’s Gift Set</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Virgin
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="virgin.html">All Virgin</a>
+            <a href="virgin.html#solo">Solo Bundle</a>
+            <a href="virgin.html#trio">Trio Set</a>
+            <a href="virgin.html#quad">Quad Set</a>
+            <a href="virgin.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Single Donor
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="raw.html">All Single Donor</a>
+            <a href="raw.html#solo">Solo Bundle</a>
+            <a href="raw.html#trio">Trio Set</a>
+            <a href="raw.html#quad">Quad Set</a>
+            <a href="raw.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Clip Ins
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="clip-ins.html">All Clip Ins</a>
+            <a href="clip-ins.html#solo">Clip Ins Solo Set</a>
+            <a href="clip-ins.html#duo">Clip Ins Duo Set</a>
+            <a href="clip-ins.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Heritage Accessories
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">Coming Soon</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>High Accessories
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">Coming Soon</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Client Services
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="contact.html">Order Tracking</a>
+            <a href="contact.html">Delivery</a>
+            <a href="policies.html">Returns</a>
+            <a href="haircare.html">Hair Care</a>
+            <a href="faqs.html">FAQ</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>House of NIA BIA
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">The House</a>
+            <a href="#">Heritage</a>
+            <a href="#">Craftsmanship</a>
+            <a href="#">Care Philosophy</a>
+            <a href="#">Client Commitment</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </aside>
+
+  <main class="page">
+    <!-- TOP IMAGE + TEXT -->
+    <section class="hero" aria-label="Valentine’s Day Solo hero">
+      <div class="hero-media">
+        <img src="vdaysolo.jpg" alt="">
+      </div>
+
+      <div class="hero-text">
+        <p class="hero-kicker">Collection</p>
+        <h1 class="hero-title">Solo</h1>
+        <p class="hero-desc">
+          Our Valentine’s Day 2026 Curl is thoughtfully selected for fullness, softness, and an effortlessly romantic finish. The solo bundle is ideal for simple styles such as ponytails or subtle volume, while our curated sets offer a fuller, more elevated look.
+        </p>
+      </div>
+    </section>
+
+    <!-- PRODUCT GRID (11 tiles, add to cart, no page links) -->
+    <section class="section" aria-label="Solo bundle length options">
+      <div class="grid">
+        <div class="tile" data-sku="VDSOLO-20" data-name="Solo Bundle 20”" data-price="195">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 20”</p>
+            <p class="tile-price">$195</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-22" data-name="Solo Bundle 22”" data-price="215">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 22”</p>
+            <p class="tile-price">$215</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-24" data-name="Solo Bundle 24”" data-price="225">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 24”</p>
+            <p class="tile-price">$225</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-26" data-name="Solo Bundle 26”" data-price="235">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 26”</p>
+            <p class="tile-price">$235</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-28" data-name="Solo Bundle 28”" data-price="245">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 28”</p>
+            <p class="tile-price">$245</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-30" data-name="Solo Bundle 30”" data-price="255">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 30”</p>
+            <p class="tile-price">$255</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-32" data-name="Solo Bundle 32”" data-price="265">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 32”</p>
+            <p class="tile-price">$265</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-34" data-name="Solo Bundle 34”" data-price="285">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 34”</p>
+            <p class="tile-price">$285</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-36" data-name="Solo Bundle 36”" data-price="305">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 36”</p>
+            <p class="tile-price">$305</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-38" data-name="Solo Bundle 38”" data-price="325">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 38”</p>
+            <p class="tile-price">$325</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+
+        <div class="tile" data-sku="VDSOLO-40" data-name="Solo Bundle 40”" data-price="345">
+          <div class="tile-top">
+            <div class="tile-new">NEW</div>
+            <p class="tile-name">Solo Bundle 40”</p>
+            <p class="tile-price">$345</p>
+          </div>
+          <div class="tile-actions">
+            <button class="add-btn" type="button">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCKED FOOTER -->
+    <footer class="footer" aria-label="Footer">
+      <div>
+        <div class="footer-heading">HOUSE OF NIA BIA</div>
+        <ul class="footer-links">
+          <li><a href="client-care.html">Client Care</a></li>
+          <li><a href="about-house.html">About NIA BIA</a></li>
+          <li><a href="testimonies.html">Testimonies</a></li>
+          <li><a href="haircare.html">Hair Care</a></li>
+          <li><a href="faqs.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">LEGAL</div>
+        <ul class="footer-links">
+          <li><a href="refund-policy.html">Refund</a></li>
+          <li><a href="privacy-cookies.html">Privacy &amp; Cookies</a></li>
+          <li><a href="shipping-policy.html">Shipping</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="accessibility.html">Accessibility Statement</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">SERVICES</div>
+        <ul class="footer-links">
+          <li><a href="gifting-service.html">Gifting</a></li>
+          <li><a href="tracking-service.html">Tracking</a></li>
+          <li><a href="payment-service.html">Payment</a></li>
+          <li><a href="account-service.html">Account</a></li>
+          <li><a href="history-service.html">Order History</a></li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Drawer menu (locked behavior)
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("overlay");
+    const openBtn = document.getElementById("openMenu");
+    const closeBtn = document.getElementById("closeMenu");
+
+    function openMenu(){
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeMenu(){
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    openBtn.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+
+    // Minimal cart placeholder (does not navigate)
+    function getCart(){
+      try{
+        return JSON.parse(localStorage.getItem("niaBiaCart") || "[]");
+      }catch(e){
+        return [];
+      }
+    }
+    function setCart(cart){
+      localStorage.setItem("niaBiaCart", JSON.stringify(cart));
+    }
+
+    document.querySelectorAll(".tile .add-btn").forEach(btn=>{
+      btn.addEventListener("click", (e)=>{
+        const tile = e.currentTarget.closest(".tile");
+        const item = {
+          sku: tile.getAttribute("data-sku"),
+          name: tile.getAttribute("data-name"),
+          price: Number(tile.getAttribute("data-price") || 0),
+          qty: 1
+        };
+
+        const cart = getCart();
+        const existing = cart.find(x => x.sku === item.sku);
+        if(existing){
+          existing.qty += 1;
+        }else{
+          cart.push(item);
+        }
+        setCart(cart);
+
+        // Lightweight feedback (no page change)
+        e.currentTarget.textContent = "Added";
+        setTimeout(()=>{ e.currentTarget.textContent = "Add to cart"; }, 900);
+      });
+    });
+  </script>
+</body>
+</html>
