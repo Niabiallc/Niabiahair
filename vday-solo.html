@@ -69,6 +69,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      position:relative; /* needed for cart badge positioning */
     }
 
     .icon{
@@ -124,6 +125,35 @@
       border:2px solid #000;
       border-radius:3px;
       box-sizing:border-box;
+    }
+
+    /* CART BADGE */
+    .cart-badge{
+      position:absolute;
+      top:-6px;
+      right:-8px;
+      min-width:16px;
+      height:16px;
+      padding:0 4px;
+      border-radius:999px;
+      background:#000;
+      color:#fff;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.02em;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      line-height:1;
+      box-sizing:border-box;
+      pointer-events:none;
+      opacity:0;
+      transform:scale(.95);
+      transition:opacity .12s ease, transform .12s ease;
+    }
+    .cart-badge.show{
+      opacity:1;
+      transform:scale(1);
     }
 
     /* =========================
@@ -411,6 +441,194 @@
     }
 
     /* =========================
+       CART DRAWER (RIGHT)
+       ========================= */
+    .cart-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.25);
+      z-index:2200;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease;
+    }
+    .cart-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .cart-drawer{
+      position:fixed;
+      top:0;
+      right:0;
+      height:100%;
+      width:min(86vw, 420px);
+      background:#fff;
+      z-index:2300;
+      transform:translateX(102%);
+      transition:transform .18s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .cart-drawer.open{ transform:translateX(0); }
+
+    .cart-top{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .cart-title{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+    .cart-close{
+      width:34px;
+      height:34px;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .cart-close svg{
+      width:22px; height:22px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .cart-body{
+      padding:18px 16px;
+      overflow:auto;
+      flex:1 1 auto;
+    }
+
+    .cart-empty{
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      opacity:.7;
+      padding:22px 0;
+    }
+
+    .cart-list{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      padding:6px 0 14px;
+    }
+
+    .cart-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      border-bottom:1px solid var(--line);
+      padding-bottom:12px;
+    }
+
+    .cart-thumb{
+      width:64px;
+      height:80px;
+      flex:0 0 auto;
+      background:#fff;
+      overflow:hidden;
+    }
+    .cart-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+      background:#fff;
+    }
+
+    .cart-meta{
+      flex:1 1 auto;
+      min-width:0;
+    }
+    .cart-name{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      line-height:1.35;
+      margin:0 0 6px;
+    }
+    .cart-line{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      opacity:.85;
+      margin:0;
+    }
+
+    .cart-remove{
+      margin-top:10px;
+      border:0;
+      background:transparent;
+      padding:0;
+      cursor:pointer;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      opacity:.6;
+    }
+
+    .cart-footer{
+      padding:14px 16px 18px;
+      border-top:1px solid var(--line);
+    }
+    .cart-subtotal-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:8px 0 12px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      opacity:.9;
+    }
+
+    .cart-actions{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .cart-primary,
+    .cart-secondary{
+      width:100%;
+      padding:12px 14px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      cursor:pointer;
+      border-radius:0;
+    }
+    .cart-primary{
+      background:#000;
+      color:#fff;
+      border:1px solid #000;
+    }
+    .cart-secondary{
+      background:transparent;
+      color:#000;
+      border:1px solid rgba(0,0,0,.35);
+    }
+
+    /* =========================
        LOCKED FOOTER (SITE STANDARD)
        ========================= */
     .footer{
@@ -457,6 +675,7 @@
       .brand-top{ height:60px; }
       .left-icons, .right-icons{ height:60px; }
       .drawer-top{ height:60px; }
+      .cart-top{ height:60px; }
 
       .page{ padding-top:116px; }
       .page-title-bar{ top:60px; }
@@ -500,8 +719,9 @@
       </button>
 
       <!-- Shopping bag -->
-      <button class="icon-btn" aria-label="Shopping bag" type="button">
+      <button class="icon-btn" aria-label="Shopping bag" type="button" id="cartBtn">
         <span class="bag-icon" aria-hidden="true"></span>
+        <span class="cart-badge" id="cartCountBadge" aria-label="Items in bag">0</span>
       </button>
     </div>
   </header>
@@ -533,11 +753,11 @@
           </summary>
           <div class="submenu">
             <a href="specialcollection.html">All Valentine’s Day Collection 2026</a>
-            <a href="specialcollection.html#solo">Solo Bundle</a>
-            <a href="specialcollection.html#trio">Trio Set</a>
-            <a href="specialcollection.html#quad">Quad Set</a>
-            <a href="specialcollection.html#signature">Signature Accessories</a>
-            <a href="specialcollection.html#gift">Valentine’s Gift Set</a>
+            <a href="vday-solo.html">Solo Bundle</a>
+            <a href="vday-trio.html">Trio Set</a>
+            <a href="vday-quad.html">Quad Set</a>
+            <a href="vday-signature.html">Signature Accessories</a>
+            <a href="vday-gift.html">Valentine’s Gift Set</a>
           </div>
         </details>
       </div>
@@ -667,7 +887,7 @@
             <p class="tile-price">$195</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-20" data-name="Valentine’s Day Collection Solo Bundle 20”" data-price="195.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -679,7 +899,7 @@
             <p class="tile-price">$215</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-22" data-name="Valentine’s Day Collection Solo Bundle 22”" data-price="215.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -691,7 +911,7 @@
             <p class="tile-price">$225</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-24" data-name="Valentine’s Day Collection Solo Bundle 24”" data-price="225.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -703,7 +923,7 @@
             <p class="tile-price">$235</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-26" data-name="Valentine’s Day Collection Solo Bundle 26”" data-price="235.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -715,7 +935,7 @@
             <p class="tile-price">$245</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-28" data-name="Valentine’s Day Collection Solo Bundle 28”" data-price="245.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -727,7 +947,7 @@
             <p class="tile-price">$255</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-30" data-name="Valentine’s Day Collection Solo Bundle 30”" data-price="255.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -739,7 +959,7 @@
             <p class="tile-price">$265</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-32" data-name="Valentine’s Day Collection Solo Bundle 32”" data-price="265.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -751,7 +971,7 @@
             <p class="tile-price">$285</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-34" data-name="Valentine’s Day Collection Solo Bundle 34”" data-price="285.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -763,7 +983,7 @@
             <p class="tile-price">$305</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-36" data-name="Valentine’s Day Collection Solo Bundle 36”" data-price="305.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -775,7 +995,7 @@
             <p class="tile-price">$325</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-38" data-name="Valentine’s Day Collection Solo Bundle 38”" data-price="325.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -787,7 +1007,7 @@
             <p class="tile-price">$345</p>
           </div>
           <div class="tile-actions">
-            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+            <button class="bag-btn" type="button" data-bag-btn data-sku="V26-SOLO-40" data-name="Valentine’s Day Collection Solo Bundle 40”" data-price="345.00" data-image="vdaysolo.jpg">Place in bag</button>
           </div>
         </div>
 
@@ -832,6 +1052,40 @@
     </footer>
   </main>
 
+  <!-- CART DRAWER (RIGHT) -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag" aria-hidden="true">
+    <div class="cart-top">
+      <div class="cart-title">Shopping Bag</div>
+      <button class="cart-close" type="button" id="closeCart" aria-label="Close Shopping Bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12" />
+          <path d="M18 6l-12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-body">
+      <div id="cartItems">
+        <div class="cart-empty">Your Bag Is Empty</div>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="cart-actions">
+        <button class="cart-primary" type="button" id="viewBagBtn">View Bag</button>
+        <button class="cart-secondary" type="button" id="checkoutBtn">Checkout</button>
+      </div>
+    </div>
+  </aside>
+
+  <script src="assets/js/cart.js"></script>
+
   <script>
     const drawer = document.getElementById("drawer");
     const overlay = document.getElementById("overlay");
@@ -855,13 +1109,271 @@
       overlay.addEventListener("click", closeMenu);
     }
 
-    // Place in bag -> Undo toggle
-    document.querySelectorAll("[data-bag-btn]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const isActive = btn.classList.toggle("is-active");
-        btn.textContent = isActive ? "Undo" : "Place in bag";
+    /* CART: shared key + helpers (works even before cart.js is fully built) */
+    const CART_KEY = "niaCart";
+
+    const cartBtn = document.getElementById("cartBtn");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartDrawer = document.getElementById("cartDrawer");
+    const closeCartBtn = document.getElementById("closeCart");
+    const cartCountBadge = document.getElementById("cartCountBadge");
+    const cartItemsEl = document.getElementById("cartItems");
+    const cartSubtotalEl = document.getElementById("cartSubtotal");
+
+    function safeParseCart(raw){
+      try{
+        const parsed = JSON.parse(raw || "");
+        if(parsed && typeof parsed === "object") return parsed;
+      }catch(e){}
+      return { items: [] };
+    }
+
+    function getCart(){
+      const cart = safeParseCart(localStorage.getItem(CART_KEY));
+      if(!Array.isArray(cart.items)) cart.items = [];
+      return cart;
+    }
+
+    function saveCart(cart){
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      document.dispatchEvent(new CustomEvent("cart:updated"));
+    }
+
+    function getCartCount(cart){
+      const items = Array.isArray(cart.items) ? cart.items : [];
+      return items.reduce((sum, it) => {
+        const qty = Number(it && it.qty != null ? it.qty : 1);
+        return sum + (Number.isFinite(qty) && qty > 0 ? qty : 0);
+      }, 0);
+    }
+
+    function getCartSubtotal(cart){
+      const items = Array.isArray(cart.items) ? cart.items : [];
+      return items.reduce((sum, it) => {
+        const price = Number(it && it.price != null ? it.price : 0);
+        const qty = Number(it && it.qty != null ? it.qty : 1);
+        const line = (Number.isFinite(price) ? price : 0) * (Number.isFinite(qty) && qty > 0 ? qty : 0);
+        return sum + line;
+      }, 0);
+    }
+
+    function formatMoney(n){
+      const v = Number(n);
+      const safe = Number.isFinite(v) ? v : 0;
+      return "$" + safe.toFixed(2);
+    }
+
+    function hasItem(sku){
+      const cart = getCart();
+      return cart.items.some(it => it && it.sku === sku);
+    }
+
+    function addItem(item){
+      const cart = getCart();
+      const existing = cart.items.find(it => it && it.sku === item.sku);
+      if(existing){
+        existing.qty = Number(existing.qty || 1) + 1;
+      }else{
+        cart.items.push({
+          sku: String(item.sku),
+          name: String(item.name || ""),
+          price: Number(item.price || 0),
+          qty: Number(item.qty || 1),
+          image: item.image ? String(item.image) : ""
+        });
+      }
+      saveCart(cart);
+    }
+
+    function removeItem(sku){
+      const cart = getCart();
+      cart.items = cart.items.filter(it => it && it.sku !== sku);
+      saveCart(cart);
+    }
+
+    function updateCartBadge(){
+      const cart = getCart();
+      const count = getCartCount(cart);
+      cartCountBadge.textContent = String(count);
+      if(count > 0){
+        cartCountBadge.classList.add("show");
+      }else{
+        cartCountBadge.classList.remove("show");
+      }
+    }
+
+    function renderCartDrawer(){
+      const cart = getCart();
+      const items = cart.items || [];
+      const subtotal = getCartSubtotal(cart);
+
+      cartSubtotalEl.textContent = formatMoney(subtotal);
+
+      if(!items.length){
+        cartItemsEl.innerHTML = '<div class="cart-empty">Your Bag Is Empty</div>';
+        return;
+      }
+
+      const list = document.createElement("div");
+      list.className = "cart-list";
+
+      items.forEach((it) => {
+        const row = document.createElement("div");
+        row.className = "cart-item";
+
+        const thumb = document.createElement("div");
+        thumb.className = "cart-thumb";
+        if(it.image){
+          const img = document.createElement("img");
+          img.src = it.image;
+          img.alt = "";
+          thumb.appendChild(img);
+        }
+
+        const meta = document.createElement("div");
+        meta.className = "cart-meta";
+
+        const name = document.createElement("p");
+        name.className = "cart-name";
+        name.textContent = it.name || "";
+
+        const line = document.createElement("p");
+        line.className = "cart-line";
+        const left = document.createElement("span");
+        left.textContent = "Qty " + String(it.qty || 1);
+        const right = document.createElement("span");
+        right.textContent = formatMoney((Number(it.price || 0) * Number(it.qty || 1)));
+        line.appendChild(left);
+        line.appendChild(right);
+
+        const removeBtn = document.createElement("button");
+        removeBtn.className = "cart-remove";
+        removeBtn.type = "button";
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", () => {
+          removeItem(it.sku);
+          syncBagButtonsFromCart();
+          renderCartDrawer();
+          updateCartBadge();
+        });
+
+        meta.appendChild(name);
+        meta.appendChild(line);
+        meta.appendChild(removeBtn);
+
+        row.appendChild(thumb);
+        row.appendChild(meta);
+        list.appendChild(row);
       });
+
+      cartItemsEl.innerHTML = "";
+      cartItemsEl.appendChild(list);
+    }
+
+    function openCart(){
+      cartDrawer.classList.add("open");
+      cartOverlay.classList.add("open");
+      cartDrawer.setAttribute("aria-hidden", "false");
+      cartOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+
+      if(typeof window.NIABIA_CART_RENDER === "function"){
+        window.NIABIA_CART_RENDER();
+      }else{
+        renderCartDrawer();
+        updateCartBadge();
+      }
+    }
+
+    function closeCart(){
+      cartDrawer.classList.remove("open");
+      cartOverlay.classList.remove("open");
+      cartDrawer.setAttribute("aria-hidden", "true");
+      cartOverlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    if(cartBtn && cartOverlay && cartDrawer && closeCartBtn){
+      cartBtn.addEventListener("click", openCart);
+      closeCartBtn.addEventListener("click", closeCart);
+      cartOverlay.addEventListener("click", closeCart);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape"){
+        if(cartDrawer.classList.contains("open")) closeCart();
+        if(drawer.classList.contains("open")) closeMenu();
+      }
     });
+
+    function syncBagButtonsFromCart(){
+      document.querySelectorAll("[data-bag-btn]").forEach((btn) => {
+        const sku = btn.getAttribute("data-sku") || "";
+        const inCart = sku ? hasItem(sku) : false;
+        if(inCart){
+          btn.classList.add("is-active");
+          btn.textContent = "Undo";
+        }else{
+          btn.classList.remove("is-active");
+          btn.textContent = "Place in bag";
+        }
+      });
+    }
+
+    function onBagButtonClick(btn){
+      const sku = btn.getAttribute("data-sku");
+      const name = btn.getAttribute("data-name");
+      const price = btn.getAttribute("data-price");
+      const image = btn.getAttribute("data-image");
+
+      if(!sku) return;
+
+      const inCart = hasItem(sku);
+
+      if(inCart){
+        removeItem(sku);
+      }else{
+        addItem({
+          sku: sku,
+          name: name || "",
+          price: Number(price || 0),
+          qty: 1,
+          image: image || ""
+        });
+      }
+
+      syncBagButtonsFromCart();
+
+      if(cartDrawer.classList.contains("open")){
+        renderCartDrawer();
+      }
+      updateCartBadge();
+    }
+
+    document.querySelectorAll("[data-bag-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => onBagButtonClick(btn));
+    });
+
+    document.addEventListener("cart:updated", () => {
+      updateCartBadge();
+      syncBagButtonsFromCart();
+      if(cartDrawer.classList.contains("open")){
+        renderCartDrawer();
+      }
+    });
+
+    window.addEventListener("storage", (e) => {
+      if(e.key === CART_KEY){
+        updateCartBadge();
+        syncBagButtonsFromCart();
+        if(cartDrawer.classList.contains("open")){
+          renderCartDrawer();
+        }
+      }
+    });
+
+    updateCartBadge();
+    syncBagButtonsFromCart();
   </script>
 </body>
 </html>
