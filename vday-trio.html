@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valentine’s Day Trio Set — NIA BIA</title>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#000000;
+      --line:rgba(0,0,0,.08);
+    }
+
+    html, body{
+      width:100%;
+      margin:0;
+      padding:0;
+      overflow-x:hidden;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    /* =========================
+       LOCKED HEADER (SITE STANDARD)
+       ========================= */
+    .brand-top{
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:1000;
+      background:#fff;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-bottom:1px solid var(--line);
+    }
+
+    .left-icons{
+      position:absolute;
+      left:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .right-icons{
+      position:absolute;
+      right:16px;
+      top:0;
+      height:64px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .icon-btn{
+      width:28px;
+      height:28px;
+      border:0;
+      background:transparent;
+      padding:0;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .icon{
+      width:24px;
+      height:24px;
+      stroke:#000;
+      fill:none;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-width:1.6;
+    }
+
+    .brand a{
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      display:inline-block;
+      line-height:1;
+      white-space:nowrap;
+    }
+
+    /* Approved shopping bag icon */
+    .bag-icon{
+      width:22px;
+      height:22px;
+      position:relative;
+      display:block;
+      background-image:
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000),
+        linear-gradient(#000,#000);
+      background-repeat:no-repeat;
+      background-size: 18px 2px, 2px 5px, 2px 5px;
+      background-position: 2px 9px, 6px 9px, 16px 9px;
+    }
+    .bag-icon::before{
+      content:"";
+      position:absolute;
+      left:4px; right:4px;
+      top:2px;
+      height:11px;
+      border:2px solid #000;
+      border-bottom:0;
+      border-radius:999px 999px 0 0;
+      box-sizing:border-box;
+    }
+    .bag-icon::after{
+      content:"";
+      position:absolute;
+      left:2px; right:2px;
+      top:9px; bottom:2px;
+      border:2px solid #000;
+      border-radius:3px;
+      box-sizing:border-box;
+    }
+
+    /* =========================
+       SECOND FIXED TITLE BAR
+       ========================= */
+    .page-title-bar{
+      position:fixed;
+      top:64px;
+      left:0;
+      right:0;
+      z-index:900;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .page-title{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      opacity:.9;
+      padding:0 16px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* =========================
+       PAGE LAYOUT
+       ========================= */
+    .page{
+      padding-top:120px; /* header + title bar */
+      background:#fff;
+    }
+
+    /* HERO (NOT CLICKABLE) */
+    .hero{
+      position:relative;
+      width:100%;
+      overflow:hidden;
+      background:#fff;
+    }
+    .hero img{
+      width:100%;
+      height:72vh;
+      min-height:520px;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+      background:#fff;
+    }
+
+    /* Intro block under hero */
+    .intro{
+      padding:22px 18px 26px;
+      border-bottom:1px solid var(--line);
+      text-align:center;
+      background:#fff;
+    }
+
+    .intro-kicker{
+      margin:0 0 10px;
+      font-size:12px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      opacity:.55;
+    }
+
+    .intro-title{
+      margin:0 0 14px;
+      font-size:26px;
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      line-height:1.1;
+    }
+
+    .intro-desc{
+      margin:0 auto;
+      max-width:860px;
+      font-size:14px;
+      line-height:1.75;
+      opacity:.65;
+    }
+
+    /* =========================
+       PRODUCT GRID (5 TILES, 2 COLS)
+       ========================= */
+    .grid-wrap{
+      background:#fff;
+      padding:0;
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:0;
+      background:#fff;
+    }
+
+    .tile{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .tile-media{
+      width:100%;
+      aspect-ratio:4/5;
+      background:#fff;
+      overflow:hidden;
+    }
+    .tile-media img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      display:block;
+      background:#fff;
+    }
+
+    .tile-text{
+      padding:14px 16px 18px;
+      background:#fff;
+    }
+
+    .tile-new{
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      opacity:.55;
+      margin:0 0 8px;
+    }
+
+    .tile-title{
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      line-height:1.25;
+      margin:0 0 10px;
+    }
+
+    .tile-price{
+      font-size:13px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      margin:0 0 14px;
+      opacity:.9;
+    }
+
+    .tile-actions{
+      padding:0 16px 18px;
+      background:#fff;
+      margin-top:auto;
+    }
+
+    .bag-btn{
+      width:100%;
+      border:1px solid #000;
+      background:#fff;
+      color:#000;
+      padding:12px 14px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+    .bag-btn.is-active{
+      background:#000;
+      color:#fff;
+    }
+
+    /* =========================
+       DRAWER MENU (LOCKED)
+       ========================= */
+    .drawer-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.25);
+      z-index:2000;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .18s ease;
+    }
+    .drawer{
+      position:fixed;
+      top:0;
+      left:0;
+      height:100%;
+      width:min(86vw, 420px);
+      background:#fff;
+      z-index:2100;
+      transform:translateX(-102%);
+      transition:transform .18s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .drawer.open{ transform:translateX(0); }
+    .drawer-overlay.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .drawer-top{
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding:0 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .drawer-close{
+      width:34px;
+      height:34px;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .drawer-close svg{
+      width:22px; height:22px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .drawer-body{
+      padding:22px 18px 40px;
+      overflow:auto;
+    }
+
+    .menu-title{
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:.02em;
+      margin:0 0 22px;
+    }
+
+    .menu-section{
+      border-top:1px solid rgba(0,0,0,.10);
+      padding:14px 0;
+    }
+
+    details.menu-item summary{
+      list-style:none;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:16px;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding:12px 0;
+    }
+    details.menu-item summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      width:18px; height:18px;
+      stroke:#000; fill:none;
+      stroke-width:1.6;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      flex:0 0 auto;
+    }
+
+    .submenu{
+      padding:6px 0 4px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .submenu a{
+      font-size:13px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      opacity:.85;
+      padding-left:2px;
+    }
+
+    /* =========================
+       LOCKED FOOTER (SITE STANDARD)
+       ========================= */
+    .footer{
+      padding:56px 18px 64px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:48px;
+      background:#fff;
+    }
+
+    .footer-heading{
+      font-weight:700;
+      text-transform:uppercase;
+      margin:0 0 18px;
+      letter-spacing:.08em;
+    }
+
+    .footer-links{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .footer-links a{
+      text-transform:none;
+      letter-spacing:.01em;
+      font-size:16px;
+      opacity:.9;
+    }
+
+    @media (min-width: 768px){
+      .footer{
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:72px;
+        padding-left:40px;
+        padding-right:40px;
+      }
+    }
+
+    @media (max-width:720px){
+      .brand-top{ height:60px; }
+      .left-icons, .right-icons{ height:60px; }
+      .drawer-top{ height:60px; }
+
+      .page-title-bar{ top:60px; height:54px; }
+      .page{ padding-top:114px; }
+
+      .hero img{ height:66vh; min-height:460px; }
+      .intro-title{ font-size:22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="brand-top">
+    <div class="left-icons">
+      <!-- Menu -->
+      <button class="icon-btn" aria-label="Menu" type="button" id="openMenu">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18" />
+          <path d="M3 12h18" />
+          <path d="M3 18h18" />
+        </svg>
+      </button>
+
+      <!-- Search (icon only, no action) -->
+      <button class="icon-btn" aria-label="Search" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="6"></circle>
+          <path d="M20 20l-3.5-3.5"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="brand"><a href="index.html" aria-label="Home">NIA BIA</a></div>
+
+    <div class="right-icons">
+      <!-- Account -->
+      <button class="icon-btn" aria-label="Account" type="button">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M20 21a8 8 0 0 0-16 0" />
+        </svg>
+      </button>
+
+      <!-- Shopping bag -->
+      <button class="icon-btn" aria-label="Shopping bag" type="button">
+        <span class="bag-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SECOND FIXED TITLE BAR -->
+  <div class="page-title-bar" aria-label="Collection title bar">
+    <div class="page-title">Valentine’s Day Collection 2026</div>
+  </div>
+
+  <!-- DRAWER -->
+  <div class="drawer-overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Menu">
+    <div class="drawer-top">
+      <button class="drawer-close" aria-label="Close menu" type="button" id="closeMenu">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12" />
+          <path d="M18 6l-12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="menu-title">Menu</div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Haute Couture Hair
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="specialcollection.html">All Valentine’s Day Collection 2026</a>
+            <a href="vday-solo.html">Solo Bundle</a>
+            <a href="vday-trio.html">Trio Set</a>
+            <a href="#">Quad Set</a>
+            <a href="#">Signature Accessories</a>
+            <a href="#">Valentine’s Gift Set</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Virgin
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="virgin.html">All Virgin</a>
+            <a href="virgin.html#solo">Solo Bundle</a>
+            <a href="virgin.html#trio">Trio Set</a>
+            <a href="virgin.html#quad">Quad Set</a>
+            <a href="virgin.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Single Donor
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="raw.html">All Single Donor</a>
+            <a href="raw.html#solo">Solo Bundle</a>
+            <a href="raw.html#trio">Trio Set</a>
+            <a href="raw.html#quad">Quad Set</a>
+            <a href="raw.html#signature">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Clip Ins
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="clip-ins.html">All Clip Ins</a>
+            <a href="clip-solo.html">Clip Ins Solo Set</a>
+            <a href="clip-duo.html">Clip Ins Duo Set</a>
+            <a href="clip-signature.html">Signature</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Heritage Accessories
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">Coming Soon</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>High Accessories
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">Coming Soon</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>Client Services
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="contact.html">Order Tracking</a>
+            <a href="contact.html">Delivery</a>
+            <a href="policies.html">Returns</a>
+            <a href="haircare.html">Hair Care</a>
+            <a href="faqs.html">FAQ</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="menu-section">
+        <details class="menu-item">
+          <summary>House of NIA BIA
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </summary>
+          <div class="submenu">
+            <a href="#">The House</a>
+            <a href="#">Heritage</a>
+            <a href="#">Craftsmanship</a>
+            <a href="#">Care Philosophy</a>
+            <a href="#">Client Commitment</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </aside>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero" aria-label="Valentine’s Day Trio hero">
+      <img src="vdaytrioset.jpg" alt="">
+    </section>
+
+    <!-- CENTERED INTRO -->
+    <section class="intro" aria-label="Collection Trio introduction">
+      <p class="intro-kicker">Collection</p>
+      <h1 class="intro-title">Trio</h1>
+      <p class="intro-desc">
+        Our Valentine’s Day Collection Trio Set is hand-selected for the softness of its waves and beautiful fullness through lengths 20–30 inches. Created for smooth, full installs, this set offers natural movement and makes layering effortless while maintaining a soft, romantic finish.
+      </p>
+    </section>
+
+    <!-- 5 TILES, 2 COLUMNS -->
+    <section class="grid-wrap" aria-label="Trio set lengths">
+      <div class="product-grid">
+
+        <div class="tile" aria-label="Trio Set 20 22 24">
+          <div class="tile-media"><img src="vdaytrioset.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Trio Set 20” 22” 24”</p>
+            <p class="tile-price">$565</p>
+          </div>
+          <div class="tile-actions">
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+          </div>
+        </div>
+
+        <div class="tile" aria-label="Trio Set 22 24 26">
+          <div class="tile-media"><img src="vdaytrioset.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Trio Set 22” 24” 26”</p>
+            <p class="tile-price">$595</p>
+          </div>
+          <div class="tile-actions">
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+          </div>
+        </div>
+
+        <div class="tile" aria-label="Trio Set 24 26 28">
+          <div class="tile-media"><img src="vdaytrioset.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Trio Set 24” 26” 28”</p>
+            <p class="tile-price">$625</p>
+          </div>
+          <div class="tile-actions">
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+          </div>
+        </div>
+
+        <div class="tile" aria-label="Trio Set 26 28 30">
+          <div class="tile-media"><img src="vdaytrioset.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Trio Set 26” 28” 30”</p>
+            <p class="tile-price">$655</p>
+          </div>
+          <div class="tile-actions">
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+          </div>
+        </div>
+
+        <div class="tile" aria-label="Trio Set 30 30 30">
+          <div class="tile-media"><img src="vdaytrioset.jpg" alt=""></div>
+          <div class="tile-text">
+            <p class="tile-new">NEW</p>
+            <p class="tile-title">Trio Set 30” 30” 30”</p>
+            <p class="tile-price">$685</p>
+          </div>
+          <div class="tile-actions">
+            <button class="bag-btn" type="button" data-bag-btn>Place in bag</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER (LOCKED) -->
+    <footer class="footer" aria-label="Footer">
+      <div>
+        <div class="footer-heading">HOUSE OF NIA BIA</div>
+        <ul class="footer-links">
+          <li><a href="client-care.html">Client Care</a></li>
+          <li><a href="about-house.html">About NIA BIA</a></li>
+          <li><a href="testimonies.html">Testimonies</a></li>
+          <li><a href="haircare.html">Hair Care</a></li>
+          <li><a href="faqs.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">LEGAL</div>
+        <ul class="footer-links">
+          <li><a href="refund-policy.html">Refund</a></li>
+          <li><a href="privacy-cookies.html">Privacy &amp; Cookies</a></li>
+          <li><a href="shipping-policy.html">Shipping</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="accessibility.html">Accessibility Statement</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">SERVICES</div>
+        <ul class="footer-links">
+          <li><a href="gifting-service.html">Gifting</a></li>
+          <li><a href="tracking-service.html">Tracking</a></li>
+          <li><a href="payment-service.html">Payment</a></li>
+          <li><a href="account-service.html">Account</a></li>
+          <li><a href="history-service.html">Order History</a></li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("overlay");
+    const openBtn = document.getElementById("openMenu");
+    const closeBtn = document.getElementById("closeMenu");
+
+    function openMenu(){
+      drawer.classList.add("open");
+      overlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeMenu(){
+      drawer.classList.remove("open");
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    if(openBtn && closeBtn && overlay){
+      openBtn.addEventListener("click", openMenu);
+      closeBtn.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", closeMenu);
+    }
+
+    // Place in bag -> Undo toggle
+    document.querySelectorAll("[data-bag-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const isActive = btn.classList.toggle("is-active");
+        btn.textContent = isActive ? "Undo" : "Place in bag";
+      });
+    });
+  </script>
+</body>
+</html>
